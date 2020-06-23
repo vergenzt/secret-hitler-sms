@@ -34,6 +34,7 @@ role-%:
 	$(split-page)
 party-%:
 	$(split-page)
+	
 policy-%:
 	$(split-page)
 board-%:
