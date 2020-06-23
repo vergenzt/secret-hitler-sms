@@ -6,7 +6,7 @@ define split-page =
 		-crop $(GRID) \
 		\( -clone $(RANGE) \) \
 		-delete 0--2 \
-		$<
+		$@
 endef
 
 define split-and-rotate =
@@ -18,7 +18,7 @@ define split-and-rotate =
 		\( -clone -2 -rotate  90 \) \
 		-delete 0-1 \
 		+append \
-		$<
+		$@
 endef
 
 all: players policies boards
@@ -40,6 +40,7 @@ board-%:
 	$(split-and-rotate)
 
 role-% party-%: GRID=4x2@
+
 role-fascist%.png: PAGE=0
 role-fascist%.png: RANGE=1,3-4
 role-hitler.png: PAGE=0
