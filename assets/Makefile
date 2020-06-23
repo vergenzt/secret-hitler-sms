@@ -5,13 +5,16 @@ all: $(shell echo \
 	board-{fascist-{5or6,7or8,9or10},liberal}.png \
 )
 
-player-%:
+even-split:
 	convert $(SOURCE_PDF)[$(PAGE)] \
 		-trim \
 		-crop $GRID \
 		\( -clone $RANGE \) \
 		-delete 0--2 \
 		$FILENAME
+
+
+player-%:
 
 board-%:
 	convert $(SOURCE_PDF)[$(PAGE)] \
