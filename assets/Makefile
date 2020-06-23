@@ -5,8 +5,7 @@ all: $(shell echo \
 )
 
 board-%:
-	convert \
-		$(SOURCE_PDF)[$(PAGE)] \
+	convert $(SOURCE_PDF)[$(PAGE)] \
 		-trim \
 		-shave 3 \
 		-crop 2x1@ \
