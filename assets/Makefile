@@ -1,6 +1,6 @@
 SOURCE_PDF=Secret_Hitler_PnP_color_with_backface.pdf
 
-define split_page =
+define split_and_rotate =
 	convert $(SOURCE_PDF)[$(PAGE)] \
 		-trim \
 		-shave 3 \
@@ -9,6 +9,15 @@ define split_page =
 		\( -clone -2 -rotate  90 \) \
 		-delete 0-1 \
 		+append \
+		$<
+endef
+
+define split-page =
+	convert $(SOURCE_PDF)[$(PAGE)] \
+		-trim \
+		-crop $(GRID) \
+		\( -clone $(RANGE) \) \
+		-delete 0--2 \
 		$<
 endef
 
@@ -40,13 +49,5 @@ board-fascist-5or6.png:  PAGE=14
 board-fascist-7or8.png:  PAGE=15
 board-fascist-9or10.png: PAGE=16
 board-liberal.png:       PAGE=17 split-page
-
-split-page:
-	convert $(SOURCE_PDF)[$(PAGE)] \
-		-trim \
-		-crop $(GRID) \
-		\( -clone $(RANGE) \) \
-		-delete 0--2 \
-		$<
 
 split-and-rotate:
