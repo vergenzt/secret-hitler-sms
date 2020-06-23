@@ -6,7 +6,7 @@ define split-page
 		-trim \
 		-crop $(GRID) \
 		\( -clone $(RANGE) -trim \) \
-		$(echo -n "liberal-2.png" | pcregrep -o '[0-9]+' | sed 's/\(.\)/( -clone -$1 )/g') \
+		$(echo -n "liberal-2.png" | pcregrep -o '[0-9]+' | sed 's/\(.\)/( -clone -$1 )') \
 		-delete 0--2 \
 		$@
 endef
