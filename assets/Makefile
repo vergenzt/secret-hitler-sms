@@ -27,7 +27,7 @@ players: $(shell echo player-{fascist,hitler,liberal}.png)
 policies: $(shell echo policy-{fascist,liberal}.png)
 boards: $(shell echo board-{fascist-{5or6,7or8,9or10},liberal}.png)
 
-player-%: role-% party-%
+player-%:
 	convert $^ +append $@
 
 role-%:
