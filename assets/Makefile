@@ -6,7 +6,7 @@ all: $(shell echo \
 
 board-%:
 	convert \
-		$(SOURCE_PDF)[$PAGE] \
+		$(SOURCE_PDF)[$(PAGE)] \
 		-trim \
 		-shave 3 \
 		-crop 2x1@ \
@@ -14,7 +14,7 @@ board-%:
 		\( -clone -2 -rotate  90 \) \
 		-delete 0-1 \
 		+append \
-		$<
+		$@
 
 board-fascist-5or6.png:  PAGE=14
 board-fascist-7or8.png:  PAGE=15
