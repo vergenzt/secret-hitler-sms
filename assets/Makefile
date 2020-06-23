@@ -6,7 +6,6 @@ all: $(shell echo \
 	policy-{fascist,liberal} \
 )
 
-
 board-*:
 
 
