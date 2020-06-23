@@ -69,8 +69,8 @@ party-%:
 
 policy-%: GRID=6x3@
 policy-%: PAGE=12
-policy-fascist.png: RANGE=1
-policy-liberal.png: RANGE=13
+policy-fascist.png: RANGE=0
+policy-liberal.png: RANGE=12
 
 policy-%:
 	$(split-page)
