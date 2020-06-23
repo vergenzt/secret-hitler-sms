@@ -11,7 +11,7 @@ even-split:
 		-crop $GRID \
 		\( -clone $RANGE \) \
 		-delete 0--2 \
-		$FILENAME
+		$@
 
 
 player-%:
