@@ -11,7 +11,7 @@ format-card() {
     $SOURCE_PDF[$PAGENUM] \
     -trim \
     -crop $GRID \
-    \( -clone $RANGE \) $FILENAME 
+    \( -clone $RANGE \) -delete 0--1 $FILENAME 
 }
 
 format-card 0 2x3@ 0,2-3 role-fascist.png
