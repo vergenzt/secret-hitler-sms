@@ -11,8 +11,6 @@ player-%: role-% party-%
 
 role-%: GRID=4x2@ split-page
 party-%: GRID=4x2@ split-page
-
-
 board-%: split-and-rotate
 
 role-fascist.png: PAGE=0 RANGE=1-4
