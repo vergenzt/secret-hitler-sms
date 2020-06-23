@@ -1,6 +1,7 @@
 SOURCE_PDF=Secret_Hitler_PnP_color_with_backface.pdf
 
-SPLIT_PAGE=convert $(SOURCE_PDF)[$(PAGE)] \
+SPLIT_PAGE=\
+	convert $(SOURCE_PDF)[$(PAGE)] \
 		-trim \
 		-shave 3 \
 		-crop 2x1@ \
