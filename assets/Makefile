@@ -4,7 +4,7 @@ all: $(shell echo \
 	board-{fascist-{5or6,7or8,9or10},liberal}.png \
 )
 
-board-*:
+board:
 	convert \
 		$SOURCE_PDF[$PAGE] \
 		-trim \
@@ -14,7 +14,7 @@ board-*:
 		\( -clone -2 -rotate  90 \) \
 		-delete 0-1 \
 		+append \
-		$FILENAME
+		$<
 
 board-fascist-5or6.png:  PAGE=14 board
 board-fascist-7or8.png:  PAGE=15
