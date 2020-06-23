@@ -1,5 +1,14 @@
 SOURCE_PDF=Secret_Hitler_PnP_color_with_backface.pdf
 
+define split-page =
+	convert $(SOURCE_PDF)[$(PAGE)] \
+		-trim \
+		-crop $(GRID) \
+		\( -clone $(RANGE) \) \
+		-delete 0--2 \
+		$<
+endef
+
 define split_and_rotate =
 	convert $(SOURCE_PDF)[$(PAGE)] \
 		-trim \
@@ -9,15 +18,6 @@ define split_and_rotate =
 		\( -clone -2 -rotate  90 \) \
 		-delete 0-1 \
 		+append \
-		$<
-endef
-
-define split-page =
-	convert $(SOURCE_PDF)[$(PAGE)] \
-		-trim \
-		-crop $(GRID) \
-		\( -clone $(RANGE) \) \
-		-delete 0--2 \
 		$<
 endef
 
