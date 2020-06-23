@@ -10,16 +10,6 @@ define split-page
 		$@
 endef
 
-define split-page-and-choose
-	convert $(SOURCE_PDF)[$(PAGE)] \
-		-trim \
-		-crop $(GRID) \
-		\( -clone $(RANGE) -trim \) \
-		\( -clone -$(shell echo "$@" | tr -dc 0-9) \) \
-		-delete 0--2 \
-		$@
-endef
-
 define split-and-rotate
 	convert $(SOURCE_PDF)[$(PAGE)] \
 		-trim \
