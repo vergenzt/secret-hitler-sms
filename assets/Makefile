@@ -6,8 +6,7 @@ all: $(shell echo \
 )
 
 player-%:
-
-
+	convert $(SOURCE_PDF)[$(PAGE)] \
 
 board-%:
 	convert $(SOURCE_PDF)[$(PAGE)] \
