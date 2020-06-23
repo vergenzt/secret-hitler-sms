@@ -2,9 +2,9 @@ SOURCE_PDF=Secret_Hitler_PnP_color_with_backface.pdf
 
 all: players policies boards
 
-players: player-{fascist,hitler,liberal}.png
-policies: policy-{fascist,liberal}.png
-boards: board-{fascist-{5or6,7or8,9or10},liberal}.png
+players: $(shell echo player-{fascist,hitler,liberal}.png)
+policies: $(shell echo policy-{fascist,liberal}.png)
+boards: $(shell echo board-{fascist-{5or6,7or8,9or10},liberal}.png)
 
 player-%: role-% party-%
 	convert $^ +append $@
