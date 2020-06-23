@@ -51,6 +51,7 @@ party-fascist.png: PAGE=2 RANGE=3
 party-liberal.png: PAGE=2 RANGE=5
 party-liberal.png: PAGE=2 RANGE=5
 
+policy-%: GRID=6x3@
 policy-fascist.png: GRID=6x3@
 policy-fascist.png: PAGE=12
 policy-fascist.png: RANGE=1
