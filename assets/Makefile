@@ -33,7 +33,8 @@ player-%:
 player-fascist%.png: role-fascist%.png
 player-fascist%.png: party-fascist.png
 player-hitler.png:   role-hitler.png    party-fascist.png
-player-liberal%.png: role-liberal%.png party-liberal.png
+player-liberal%.png: role-liberal%.png
+player-liberal%.png: party-liberal.png
 
 role-%:
 	$(split-page)
