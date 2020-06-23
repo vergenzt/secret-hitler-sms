@@ -9,6 +9,7 @@ gpaste \
     | gshuf \
   ) \
   > ../state/__SECRET__/players-with-roles.txt
+
 chmod 600 ../state/__SECRET__/players-with-roles.txt
 
 join ../state/{public/players,__SECRET__/players-with-roles}.txt \
