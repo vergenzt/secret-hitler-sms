@@ -34,7 +34,7 @@ split-and-rotate:
 		-shave 3 \
 		-crop 2x1@ \
 		\( -clone -2 -rotate -90 \) \
-		\( -clone -2 -rotate	90 \) \
+		\( -clone -2 -rotate  90 \) \
 		-delete 0-1 \
 		+append \
 		$@
