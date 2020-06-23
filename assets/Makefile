@@ -1,4 +1,3 @@
-SHELL=/usr/bin/env bash
 SOURCE_PDF=Secret_Hitler_PnP_color_with_backface.pdf
 
 define split-page
@@ -6,7 +5,17 @@ define split-page
 		-trim \
 		-crop $(GRID) \
 		\( -clone $(RANGE) -trim \) \
-		\$(echo -n "$@" | pcregrep -o '[0-9]+' | sed 's/(.)/\( -clone -$1 \)') \
+		\$(shell echo "( -clone -\$(echo "$@" | tr -dc 0-9) )" \
+		-delete 0--2 \
+		$@
+endef
+
+define split-page-and-choose
+	convert $(SOURCE_PDF)[$(PAGE)] \
+		-trim \
+		-crop $(GRID) \
+		\( -clone $(RANGE) -trim \) \
+		\( -clone -$(shell echo "$@" | tr -dc 0-9) \) \
 		-delete 0--2 \
 		$@
 endef
@@ -45,11 +54,11 @@ role-liberal-%.png: PAGE=0,2
 role-liberal-%.png: RANGE=4-9
 
 role-fascist-%.png:
-	$(split-page)
+	$(split-page-and-choose)
 role-hitler.png:
 	$(split-page)
 role-liberal-%.png:
-	$(split-page)
+	$(split-page-and-choose)
 
 party-%: GRID=4x2@
 party-%: PAGE=2
