@@ -31,7 +31,7 @@ player-%:
 	convert $^ +append $@
 
 player-fascist%.png: role-fascist%.png party-fascist.png
-player-hitler.png:  role-hitler.png   party-fascist.png
+player-hitler.png:  role-hitler.png    party-fascist.png
 player-liberal%.png: role-liberal%.png party-liberal.png
 
 role-%:
