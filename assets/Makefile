@@ -9,11 +9,11 @@ boards: $(shell echo board-{fascist-{5or6,7or8,9or10},liberal}.png)
 player-%: role-% party-%
 	convert $^ +append $@
 
-role-%: GRID=4x2@ split-page
+role-%: split-page
 party-%: GRID=4x2@ split-page
 board-%: split-and-rotate
 
-role-fascist.png: PAGE=0 RANGE=1-4
+role-fascist.png: GRID=4x2@ PAGE=0 RANGE=1-4
 
 board-fascist-5or6.png:  PAGE=14
 board-fascist-7or8.png:  PAGE=15
