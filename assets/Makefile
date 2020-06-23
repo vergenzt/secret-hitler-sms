@@ -4,7 +4,7 @@ define split-page
 	convert $(SOURCE_PDF)[$(PAGE)] \
 		-trim \
 		-crop $(GRID) \
-		\( -clone $(RANGE) -fuzz 10% -trim \) \
+		\( -clone $(RANGE) -fuzz 20% -trim \) \
 		-delete 0--2 \
 		$@
 endef
@@ -13,7 +13,7 @@ define split-page-and-choose
 	convert $(SOURCE_PDF)[$(PAGE)] \
 		-trim \
 		-crop $(GRID) \
-		\( -clone $(RANGE) -trim \) \
+		\( -clone $(RANGE) -fuzz 10% -trim \) \
 		\( -clone -$(shell echo "$@" | tr -dc 0-9) \) \
 		-delete 0--2 \
 		$@
