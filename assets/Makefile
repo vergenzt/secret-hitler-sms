@@ -13,6 +13,8 @@ split-page:
 		-delete 0--2 \
 		$@
 
+player-%: role-% party-%
+	convert $^ +append $@
 
 role-%: GRID=4x2@ split-page
 player-
