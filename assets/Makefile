@@ -5,7 +5,7 @@ all: $(shell echo \
 	board-{fascist-{5or6,7or8,9or10},liberal}.png \
 )
 
-players:
+players: player-{fascist,hitler,liberal}.png
 
 player-%: role-% party-%
 	convert $^ +append $@
