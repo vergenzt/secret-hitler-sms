@@ -48,6 +48,4 @@ policy-liberal.png: GRID=6x3@ PAGE=12 RANGE=13
 board-fascist-5or6.png:  PAGE=14
 board-fascist-7or8.png:  PAGE=15
 board-fascist-9or10.png: PAGE=16
-board-liberal.png:       PAGE=17 split-page
-
-split-and-rotate:
+board-liberal.png:       PAGE=17
