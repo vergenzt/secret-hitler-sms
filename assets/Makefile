@@ -23,7 +23,7 @@ endef
 
 all: players policies boards
 
-players: $(shell echo player-{fascist{1..3},hitler,liberal{1..6}}.png)
+players: $(shell echo player-{fascist-{1..3},hitler,liberal-{1..6}}.png)
 policies: $(shell echo policy-{fascist,liberal}.png)
 boards: $(shell echo board-{fascist-{5or6,7or8,9or10},liberal}.png)
 
