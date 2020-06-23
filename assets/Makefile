@@ -7,7 +7,7 @@ all: $(shell echo \
 
 players:
 
-_split_page:
+split-page:
 	convert $(SOURCE_PDF)[$(PAGE)] \
 		-trim \
 		-crop $(GRID) \
