@@ -5,4 +5,7 @@ all: $(shell echo \
 	policy-{fascist,liberal} \
 )
 
-board-*
+format-board 14 board-fascist-5or6.png
+format-board 15 board-fascist-7or8.png
+format-board 16 board-fascist-9or10.png
+format-board 17 board-liberal.png
