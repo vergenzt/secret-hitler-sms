@@ -17,7 +17,9 @@ player-%: role-% party-%
 	convert $^ +append $@
 
 role-%: GRID=4x2@ split-page
+role-fascist.png: PAGE=0 RANGE=1-4
 party-%: GRID=4x2@ split-page
+
 
 board-%:
 	convert $(SOURCE_PDF)[$(PAGE)] \
