@@ -13,7 +13,7 @@ define split-page-and-choose
 	convert $(SOURCE_PDF)[$(PAGE)] \
 		-trim \
 		-crop $(GRID) \
-		\( -clone $(RANGE) -fuzz 10% -trim \) \
+		\( -clone $(RANGE) -shave 10 \) \
 		\( -clone -$(shell echo "$@" | tr -dc 0-9) \) \
 		-delete 0--2 \
 		$@
