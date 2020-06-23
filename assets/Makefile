@@ -27,7 +27,7 @@ policy-liberal.png: GRID=6x3@ PAGE=12 RANGE=13
 board-fascist-5or6.png:  PAGE=14
 board-fascist-7or8.png:  PAGE=15
 board-fascist-9or10.png: PAGE=16
-board-liberal.png:       PAGE=17 split-and-rotate
+board-liberal.png:       PAGE=17 split-page
 
 split-page:
 	convert $(SOURCE_PDF)[$(PAGE)] \
@@ -35,7 +35,7 @@ split-page:
 		-crop $(GRID) \
 		\( -clone $(RANGE) \) \
 		-delete 0--2 \
-		$@
+		$<
 
 split-and-rotate:
 	convert $(SOURCE_PDF)[$(PAGE)] \
@@ -46,4 +46,4 @@ split-and-rotate:
 		\( -clone -2 -rotate  90 \) \
 		-delete 0-1 \
 		+append \
-		$@
+		$<
