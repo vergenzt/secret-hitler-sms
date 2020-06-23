@@ -39,6 +39,8 @@ policy-%:
 board-%:
 	$(split-and-rotate)
 
+role-* party-*: GRID=4x2@
+
 role-fascist*.png: GRID=4x2@ PAGE=0   RANGE=1,3-4
 role-hitler.png:  GRID=4x2@ PAGE=0   RANGE=2
 role-liberal*.png: GRID=4x2@ PAGE=0,2 RANGE=5-10
