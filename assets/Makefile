@@ -7,7 +7,16 @@ all: $(shell echo \
 )
 
 board-*:
-
+  convert \
+    $SOURCE_PDF[$PAGENUM] \
+    -trim \
+    -shave 3 \
+    -crop 2x1@ \
+    \( -clone -2 -rotate -90 \) \
+    \( -clone -2 -rotate  90 \) \
+    -delete 0-1 \
+    +append \
+    $FILENAME
 
 board-fascist-5or6.png:  PAGE=14
 board-fascist-7or8.png:  PAGE=15
