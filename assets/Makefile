@@ -2,6 +2,7 @@ SOURCE_PDF=Secret_Hitler_PnP_color_with_backface.pdf
 
 all: $(shell echo \
 	board-{fascist-{5or6,7or8,9or10},liberal}.png \
+	player-{fascist,hitler,liberal}.png
 )
 
 board-%:
