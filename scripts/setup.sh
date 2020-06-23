@@ -12,7 +12,5 @@ gpaste \
 
 chmod 600 ../state/__SECRET__/players.txt
 
-jq -rR ../state/__SECRET__/players.txt \
-  | awk '{print }'
-  # ...
+jq -rR ../state/__SECRET__/players.txt '
   | xargs -n1 twilio --to=... --body=... --media-url=...
