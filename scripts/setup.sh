@@ -13,7 +13,6 @@ gpaste \
 chmod 600 ../state/__SECRET__/players.txt
 
 join \
-  ../state/public/player-slots.txt \
   ../state/__SECRET__/players.txt \
 
   | xargs awk '{ print }'
