@@ -14,7 +14,7 @@ split-page:
 		$@
 
 
-player-%:
+player-%: GRID=8
 
 board-%:
 	convert $(SOURCE_PDF)[$(PAGE)] \
