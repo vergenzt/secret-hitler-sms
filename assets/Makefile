@@ -4,3 +4,5 @@ all: $(shell echo \
 	player-{fascist,hitler,liberal} \
 	policy-{fascist,liberal} \
 )
+
+board-*
