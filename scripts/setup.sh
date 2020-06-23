@@ -3,7 +3,7 @@ set -x
 cd "$(dirname "$0")"
 
 gpaste \
-  <(awk '{print $1}' ../state/public/players.txt) \
+  ../state/public/players-init.txt \
   <( cat ../assets/player-slots.txt \
     | head -n $(wc -l ../state/public/players.txt | awk '{print $1}') \
     | gshuf \
