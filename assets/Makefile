@@ -26,7 +26,7 @@ split-page:
 		-crop $(GRID) \
 		\( -clone $(RANGE) \) \
 		-delete 0--2 \
-		$@
+		$<
 
 split-and-rotate:
 	convert $(SOURCE_PDF)[$(PAGE)] \
@@ -37,4 +37,4 @@ split-and-rotate:
 		\( -clone -2 -rotate  90 \) \
 		-delete 0-1 \
 		+append \
-		$@
+		$<
