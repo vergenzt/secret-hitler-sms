@@ -5,7 +5,7 @@ all: $(shell echo \
 	board-{fascist-{5or6,7or8,9or10},liberal}.png \
 )
 
-even-split:
+split-page:
 	convert $(SOURCE_PDF)[$(PAGE)] \
 		-trim \
 		-crop $GRID \
