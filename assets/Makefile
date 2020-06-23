@@ -17,7 +17,7 @@ player-%: role-% party-%
 	convert $^ +append $@
 
 role-%: GRID=4x2@ split-page
-player-
+party-%: GRID=4x2@
 
 board-%:
 	convert $(SOURCE_PDF)[$(PAGE)] \
