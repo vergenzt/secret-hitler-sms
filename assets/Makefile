@@ -5,7 +5,7 @@ define split-page
 	convert $(SOURCE_PDF)[$(PAGE)] \
 		-trim \
 		-crop $(GRID) \
-		\( -clone $(RANGE) -fuzz 5% -trim \) \
+		\( -clone $(RANGE) -trim \) \
 		-delete 0--2 \
 		$@
 endef
@@ -14,7 +14,7 @@ define split-page-and-choose
 	convert $(SOURCE_PDF)[$(PAGE)] \
 		-trim \
 		-crop $(GRID) \
-		\( -clone $(RANGE) -fuzz 5% -trim \) \
+		\( -clone $(RANGE) -trim \) \
 		\( -clone -$(shell tr -dc 0-9 "$@") \) \
 		-delete 0--2 \
 		$@
@@ -48,12 +48,10 @@ player-liberal-%.png: role-liberal-%.png party-liberal.png
 role-%: GRID=4x2@
 role-fascist-%.png: PAGE=0
 role-fascist-%.png: RANGE=0,2-3
-role-fascist-%.png: INDEX=$$*
 role-hitler.png: PAGE=0
 role-hitler.png: RANGE=1
 role-liberal-%.png: PAGE=0,2
 role-liberal-%.png: RANGE=4-9
-role-liberal-%.png: INDEX=$$*
 
 role-hitler.png:
 	$(split-page)
