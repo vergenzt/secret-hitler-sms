@@ -53,6 +53,8 @@ role-liberal-%.png: PAGE=0,2
 role-liberal-%.png: RANGE=5-10
 role-liberal-%.png: INDEX=$*
 
+role-hitler.png:
+	$(split-page)
 role-%:
 	$(split-page)
 
