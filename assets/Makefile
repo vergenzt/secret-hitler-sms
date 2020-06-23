@@ -61,8 +61,8 @@ role-%:
 
 party-%: GRID=4x2@
 party-%: PAGE=2
-party-fascist.png: RANGE=3
-party-liberal.png: RANGE=5
+party-fascist.png: RANGE=2
+party-liberal.png: RANGE=4
 
 party-%:
 	$(split-page)
