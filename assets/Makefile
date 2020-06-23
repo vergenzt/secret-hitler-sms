@@ -5,6 +5,7 @@ define split-page
 		-trim \
 		-crop $(GRID) \
 		\( -clone $(RANGE) -trim \) \
+		-delete 0--2 \
 		$@
 endef
 
