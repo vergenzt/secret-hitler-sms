@@ -56,7 +56,7 @@ role-liberal-%.png: INDEX=$*
 role-hitler.png:
 	$(split-page)
 role-%:
-	$(split-page)
+	$(split-page-and-choose)
 
 party-%: GRID=4x2@
 party-%: PAGE=2
