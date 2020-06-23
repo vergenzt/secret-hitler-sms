@@ -42,7 +42,7 @@ player-hitler.png:  role-hitler.png   party-fascist.png
 player-liberal-%.png: role-liberal-%.png party-liberal.png
 
 player-%:
-	convert $^ +append $@
+	convert $? +append $@
 
 role-%: GRID=4x2@
 role-fascist-%.png: PAGE=0
