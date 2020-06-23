@@ -9,7 +9,7 @@ define split-page =
 		$<
 endef
 
-define split_and_rotate =
+define split-and-rotate =
 	convert $(SOURCE_PDF)[$(PAGE)] \
 		-trim \
 		-shave 3 \
