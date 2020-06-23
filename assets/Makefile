@@ -54,7 +54,7 @@ policy-%: GRID=6x3@
 policy-%: PAGE=12
 policy-fascist.png: RANGE=1
 policy-liberal.png: RANGE=13
-	
+
 board-%:
 	$(split-and-rotate)
 
