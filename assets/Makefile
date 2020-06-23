@@ -8,8 +8,8 @@ all: $(shell echo \
 split-page:
 	convert $(SOURCE_PDF)[$(PAGE)] \
 		-trim \
-		-crop $GRID \
-		\( -clone $RANGE \) \
+		-crop $(GRID) \
+		\( -clone $(RANGE) \) \
 		-delete 0--2 \
 		$@
 
