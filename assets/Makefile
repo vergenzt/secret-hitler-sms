@@ -52,7 +52,9 @@ party-liberal.png: GRID=4x2@ PAGE=2 RANGE=5
 policy-fascist.png: GRID=6x3@
 policy-fascist.png: PAGE=12
 policy-fascist.png: RANGE=1
-policy-liberal.png: GRID=6x3@ PAGE=12 RANGE=13
+policy-liberal.png: GRID=6x3@
+policy-liberal.png: PAGE=12
+policy-liberal.png: RANGE=13
 
 board-fascist-5or6.png:  PAGE=14
 board-fascist-7or8.png:  PAGE=15
