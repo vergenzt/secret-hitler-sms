@@ -12,7 +12,7 @@ gpaste \
 
 chmod 600 ../state/__SECRET__/players.txt
 
-cat ../state/__SECRET__/players.txt \
+jq -rR ../state/__SECRET__/players.txt \
   | awk '{print }'
   # ...
   | xargs -n1 twilio --to=... --body=... --media-url=...
