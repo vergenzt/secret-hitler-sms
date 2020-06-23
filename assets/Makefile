@@ -16,7 +16,7 @@ board-*:
     \( -clone -2 -rotate  90 \) \
     -delete 0-1 \
     +append \
-    $<
+    $FILENAME
 
 board-fascist-5or6.png:  PAGE=14
 board-fascist-7or8.png:  PAGE=15
