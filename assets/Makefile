@@ -32,7 +32,7 @@ define split-and-rotate
 endef
 
 all: players policies boards
-.SECONDARY: %.png
+.SECONDARY: *.png
 
 players: $(shell echo player-{fascist-{1..3},hitler,liberal-{1..6}}.png)
 policies: $(shell echo policy-{fascist,liberal}.png)
