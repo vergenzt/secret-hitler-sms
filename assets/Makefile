@@ -23,12 +23,15 @@ endef
 
 all: players policies boards
 
-players: $(shell echo player-{fascist,hitler,liberal}.png)
+players: $(shell echo player-{fascist,hitler,liberal}*.png)
 policies: $(shell echo policy-{fascist,liberal}.png)
 boards: $(shell echo board-{fascist-{5or6,7or8,9or10},liberal}.png)
 
 player-%:
 	convert $^ +append $@
+
+player-fascist*.png:
+
 role-%:
 	$(split-page)
 
@@ -39,6 +42,7 @@ role-hitler.png: PAGE=0
 role-hitler.png: RANGE=2
 role-liberal%.png: PAGE=0,2
 role-liberal%.png: RANGE=5-10
+
 party-%:
 	$(split-page)
 
