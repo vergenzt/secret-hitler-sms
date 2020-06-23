@@ -1,5 +1,6 @@
 SOURCE_PDF=Secret_Hitler_PnP_color_with_backface.pdf
 
+
 define split-page
 	convert $(SOURCE_PDF)[$(PAGE)] \
 		-trim \
@@ -47,12 +48,12 @@ player-%:
 role-%: GRID=4x2@
 role-fascist-%.png: PAGE=0
 role-fascist-%.png: RANGE=0,2-3
-role-fascist-%.png: INDEX=$$*
+role-fascist-%.png: INDEX=$*
 role-hitler.png: PAGE=0
 role-hitler.png: RANGE=1
 role-liberal-%.png: PAGE=0,2
 role-liberal-%.png: RANGE=4-9
-role-liberal-%.png: INDEX=$$*
+role-liberal-%.png: INDEX=$*
 
 role-hitler.png:
 	$(split-page)
