@@ -9,4 +9,4 @@ gpaste \
   ) \
   > ../state/__SECRET__/players-with-roles.txt
 
-chmod 600
+chmod 600 ../state/__SECRET__/players-with-roles.txt
