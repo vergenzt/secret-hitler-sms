@@ -5,13 +5,13 @@ define split-page
 		-trim \
 		-crop $(GRID) \
 		\( -clone $(RANGE) -trim \) \
-		\( -clone -$(shell tr -dc "$@" \)
+		\( -clone -$(shell tr -dc "$@") \)
 		-delete 0--2 \
 		$@
 endef
 
 define split-and-rotate
-	convert $SOURCE_PDF[$PAGE] \
+	convert $(SOURCE_PDF)[$(PAGE)] \
 		-trim \
 		-shave 3 \
 		-crop 2x1@ \
