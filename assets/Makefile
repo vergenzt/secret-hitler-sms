@@ -5,7 +5,7 @@ define split-page
 		-trim \
 		-crop $(GRID) \
 		\( -clone $(RANGE) -trim \) \
-		\$(shell echo "( -clone -$(shell echo "$@" | tr -dc 0-9) )" \
+		\$(shell echo "( -clone -\$(shell echo "$@" | tr -dc 0-9) )" \
 		-delete 0--2 \
 		$@
 endef
