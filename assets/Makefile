@@ -5,7 +5,7 @@ define split-page
 		-trim \
 		-crop $(GRID) \
 		\( -clone $(RANGE) -trim \) \
-		\$(echo -n "liberal-2.png" | pcregrep -o '[0-9]+' | sed 's/\(.\)/( -clone -$1 )/g') \
+		$(echo -n "liberal-2.png" | pcregrep -o '[0-9]+' | sed 's/\(.\)/( -clone -$1 )/g') \
 		-delete 0--2 \
 		$@
 endef
@@ -48,7 +48,7 @@ role-fascist-%.png:
 role-hitler.png:
 	$(split-page)
 role-liberal-%.png:
-	$(split-page-and-choose)
+	$(split-page)
 
 party-%: GRID=4x2@
 party-%: PAGE=2
