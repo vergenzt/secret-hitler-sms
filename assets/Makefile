@@ -7,14 +7,6 @@ all: $(shell echo \
 
 players:
 
-split-page:
-	convert $(SOURCE_PDF)[$(PAGE)] \
-		-trim \
-		-crop $(GRID) \
-		\( -clone $(RANGE) \) \
-		-delete 0--2 \
-		$@
-
 player-%: role-% party-%
 	convert $^ +append $@
 
@@ -23,7 +15,20 @@ role-fascist.png: PAGE=0 RANGE=1-4
 party-%: GRID=4x2@ split-page
 
 
-board-%:
+board-fascist-5or6.png:	PAGE=14
+board-fascist-7or8.png:	PAGE=15
+board-fascist-9or10.png: PAGE=16
+board-liberal.png:			 PAGE=17
+
+split-page:
+	convert $(SOURCE_PDF)[$(PAGE)] \
+		-trim \
+		-crop $(GRID) \
+		\( -clone $(RANGE) \) \
+		-delete 0--2 \
+		$@
+
+split-and-rotate:
 	convert $(SOURCE_PDF)[$(PAGE)] \
 		-trim \
 		-shave 3 \
@@ -33,8 +38,3 @@ board-%:
 		-delete 0-1 \
 		+append \
 		$@
-
-board-fascist-5or6.png:	PAGE=14
-board-fascist-7or8.png:	PAGE=15
-board-fascist-9or10.png: PAGE=16
-board-liberal.png:			 PAGE=17
