@@ -21,8 +21,8 @@ role-liberal.png: GRID=4x2@ PAGE=0,2 RANGE=5-10
 party-fascist.png: GRID=4x2@ PAGE=2 RANGE=3
 party-liberal.png: GRID=4x2@ PAGE=2 RANGE=5
 
-policy-fascist.png: GRID=6x3@ PAGE=2 RANGE=3
-policy-liberal.png: GRID=4x2@ PAGE=2 RANGE=5
+policy-fascist.png: GRID=6x3@ PAGE=12 RANGE=1
+policy-liberal.png: GRID=6x3@ PAGE=12 RANGE=13
 
 board-fascist-5or6.png:  PAGE=14
 board-fascist-7or8.png:  PAGE=15
