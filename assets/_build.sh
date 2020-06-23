@@ -16,7 +16,7 @@ format-card() {
     $FILENAME
 }
 
-format-card 0 2x3@ 0,2-3 role-fascist.png
+format-card 0 4x2@ 0,2-3 role-fascist.png
 
 format-board() {
   PAGENUM=$1
