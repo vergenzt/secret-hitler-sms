@@ -1,6 +1,5 @@
 SOURCE_PDF=Secret_Hitler_PnP_color_with_backface.pdf
 
-
 define split-page
 	convert $(SOURCE_PDF)[$(PAGE)] \
 		-trim \
