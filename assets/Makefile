@@ -1,6 +1,6 @@
 SOURCE_PDF=Secret_Hitler_PnP_color_with_backface.pdf
 
-define split	_page
+define split_page
 	convert $(SOURCE_PDF)[$(PAGE)] \
 		-trim \
 		-shave 3 \
