@@ -7,6 +7,11 @@ all: $(shell echo \
 
 player-%:
 	convert $(SOURCE_PDF)[$(PAGE)] \
+		-trim \
+		-crop $GRID \
+		\( -clone $RANGE \) \
+		-delete 0--2 \
+		$FILENAME
 
 board-%:
 	convert $(SOURCE_PDF)[$(PAGE)] \
@@ -14,12 +19,12 @@ board-%:
 		-shave 3 \
 		-crop 2x1@ \
 		\( -clone -2 -rotate -90 \) \
-		\( -clone -2 -rotate  90 \) \
+		\( -clone -2 -rotate	90 \) \
 		-delete 0-1 \
 		+append \
 		$@
 
-board-fascist-5or6.png:  PAGE=14
-board-fascist-7or8.png:  PAGE=15
+board-fascist-5or6.png:	PAGE=14
+board-fascist-7or8.png:	PAGE=15
 board-fascist-9or10.png: PAGE=16
-board-liberal.png:       PAGE=17
+board-liberal.png:			 PAGE=17
