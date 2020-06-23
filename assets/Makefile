@@ -1,4 +1,6 @@
 
-all: $(shell echo board-{fascist-{5or6,7or8,9or10},liberal})
-	board-fascist-5or6.png \
-	board-{fascist}
+all: $(shell echo \
+	board-{fascist-{5or6,7or8,9or10},liberal} \
+	player-{fascist,hitler,liberal} \
+	policy-{fascist,liberal} \
+)
