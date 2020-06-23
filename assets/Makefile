@@ -51,7 +51,7 @@ role-fascist-%.png: INDEX=$*
 role-hitler.png: PAGE=0
 role-hitler.png: RANGE=1
 role-liberal-%.png: PAGE=0,2
-role-liberal-%.png: RANGE=5-10
+role-liberal-%.png: RANGE=4-9
 role-liberal-%.png: INDEX=$*
 
 role-hitler.png:
