@@ -1,4 +1,4 @@
- # name   phone
+ # name   MMS-capable phone #
  George  +15551234567
  Eric    +15551234567
  Ann     +15551234567
