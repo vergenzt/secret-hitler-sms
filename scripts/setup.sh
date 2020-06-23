@@ -14,5 +14,6 @@ chmod 600 ../state/__SECRET__/players-with-roles.txt
 
 join \
   ../state/public/players.txt \
-  ../state/__SECRET__/player-roles.txt
+  ../state/__SECRET__/player-roles.txt \
+
   | xargs awk '{ print }'
