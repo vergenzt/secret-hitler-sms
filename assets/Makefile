@@ -9,7 +9,7 @@ boards: $(shell echo board-{fascist-{5or6,7or8,9or10},liberal}.png)
 player-%: role-% party-%
 	convert $^ +append $@
 
-role-%: split-page
+role-%:  split-page
 party-%: split-page
 board-%: split-and-rotate
 
