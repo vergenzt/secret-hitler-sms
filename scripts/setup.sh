@@ -8,9 +8,9 @@ gpaste \
     | head -n $(wc -l ../state/public/players.txt | awk '{print $1}') \
     | gshuf \
   ) \
-  > ../state/__SECRET__/players-with-roles.txt
+  > ../state/__SECRET__/players.txt
 
-chmod 600 ../state/__SECRET__/players-with-roles.txt
+chmod 600 ../state/__SECRET__/players.txt
 
 join \
   ../state/public/players.txt \
