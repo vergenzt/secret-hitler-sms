@@ -29,16 +29,10 @@ boards: $(shell echo board-{fascist-{5or6,7or8,9or10},liberal}.png)
 
 player-%:
 	convert $^ +append $@
-
 role-%:
 	$(split-page)
 party-%:
 	$(split-page)
-	
-policy-%:
-	$(split-page)
-board-%:
-	$(split-and-rotate)
 
 role-% party-%: GRID=4x2@
 
@@ -53,10 +47,15 @@ party-%: PAGE=2
 party-fascist.png: RANGE=3
 party-liberal.png: RANGE=5
 
+policy-%:
+	$(split-page)
+
 policy-%: GRID=6x3@
 policy-%: PAGE=12
 policy-fascist.png: RANGE=1
 policy-liberal.png: RANGE=13
+board-%:
+	$(split-and-rotate)
 
 board-fascist-5or6.png:  PAGE=14
 board-fascist-7or8.png:  PAGE=15
