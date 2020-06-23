@@ -15,7 +15,7 @@ define split-page-and-choose
 		-trim \
 		-crop $(GRID) \
 		\( -clone $(RANGE) -trim \) \
-		\( -clone -$(shell tr -dc 0-9 "$@") \) \
+		\( -clone -$(shell echo "$@" | tr -dc 0-9) \) \
 		-delete 0--2 \
 		$@
 endef
