@@ -34,15 +34,14 @@ role-%:
 party-%:
 	$(split-page)
 
-role-% party-%: GRID=4x2@
-
+role-%: GRID=4x2@
 role-fascist%.png &: PAGE=0
 role-fascist%.png &: RANGE=1,3-4
 role-hitler.png: PAGE=0
 role-hitler.png: RANGE=2
 role-liberal%.png: PAGE=0,2
 role-liberal%.png: RANGE=5-10
-	
+
 party-%: GRID=4x2@
 party-%: PAGE=2
 party-fascist.png: RANGE=3
