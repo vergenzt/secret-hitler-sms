@@ -35,9 +35,6 @@ player-liberal-%.png&: role-liberal-%.png party-liberal.png
 player-%:
 	convert $^ +append $@
 
-role-%:
-	$(split-page)
-
 role: GRID=4x2@
 role-fascist-%.png: PAGE=0
 role-fascist-%.png: RANGE=1,3-4
@@ -46,7 +43,7 @@ role-hitler.png: RANGE=2
 role-liberal-%.png: PAGE=0,2
 role-liberal-%.png: RANGE=5-10
 
-party-%:
+role-%:
 	$(split-page)
 
 party-%: GRID=4x2@
@@ -54,7 +51,7 @@ party-%: PAGE=2
 party-fascist.png: RANGE=3
 party-liberal.png: RANGE=5
 
-policy-%:
+party-%:
 	$(split-page)
 
 policy-%: GRID=6x3@
@@ -62,10 +59,13 @@ policy-%: PAGE=12
 policy-fascist.png: RANGE=1
 policy-liberal.png: RANGE=13
 
-board-%:
-	$(split-and-rotate)
+policy-%:
+	$(split-page)
 
 board-fascist-5or6.png:  PAGE=14
 board-fascist-7or8.png:  PAGE=15
 board-fascist-9or10.png: PAGE=16
+
+board-%:
+	$(split-and-rotate)
 board-liberal.png:       PAGE=17
