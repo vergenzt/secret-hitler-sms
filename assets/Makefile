@@ -1,4 +1,4 @@
-SHELL=/bin/bash
+SHELL=/usr/bin/env bash
 SOURCE_PDF=Secret_Hitler_PnP_color_with_backface.pdf
 
 define split-page
