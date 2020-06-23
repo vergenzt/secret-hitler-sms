@@ -4,7 +4,7 @@ define split-page
 	convert $(SOURCE_PDF)[$(PAGE)] \
 		-trim \
 		-crop $(GRID) \
-		\( -clone $(RANGE) -trim \) \
+		\( -clone $(RANGE) -fuzz 10% -trim \) \
 		-delete 0--2 \
 		$@
 endef
