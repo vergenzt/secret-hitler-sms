@@ -7,4 +7,4 @@ gpaste \
     | head -n $(wc -l ../state/public/players.txt | awk '{ print $1 }') \
     | gshuf \
   ) \
-  > ../state/__SECRET__/players.txt
+  > ../state/__SECRET__/players-full.txt
