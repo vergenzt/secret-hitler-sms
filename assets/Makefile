@@ -39,11 +39,12 @@ policies: $(shell echo policy-{fascist,liberal}.png)
 boards: $(shell echo board-{fascist-{5or6,7or8,9or10},liberal}.png)
 
 player-fascist-%.png: role-fascist-%.png party-fascist.png
+	convert role-fascist-$*.png party-fascist.png +append $@
 player-hitler.png:  role-hitler.png   party-fascist.png
+	convert $^ +append $@
 player-liberal-%.png: role-liberal-%.png party-liberal.png
 
 player-%:
-	convert $^ +append $@
 
 role-%: GRID=4x2@
 role-fascist-%.png: PAGE=0
