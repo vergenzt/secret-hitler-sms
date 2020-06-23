@@ -2,6 +2,17 @@
 
 SOURCE_PDF=Secret_Hitler_PnP_color_with_backface.pdf
 
+format-card() {
+  PAGENUM=$1
+  GRID=$2
+  RANGE=$3
+  FILENAME=$4
+  convert \
+    $SOURCE_PDF[$PAGENUM] \
+    -trim \
+    -crop $GRID \
+}
+
 format-board() {
   PAGENUM=$1
   FILENAME=$2
