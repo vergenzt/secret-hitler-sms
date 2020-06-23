@@ -46,8 +46,8 @@ role-hitler.png: PAGE=0
 role-hitler.png: RANGE=2
 role-liberal%.png: PAGE=0,2
 role-liberal%.png: RANGE=5-10
-party-fascist.png: PAGE=2 RANGE=3
-party-fascist.png: PAGE=2 RANGE=3
+party-fascist.png: PAGE=2
+party-fascist.png: RANGE=3
 party-liberal.png: PAGE=2 RANGE=5
 party-liberal.png: PAGE=2 RANGE=5
 
