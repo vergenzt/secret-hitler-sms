@@ -10,10 +10,12 @@ player-%: role-% party-%
 	convert $^ +append $@
 
 role-%: GRID=4x2@ split-page
-role-fascist.png: PAGE=0 RANGE=1-4
 party-%: GRID=4x2@ split-page
+	
+role-fascist.png: PAGE=0 RANGE=1-4
 
 board-%: split-and-rotate
+
 board-fascist-5or6.png:  PAGE=14
 board-fascist-7or8.png:  PAGE=15
 board-fascist-9or10.png: PAGE=16
