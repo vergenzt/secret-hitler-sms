@@ -1,8 +1,8 @@
- # name   MMS-capable phone #
- George  +15551234567
- Eric    +15551234567
- Ann     +15551234567
- Kenneth +15551234567
- Craig   +15551234567
- Lisa    +15551234567
- Willie  +15551234567
+ # name    MMS-capable phone #
+ George   +15551234567
+ Eric     +15551234567
+ Ann      +15551234567
+ Kenneth  +15551234567
+ Craig    +15551234567
+ Lisa     +15551234567
+ Willie   +15551234567
