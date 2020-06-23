@@ -11,7 +11,7 @@ define split-page
 endef
 
 define split-and-rotate
-	convert $(SOURCE_PDF)[$(PAGE)] \
+	convert $SOURCE_PDF[$PAGE] \
 		-trim \
 		-shave 3 \
 		-crop 2x1@ \
