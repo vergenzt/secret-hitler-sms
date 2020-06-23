@@ -30,7 +30,7 @@ boards: $(shell echo board-{fascist-{5or6,7or8,9or10},liberal}.png)
 player-%:
 	convert $^ +append $@
 
-player-fascist*.png:
+player-fascist%.png: role-fascist%.png
 
 role-%:
 	$(split-page)
