@@ -8,3 +8,5 @@ gpaste \
     | gshuf \
   ) \
   > ../state/__SECRET__/players-with-roles.txt
+
+chmod 600
