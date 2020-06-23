@@ -1,2 +1,2 @@
 #!/usr/bin/env bash
-cd $(basename $0)/../assets
+cd $(basename $0)
