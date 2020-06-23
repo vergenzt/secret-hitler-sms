@@ -14,7 +14,8 @@ split-page:
 		$@
 
 
-player-%: GRID=4x2@
+role-%: GRID=4x2@ split-page
+player-
 
 board-%:
 	convert $(SOURCE_PDF)[$(PAGE)] \
