@@ -1,4 +1,3 @@
-
 SOURCE_PDF=Secret_Hitler_PnP_color_with_backface.pdf
 
 all: $(shell echo \
