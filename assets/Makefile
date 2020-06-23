@@ -1,6 +1,6 @@
 SOURCE_PDF=Secret_Hitler_PnP_color_with_backface.pdf
 
-define split-page =
+define split-page
 	convert $(SOURCE_PDF)[$(PAGE)] \
 		-trim \
 		-crop $(GRID) \
@@ -10,7 +10,7 @@ define split-page =
 		$@
 endef
 
-define split-and-rotate =
+define split-and-rotate
 	convert $(SOURCE_PDF)[$(PAGE)] \
 		-trim \
 		-shave 3 \
