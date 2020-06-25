@@ -27,7 +27,7 @@ F_SECRET_POLICY_DISCARD=$SECRET/policy-discard.txt
 SECRET_POLICY_DECK_LENGTH=`cat $F_SECRET_POLICY_DECK 2>/dev/null | wc -l`
 
 assign_player_roles() {
-  if [[ -f $SECRET_PLAYER_ROLES_F ]]; then
+  if [[ -f $F_SECRET_PLAYER_ROLES ]]; then
     echo "Error: $SECRET_PLAYER_ROLES_F already exists."
     echo -e "Is a game in progress?\n"
     echo "Please delete it if you're sure you want to start a new game."
