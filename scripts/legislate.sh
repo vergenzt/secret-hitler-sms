@@ -8,6 +8,9 @@ ASSETS=../assets
 SECRET=../state/__SECRET__
 PUBLIC=../state/public
 
+# who's president?
+# who's chancellor?
+
 # generate deck if needed
 
 # draw top 3
