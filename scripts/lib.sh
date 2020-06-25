@@ -20,6 +20,7 @@ send_sms() {
     --to "$PUBLIC_PHONE" \
     --body "$SECRET_MESSAGE" \
     ${SECRET_PHOTOS[@]/#/--media-url }
+  set +x
 }
 
 F_PUBLIC_SOURCE_PHONE=$PUBLIC/source-phone.txt
