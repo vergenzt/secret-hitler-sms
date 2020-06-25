@@ -10,7 +10,6 @@ image_url() { echo "$IMAGES_BASE_URL/$1-$2.png"; }
 
 F_PUBLIC_SOURCE_PHONE=$PUBLIC/source-phone.txt
 F_PUBLIC_PLAYER_INFO=$PUBLIC/players-init.txt
-
 F_PUBLIC_ROLES_AVAILABLE=$STATIC/roles-available.txt
 F_PUBLIC_POLICIES_AVAILABLE=$STATIC/policies-available.txt
 
@@ -19,7 +18,7 @@ PUBLIC_PLAYER_INFO=`cat $F_PUBLIC_PLAYER_INFO | grep -v '^(#|\s*$)'`
 PUBLIC_PLAYER_NAMES=`awk '{print $1}' <(echo "$PUBLIC_PLAYER_INFO")`
 PUBLIC_PLAYER_PHONES=`awk '{print $2}' <(echo "$PUBLIC_PLAYER_INFO")`
 PUBLIC_NUM_PLAYERS=`cat $F_PUBLIC_PLAYER_INFO | wc -l`
-PUBLIC_ROLES_ACTIVE=`head -n $PUBLIC_NUM_PLAYERS $F_STATIC_ROLES_AVAILABLE`
+PUBLIC_ROLES_ACTIVE=`head -n $PUBLIC_NUM_PLAYERS $F_PUBLIC_ROLES_AVAILABLE`
 
 F_SECRET_PLAYER_ROLES=$SECRET/player-roles.txt
 F_SECRET_POLICY_DECK=$SECRET/policy-deck.txt
@@ -55,7 +54,7 @@ assign_player_roles() {
 ensure_drawable_policy_deck() {
   if [[ "$SECRET_POLICY_DECK_LENGTH" -lt 3 ]]; then
 
-    cat $F_STATIC_POLICIES_AVAILABLE
+    cat $F_PUBLIC_POLICIES_AVAILABLE
 
   fi
 }
