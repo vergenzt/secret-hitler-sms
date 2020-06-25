@@ -7,3 +7,5 @@ IMAGES_BASE_URL=https://raw.githubusercontent.com/vergenzt/secret-hitler-sms/mas
 ASSETS=../assets
 SECRET=../state/__SECRET__
 PUBLIC=../state/public
+
+# generate deck if needed
