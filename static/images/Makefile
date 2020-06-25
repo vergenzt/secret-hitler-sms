@@ -72,8 +72,8 @@ policy-%:
 	$(split-page)
 
 policies-%.png:
-	# explanation:
-	convert policy-`eval "{$(echo $* | tr '-' ',')}"` +append $@
+	# explanation: bash expands "abc-{1,2,3}" into "abc-1 abc-2"
+	convert policy-`eval "{$(echo $* | tr '-' ',')}"`.png +append $@
 
 board-fascist-5or6.png:  PAGE=14
 board-fascist-7or8.png:  PAGE=15
