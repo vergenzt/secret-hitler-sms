@@ -12,7 +12,7 @@ PUBLIC=../state/public
 
 # draw top 3
 
-# listen for discard choice
+# listen for discard choices
 #- useful commands:
 ngrok http --log=stdout --log-format=json 80
 #- parse ngrok url from log output
