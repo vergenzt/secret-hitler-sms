@@ -25,7 +25,7 @@ ACTIVE_ROLES=`head -n $NUM_PLAYERS $ASSETS/roles-available.txt`
 PLAYER_ROLES=`gpaste <(echo $PNAMES) <(echo "$ACTIVE_ROLES" | gshuf)`
 
 # save roles
-gpaste <(echo "$PNAMES") <(echo "$PLAYER_ROLES") > $SECRET/player-roles.txt
+echo > $SECRET/player-roles.txt
 
 # send texts
 while read PNAME PHONE ROLE PARTY; do
