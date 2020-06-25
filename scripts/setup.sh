@@ -18,6 +18,7 @@ gpaste <(echo "$PNAMES") <(echo "$PLAYER_ROLES") > $SECRET/player-roles.txt
 # send texts
 while read PNAME PHONE ROLE; do
   twilio api:core:messages:create \
-    --body "Hi $PNAME! Here's your role for Secret Hitler:"
+    --to "$PHONE" \
+    --body "Hi $PNAME! Here's your role for Secret Hitler:" \
   echo "Hi $PNAME! Your phone is $PHONE and role is $ROLE."
 done < <(join $PUBLIC/players-init.txt $SECRET/player-roles.txt)
