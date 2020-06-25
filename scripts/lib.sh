@@ -38,15 +38,12 @@ await_sms_reply() {
   SECRET_NGROK_URL=$(
     tail -n+0 -f $F_SECRET_NGROK_LOG \
       | jq --raw-output --unbuffered '
-        first(
-          inputs
-          | select(contains({
-            "msg": "started tunnel",
-            "name": "command_line"
-          }))
-          | .url
-          | halt
-        )
+        select(contains({
+          "msg": "started tunnel",
+          "name": "command_line"
+        }))
+        | .url
+        | halt
       '
     )
   echo "Done."
