@@ -16,7 +16,7 @@ image_url() { echo "$IMAGES_BASE_URL/$1-$2.png"; }
 send_sms() {
   PUBLIC_PHONE="$1"
   SECRET_MESSAGE="$2"
-  shift 3
+  shift 2
   SECRET_PHOTOS=($@)
   twilio api:core:messages:create \
     --from "$PUBLIC_SOURCE_PHONE" \
