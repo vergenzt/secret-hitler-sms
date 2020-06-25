@@ -21,7 +21,7 @@ image_url() { echo "$IMAGES_BASE_URL/$1-$2.png"; }
 # shellcheck disable=SC2206
 send_sms() {
   PUBLIC_PHONE="$1"
-  SECRET_MESSAGE=$(echo -e -n "\n\n$2")
+  SECRET_MESSAGE=$(echo -en "\n\n$2")
   shift 2
   SECRET_PHOTOS=($@)
   twilio api:core:messages:create \
@@ -130,7 +130,7 @@ legislate() {
 
   SECRET_POLICIES=($(tail -n3 "$F_SECRET_POLICY_DECK"))
   PRESIDENT_MSG=$(echo -e \
-    "Congratulations on the election, $PUBLIC_PRESIDENT_PREFIX President. " \
+    "Congratulations on the election, $PUBLIC_PRESIDENT_PREFIX President." \
     "Here are your policy choices.\n\n" \
     "Reply 1 to discard the left ${SECRET_POLICIES[0]} policy and pass ${SECRET_POLICIES[1]}-${SECRET_POLICIES[2]} to Chancellor $PUBLIC_CHANCELLOR_NAME.\n\n" \
     "Reply 2 to discard the middle ${SECRET_POLICIES[0]} policy and pass ${SECRET_POLICIES[0]}-${SECRET_POLICIES[2]} to Chancellor $PUBLIC_CHANCELLOR_NAME.\n\n" \
