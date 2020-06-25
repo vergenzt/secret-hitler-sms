@@ -34,8 +34,8 @@ await_sms_reply() {
   # set up server to listen for discard choices
   echo -n "Starting ngrok server... "
   F_SECRET_NGROK_LOG=$SECRET/ngrok.json
-  # (ngrok http --log=stdout --log-format=json 8080 > $F_SECRET_NGROK_LOG &) 2>/dev/null
-  ngrok http --log=stdout --log-format=json 8080 \
+  (ngrok http --log=stdout --log-format=json 8080 > $F_SECRET_NGROK_LOG &) 2>/dev/null
+  ngrok http --log=stdout --log-format=json 8080
     | tail -n+0 -f $F_SECRET_NGROK_LOG \
       | grep -q '"started tunnel".*"command line (http)"'
       | jq .url
