@@ -8,9 +8,9 @@ sudo chown $STATE_S && sudo chmod 600 $STATE_S
 
 PNAMES=`awk '{print $1}' $PUBLIC/players-init.txt`
 PHONES=`awk '{print $2}' $PUBLIC/players-init.txt`
-NUM_PLAYERS=`cat $PUBLIC/players-init.txt | wc -l`
 
-ACTIVE_ROLES=`head -n $NUM_PLAYERS`
+NUM_PLAYERS=`cat $PUBLIC/players-init.txt | wc -l`
+ACTIVE_ROLES=`head -n $NUM_PLAYERS $PUBLIC/players-init.txt`
 
 # assign player roles
 gpaste \
