@@ -3,7 +3,7 @@ SHELL=bash
 
 define split-page
 	convert $(SOURCE_PDF)[$(PAGE)] \
-		-density 500 \
+		-density 1000 \
 		-trim \
 		-crop $(GRID) \
 		\( -clone $(RANGE) -shave 10 \) \
@@ -13,7 +13,7 @@ endef
 
 define split-page-and-choose
 	convert $(SOURCE_PDF)[$(PAGE)] \
-		-density 500
+		-density 1000 \
 		-trim \
 		-crop $(GRID) \
 		\( -clone $(RANGE) -shave 10 \) \
@@ -24,6 +24,7 @@ endef
 
 define split-and-rotate
 	convert $(SOURCE_PDF)[$(PAGE)] \
+		-density 1000 \
 		-trim \
 		-shave 3 \
 		-crop 2x1@ \
