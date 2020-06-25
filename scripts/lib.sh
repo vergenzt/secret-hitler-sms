@@ -38,14 +38,7 @@ await_sms_reply() {
   ngrok http --log=stdout --log-format=json 8080 \
     | tail -n+0 -f $F_SECRET_NGROK_LOG \
       | grep -q '"command line (http)"'
-      | jq --unbuffered '
-        select(contains({
-          "msg": "started tunnel",
-          "name": "command_line (http)"
-        }))
-        | .url, halt
-      ' \
-      | head -n1
+      | jq .url
   echo "Done."
   echo -n "Updating Twilio callback URL... "
   twilio phone-numbers:update $PUBLIC_SOURCE_PHONE --sms-url=$SECRET_NGROK_URL
