@@ -133,8 +133,7 @@ legislate() {
     Here are your policy choices. Reply to choose one.
     Reply 1 to discard $()
 EOF
-  send_sms "$PUBLIC_PRESIDENT_PHONE" <<EOF
-  await
+  send_sms "$PUBLIC_PRESIDENT_PHONE"
 
   # send to president
 
