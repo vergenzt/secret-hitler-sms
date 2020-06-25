@@ -17,8 +17,7 @@ send_sms() {
     --from "$PUBLIC_SOURCE_PHONE" \
     --to "$PUBLIC_PHONE" \
     --body "" \
-    --media-url "`image_url party $SECRET_PARTY`" \
-    --media-url "`image_url role $SECRET_ROLE`"
+    $(printf "--media-url %s" "$@")
 }
 
 F_PUBLIC_SOURCE_PHONE=$PUBLIC/source-phone.txt
