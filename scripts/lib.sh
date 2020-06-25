@@ -30,7 +30,7 @@ send_sms() {
     ${SECRET_PHOTOS[@]/#/--media-url }
 }
 
-await_sms_reply() {
+start_sms_reply_listener() {
   # set up server to listen for discard choices
   echo -n "Starting ngrok server... "
   F_SECRET_NGROK_LOG=$SECRET/ngrok.json
@@ -46,6 +46,9 @@ await_sms_reply() {
   echo -n "Updating Twilio callback URL... "
   twilio phone-numbers:update $PUBLIC_SOURCE_PHONE --sms-url=$SECRET_NGROK_URL >/dev/null
   echo "Done."
+}
+
+await_sms_reply() {
   echo -n "Listening for SMS reply... "
 
   echo "blah" | nc -l localhost 8080
