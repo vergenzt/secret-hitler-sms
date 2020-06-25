@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 (return 0 2>/dev/null) || cd "$(dirname "$0")"/.. || exit 1
 debug() {
-  source scripts/lib.sh
   set -x
   trap undebug EXIT
   "$@"
