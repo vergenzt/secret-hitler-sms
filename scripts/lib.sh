@@ -11,7 +11,7 @@ F_PUBLIC_SOURCE_PHONE=$PUBLIC/source-phone.txt
 
 SOURCE_PHONE=`cat $F_PUBLIC_SOURCE_PHONE`
 
-init_player_roles() {
+assign_player_roles() {
 
 }
 
