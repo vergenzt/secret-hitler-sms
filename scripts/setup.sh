@@ -2,6 +2,7 @@
 set -x
 cd "$(dirname "$0")"
 
+# initialize players
 gpaste \
   ../state/public/players-init.txt \
   <( cat ../assets/player-slots.txt \
