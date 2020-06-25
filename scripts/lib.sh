@@ -25,8 +25,8 @@ assign_player_roles() {
 
 }
 
-PUBLIC_PLAYER_NAMES=`awk '{print $1}' <(echo "$PLAYER_INFO")``
-PUBLIC_PLAYER_PHONES=`awk '{print $2}' <<<$PLAYER_INFO`
+PUBLIC_PLAYER_NAMES=`awk '{print $1}' <(echo "$PLAYER_INFO")`
+PUBLIC_PLAYER_PHONES=`awk '{print $2}' <(echo $"")
 
 NUM_PLAYERS=`cat $PUBLIC/players-init.txt | wc -l`
 ACTIVE_ROLES=`head -n $NUM_PLAYERS $ASSETS/roles-available.txt`
