@@ -45,6 +45,7 @@ await_sms_reply() {
     )
   twilio phone-numbers:update $PUBLIC_SOURCE_PHONE --sms-url=$SECRET_NGROK_URL
 
+  echo "blah" | nc -l localhost 8080
 
 }
 
