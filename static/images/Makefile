@@ -37,7 +37,7 @@ roles: $(shell echo role-{fascist-{1..3},hitler,liberal-{1..6}}.png)
 parties: $(shell echo party-{fascist,liberal}.png)
 boards: $(shell echo board-{fascist-{5or6,7or8,9or10},liberal}.png)
 policies: $(shell echo policy-{fascist,liberal}.png)
-policy-combos: $(shell echo policies-{fascist,liberal}-{fascist-liberal}{,-{fascist,liberal}}.png)
+policy-combos: $(shell echo policies-{fascist,liberal}-{fascist,liberal}{,-{fascist,liberal}}.png)
 
 role-%: GRID=4x2@
 role-fascist-%.png: PAGE=0
