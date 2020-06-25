@@ -33,7 +33,7 @@ assign_player_roles() {
   SECRET_PLAYER_ROLES=`gpaste <(echo "$PUBLIC_PLAYER_NAMES") <(echo "$PUBLIC_ROLES_ACTIVE" | gshuf)`
 
   # save
-  echo "$PLAYER_ROLES" > $F_SECRET_PLAYER_ROLES
+  echo "$SECRET_PLAYER_ROLES=" > $F_SECRET_PLAYER_ROLES
 }
 
 NUM_PLAYERS=`cat $PUBLIC/players-init.txt | wc -l`
