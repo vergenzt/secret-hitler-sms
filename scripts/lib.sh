@@ -46,8 +46,6 @@ assign_player_roles() {
   done < <(join $F_PUBLIC_PLAYER_INFO $F_SECRET_PLAYER_ROLES | tr ':' ' ')
 }
 
-
-
 ensure_drawable_policy_deck() {
 
 }
