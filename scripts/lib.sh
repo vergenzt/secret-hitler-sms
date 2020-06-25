@@ -23,9 +23,9 @@ F_SECRET_PLAYER_ROLES=$SECRET/player-roles.txt
 F_SECRET_POLICY_DECK=$SECRET/policy-deck.txt
 F_SECRET_POLICY_DISCARD=$SECRET/policy-discard.txt
 
-role_image()  { echo "$IMAGES_BASE_URL/role-$1"; }
-party_image() { echo "$IMAGES_BASE_URL/party-$1"; }
-policy_image() { echo "$IMAGES_BASE_URL/policy-$1"; }
+role_image()  { echo "$IMAGES_BASE_URL/role-$1.png"; }
+party_image() { echo "$IMAGES_BASE_URL/party-$1.png"; }
+policy_image() { echo "$IMAGES_BASE_URL/policy-$1.png"; }
 
 assign_player_roles() {
   if [[ -f $SECRET_PLAYER_ROLES_F ]]; then
