@@ -130,7 +130,7 @@ legislate() {
   tail -n3 "$F_SECRET_POLICY_DECK" | readarray -t SECRET_POLICIES
   read PRESIDENT_MSG <<EOF | sed 's/^ +| +$//g'
     Congratulations on the election, $PUBLIC_PRESIDENT_PREFIX $PUBLIC_PRESIDENT_NAME. Here are your policy choices. Please reply:
-    1) to discard the left ${SECRET_POLICIES[0]} and pass 
+    1) to discard the left ${SECRET_POLICIES[0]} policy and pass the others (${SECRET_POLICIES[1]} and ${SECRET_POLICIES[2]}) to $PUBLIC_CHANCELLOR_NAME.
 EOF
   send_sms "$PUBLIC_PRESIDENT_PHONE"
 
