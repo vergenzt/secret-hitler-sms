@@ -102,8 +102,6 @@ legislate() {
       ' \
       | head -n1
     )
-
-  #- parse ngrok url from log output
   #- twilio phone-numbers:update $SOURCE_PHONE --sms-url=$NGROK_URL
   #- twilio
 
