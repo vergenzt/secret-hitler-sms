@@ -23,6 +23,8 @@ F_SECRET_PLAYER_ROLES=$SECRET/player-roles.txt
 F_SECRET_POLICY_DECK=$SECRET/policy-deck.txt
 F_SECRET_POLICY_DISCARD=$SECRET/policy-discard.txt
 
+SECRET_POLICY_DECK_SIZE=`cat $F_SECRET_POLICY_DECK | wc -l`
+
 image_url() { echo "$IMAGES_BASE_URL/$1-$2.png"; }
 
 assign_player_roles() {
@@ -51,7 +53,7 @@ assign_player_roles() {
 }
 
 ensure_drawable_policy_deck() {
-
+  if [[ ! -f "$F_SECRET_POLICY_DECK" -o `cat $F_SECRET_POLICY_DECK`
 }
 
 legislate() {
