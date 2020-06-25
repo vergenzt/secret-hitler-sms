@@ -44,6 +44,8 @@ await_sms_reply() {
       | head -n1
     )
   twilio phone-numbers:update $PUBLIC_SOURCE_PHONE --sms-url=$SECRET_NGROK_URL
+
+
 }
 
 F_PUBLIC_SOURCE_PHONE=$PUBLIC/source-phone.txt
