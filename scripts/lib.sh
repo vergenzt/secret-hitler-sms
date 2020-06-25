@@ -37,7 +37,7 @@ await_sms_reply() {
   (ngrok http --log=stdout --log-format=json 80 > $F_SECRET_NGROK_LOG &) 2>/dev/null
   SECRET_NGROK_URL=$(
     tail -n+0 -f $F_SECRET_NGROK_LOG \
-      | jq --null-input --raw-output --unbuffered '
+      | jq --raw-output --unbuffered '
         first(
           inputs
           | select(contains({
@@ -45,6 +45,7 @@ await_sms_reply() {
             "name": "command_line"
           }))
           | .url
+          | halt
         )
       '
     )
