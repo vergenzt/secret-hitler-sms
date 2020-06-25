@@ -71,6 +71,9 @@ policy-liberal.png: RANGE=12
 policy-%:
 	$(split-page)
 
+policies-%.png:
+
+
 board-fascist-5or6.png:  PAGE=14
 board-fascist-7or8.png:  PAGE=15
 board-fascist-9or10.png: PAGE=16
