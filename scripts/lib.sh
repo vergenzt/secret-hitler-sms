@@ -81,7 +81,7 @@ legislate() {
   # who's president?
   read -p "Who's President? ($PUBLIC_PLAYER_NAMES_PROMPT): " PUBLIC_PRESIDENT_NAME
   read -p "Who's Chancellor? ($PUBLIC_PLAYER_NAMES_PROMPT): " PUBLIC_CHANCELLOR_NAME
-  PUBLIC_PRESIDENT_PHONE=``
+  PUBLIC_PRESIDENT_PHONE=`echo "$PUBLIC_PLAYER_INFO"`
 
   if [[ "$1" != "-f" && "$PUBLIC_PRESIDENT_NAME" = "$PUBLIC_CHANCELLOR_NAME" ]]; then
     echo "Error: President must be different than chancellor!"
