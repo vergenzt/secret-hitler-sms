@@ -28,6 +28,7 @@ send_sms() {
     ${SECRET_PHOTOS[@]/#/--media-url }
 }
 
+await_sms_reply() {
   # set up server to listen for discard choices
   F_SECRET_NGROK_LOG=$SECRET/ngrok.log
   ngrok http --log=stdout --log-format=json 80 > $F_SECRET_NGROK_LOG &
@@ -43,6 +44,7 @@ send_sms() {
       | head -n1
     )
   twilio phone-numbers:update $PUBLIC_SOURCE_PHONE --sms-url=$SECRET_NGROK_URL
+}
 
 F_PUBLIC_SOURCE_PHONE=$PUBLIC/source-phone.txt
 F_PUBLIC_PLAYER_INFO=$PUBLIC/player-info.txt
