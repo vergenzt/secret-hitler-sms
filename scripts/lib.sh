@@ -128,12 +128,13 @@ legislate() {
   ensure_drawable_policy_deck
 
   SECRET_POLICIES=($(tail -n3 "$F_SECRET_POLICY_DECK"))
-  PRESIDENT_MSG=$(echo \
+  PRESIDENT_MSG=$(echo -e \
     "Congratulations on the election, $PUBLIC_PRESIDENT_PREFIX $PUBLIC_PRESIDENT_NAME. " \
     "Here are your policy choices. Please reply:\n" \
     " 1) to discard the ${SECRET_POLICIES[0]} and pass ${SECRET_POLICIES[1]}-${SECRET_POLICIES[2]} to $PUBLIC_CHANCELLOR_NAME." \
     " 2) to discard the ${SECRET_POLICIES[1]} and pass ${SECRET_POLICIES[0]}-${SECRET_POLICIES[2]} to $PUBLIC_CHANCELLOR_NAME." \
     " 3) to discard the ${SECRET_POLICIES[2]} and pass ${SECRET_POLICIES[0]}-${SECRET_POLICIES[1]} to $PUBLIC_CHANCELLOR_NAME." \
+  )
   PRESIDENT_IMAGE=`image_url policycombo $(IFS="-"; echo "${SECRET_POLICIES[*]}")`
   send_sms "$PUBLIC_PRESIDENT_PHONE" "$PRESIDENT_MSG" "$PRESIDENT_IMAGE"
 
