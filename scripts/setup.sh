@@ -7,7 +7,7 @@ ASSETS=../assets
 SECRET=../state/__SECRET__
 PUBLIC=../state/public
 
-if [[ -f $SECRET/player-roles.txt ]]
+if [[ -f $SECRET/player-roles.txt ]]; then
   echo "$SECRET/player-roles.txt already exists. Is a game in progress?"
 
 PNAMES=`awk '{print $1}' $PUBLIC/players-init.txt`
