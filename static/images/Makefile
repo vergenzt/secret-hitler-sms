@@ -39,7 +39,7 @@ define split-and-rotate
 		$@
 endef
 
-all: roles parties policies policy-combos boards
+all: roles parties policies policycombos boards
 clean:
 	rm *.png
 rebuild: clean all
@@ -48,7 +48,7 @@ roles: $(shell echo role-{fascist-{1..3},hitler,liberal-{1..6}}.png)
 parties: $(shell echo party-{fascist,liberal}.png)
 boards: $(shell echo board-{5or6,7or8,9or10}.png)
 policies: $(shell echo policy-{fascist,liberal}.png)
-policy-combos: $(shell echo policies-{fascist,liberal}-{fascist,liberal}{,-{fascist,liberal}}.png)
+policycombos: $(shell echo policycombo-{fascist,liberal}-{fascist,liberal}{,-{fascist,liberal}}.png)
 
 role-%.png: GRID=4x2@
 role-fascist-%.png: PAGE=0
@@ -84,7 +84,7 @@ policy-%.png:
 # explanation: bash expands "abc-{1,2,3}.png" into "abc-1.png abc-2.png abc-3.png", so if
 # target is policies-fascist-liberal-liberal.png, then then statement below evaluates to:
 #   $ convert policy-fascist.png policy-liberal.png +append policies-fascist-liberal-liberal.png
-policies-%.png:
+policycombo-%.png:
 	convert $(shell eval "echo policy-{$$(echo "$*" | tr '-' ',')}.png") +append $@
 
 board-%.png: boardpart-fascist-%.png boardpart-liberal.png
