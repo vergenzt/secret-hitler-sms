@@ -73,7 +73,7 @@ policy-%:
 
 policies-%.png:
 	# explanation:
-	convert policy-`eval echo $*` +append $@
+	convert policy-`eval \{$(echo $* | tr '-' ',')\}` +append $@
 
 board-fascist-5or6.png:  PAGE=14
 board-fascist-7or8.png:  PAGE=15
