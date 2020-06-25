@@ -9,7 +9,7 @@ PUBLIC=state/public
 F_SECRET_PLAYER_ROLES=$SECRET/player-roles.txt
 F_PUBLIC_SOURCE_PHONE=$PUBLIC/source-phone.txt
 
-SOURCE_PHONE=`cat $STATE/source-phone.txt`
+SOURCE_PHONE=`cat $F_PUBLIC_SOURCE_PHONE`
 
 init_player_roles() {
 
