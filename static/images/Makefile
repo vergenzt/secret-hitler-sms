@@ -30,7 +30,7 @@ define split-and-rotate
 		-density $(PDF_DENSITY) \
 		$(SOURCE_PDF)[$(PAGE)] \
 		-trim \
-		-shave 25 \
+		-shave 30 \
 		-crop 2x1@ \
 		\( -clone -2 -rotate -90 \) \
 		\( -clone -2 -rotate  90 \) \
