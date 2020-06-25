@@ -23,6 +23,8 @@ F_SECRET_PLAYER_ROLES=$SECRET/player-roles.txt
 F_SECRET_POLICY_DECK=$SECRET/policy-deck.txt
 F_SECRET_POLICY_DISCARD=$SECRET/policy-discard.txt
 
+image_url() { echo "$IMAGES_BASE_URL/$1-$2.png"}
+
 role_image()  { echo "$IMAGES_BASE_URL/role-$1.png"; }
 party_image() { echo "$IMAGES_BASE_URL/party-$1.png"; }
 policy_image() { echo "$IMAGES_BASE_URL/policy-$1.png"; }
