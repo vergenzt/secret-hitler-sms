@@ -21,7 +21,7 @@ F_SECRET_PLAYER_ROLES=$SECRET/player-roles.txt
 
 PUBLIC_NUM_PLAYERS=`cat $F_PUBLIC_PLAYER_INFO | wc -l`
 PUBLIC_ROLES_USED=`head -n $PUBLIC_NUM_PLAYERS $F_STATIC_ROLES_AVAILABLE`
-SECRET_PLAYER_ROLES=`gpaste <(echo $PNAMES) <(echo "$ACTIVE_ROLES" | gshuf)`
+SECRET_PLAYER_ROLES=`gpaste <(echo $PUBLIC_PLAYER_NAMES) <(echo "$PUBLIC_ROLES_USED" | gshuf)`
 
 assign_player_roles() {
 
