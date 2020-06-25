@@ -28,7 +28,8 @@ send_sms() {
     --from "$PUBLIC_SOURCE_PHONE" \
     --to "$PUBLIC_PHONE" \
     --body "$SECRET_MESSAGE" \
-    ${SECRET_PHOTOS[@]/#/--media-url }
+    ${SECRET_PHOTOS[@]/#/--media-url } \
+    >/dev/null
 }
 
 start_sms_reply_listener() {
