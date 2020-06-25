@@ -10,8 +10,8 @@ F_SECRET_PLAYER_ROLES=$SECRET/player-roles.txt
 F_PUBLIC_SOURCE_PHONE=$PUBLIC/source-phone.txt
 F_PUBLIC_PLAYER_INFO=$PUBLIC/players-init.txt
 
-PUB_SOURCE_PHONE=`cat $F_PUBLIC_SOURCE_PHONE`
-PUB_PLAYER_INFO=`cat $F_PUBLIC_PLAYER_INFO | grep -v '^(#|\s*$)'`
+PUBLIC_SOURCE_PHONE=`cat $F_PUBLIC_SOURCE_PHONE`
+PUBLIC_PLAYER_INFO=`cat $F_PUBLIC_PLAYER_INFO | grep -v '^(#|\s*$)'`
 
 assign_player_roles() {
 
