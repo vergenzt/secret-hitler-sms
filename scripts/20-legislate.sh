@@ -2,7 +2,7 @@
 source lib.sh
 
 # who's president?
-read -p "Who's President? ($(echo "$PUBLIC_PLAYER_NAMES" | tr '\n' '/'): )" PUBLIC_PRESIDENT_NAME
+read -p "Who's President? ($(echo "$PUBLIC_PLAYER_NAMES" | tr '\n' '/')):" PUBLIC_PRESIDENT_NAME
 # who's chancellor?
 
 # generate deck if needed
