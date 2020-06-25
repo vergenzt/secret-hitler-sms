@@ -43,7 +43,7 @@ assign_player_roles() {
       --body "Hi $PNAME! Here's your secret role and party membership cards for Secret Hitler. 🙂 Enjoy the game!" \
       --media-url "$IMAGES_BASE_URL/party-$PARTY.png" \
       --media-url "$IMAGES_BASE_URL/role-$ROLE.png"
-  done < <(join $PUBLIC/players-init.txt $SECRET/player-roles.txt)
+  done < <(join $F_PUBLIC_PLAYER_INFO $F_SECRET_PLAYER_ROLES)
 }
 
 
