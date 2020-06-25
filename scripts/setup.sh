@@ -14,8 +14,8 @@ if [[ -f $SECRET/player-roles.txt ]]; then
 fi
 
 PLAYER_INFO=`cat $PUBLIC/players-init.txt | grep -v '^(#|\s*$)'``
-PNAMES=`awk '{print $1}' $PUBLIC/players-init.txt`
-PHONES=`awk '{print $2}' $PUBLIC/players-init.txt`
+PNAMES=`awk '{print $1}' <<<$PLAYER_INFO`
+PHONES=`awk '{print $2}' <<<$PLAYER_INFO`
 
 NUM_PLAYERS=`cat $PUBLIC/players-init.txt | wc -l`
 ACTIVE_ROLES=`head -n $NUM_PLAYERS $ASSETS/roles-available.txt`
