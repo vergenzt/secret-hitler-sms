@@ -13,6 +13,7 @@ if [[ -f $SECRET/player-roles.txt ]]; then
   exit 1
 fi
 
+PLAYER_INFO=`cat $PUBLIC/players-init.txt | grep -v '^(#|\s*$)'``
 PNAMES=`awk '{print $1}' $PUBLIC/players-init.txt`
 PHONES=`awk '{print $2}' $PUBLIC/players-init.txt`
 
