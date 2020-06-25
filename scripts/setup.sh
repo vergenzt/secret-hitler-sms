@@ -29,6 +29,7 @@ while read PNAME PHONE ROLE; do
   twilio api:core:messages:create \
     --from "$SOURCE_PHONE" \
     --to "$PHONE" \
-    --body "Hi $PNAME! Here's your role for Secret Hitler." \
+    --body "Hi $PNAME! Here's your secret role and party membership cards for Secret Hitler. 🙂 Enjoy the game!" \
+    --media-url "$ASSET_BASE_URL/role-$ROLE.png"
     --media-url "$ASSET_BASE_URL/role-$ROLE.png"
 done < <(join $PUBLIC/players-init.txt $SECRET/player-roles.txt)
