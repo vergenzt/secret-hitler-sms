@@ -5,9 +5,9 @@ cd "$(dirname "$0")"
 STATE_S=../state/__SECRET__
 STATE_P=../state/public
 
-mkdir -p ../state/__SECRET__
-sudo chown ../state/__SECRET__
-sudo chmod 600 ../state/__SECRET__
+mkdir -p $STATE_S
+sudo chown $STATE_S
+sudo chmod 600 $STATE_S
 
 F_PLAYERS_INIT=../state/public/players-init.txt
 F_PLAYER_ROLES=../state/__SECRET__/player-roles.txt
