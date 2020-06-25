@@ -7,7 +7,7 @@ PUBLIC=../state/public
 sudo chown $STATE_S && sudo chmod 600 $STATE_S
 
 PLAYERS=awk '{print $1}' $PUBLIC/players-init.txt
- PHONES=awk '{print $2}' ../state/public/players-init.txt
+PPHONES=awk '{print $2}' ../state/public/players-init.txt
 
 NUM_PLAYERS=wc -l ../state/public/players-init.txt
 
