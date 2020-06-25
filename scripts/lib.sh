@@ -2,7 +2,7 @@
 (return 0 2>/dev/null) || cd "$(dirname "$0")"/.. || exit 1
 debug() {
   set -x
-  trap undebug EXIT INT
+  trap "set +x" EXIT INT
   "$@"
 }
 undebug() {
