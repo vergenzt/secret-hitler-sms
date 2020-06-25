@@ -44,7 +44,7 @@ await_sms_reply() {
   )
   echo "Done."
   echo -n "Updating Twilio callback URL... "
-  twilio phone-numbers:update $PUBLIC_SOURCE_PHONE --sms-url=$SECRET_NGROK_URL
+  twilio phone-numbers:update $PUBLIC_SOURCE_PHONE --sms-url=$SECRET_NGROK_URL >/dev/null
   echo "Done."
   echo -n "Listening for SMS reply... "
 
