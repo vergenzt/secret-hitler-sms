@@ -10,7 +10,6 @@ gpaste \
     | gshuf \
   ) \
   > ../state/__SECRET__/player-roles.txt
-
 chmod 600 ../state/__SECRET__/players.txt
 
 jq -rR ../state/__SECRET__/players.txt '
