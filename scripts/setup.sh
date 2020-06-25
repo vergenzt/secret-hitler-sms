@@ -2,7 +2,7 @@
 set -x
 cd "$(dirname "$0")"
 
-PLAYERS_F
+PLAYERS=
 
 # assign player roles
 gpaste \
