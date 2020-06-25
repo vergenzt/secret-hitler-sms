@@ -17,6 +17,9 @@ PUBLIC_PLAYER_INFO=`cat $F_PUBLIC_PLAYER_INFO | grep -v '^(#|\s*$)'`
 PUBLIC_PLAYER_NAMES=`awk '{print $1}' <(echo "$PUBLIC_PLAYER_INFO")`
 PUBLIC_PLAYER_PHONES=`awk '{print $2}' <(echo "$PUBLIC_PLAYER_INFO")`
 
+PUBLIC_NUM_PLAYERS=`cat $F_PUBLIC_PLAYER_INFO | wc -l`
+PUBLIC_ROLES_USED=`head -n $PUBLIC_NUM_PLAYERS $F_STATIC_ROLES_AVAILABLE`
+
 F_SECRET_PLAYER_ROLES=$SECRET/player-roles.txt
 
 assign_player_roles() {
@@ -29,9 +32,6 @@ assign_player_roles() {
 
 }
 
-
-PUBLIC_NUM_PLAYERS=`cat $F_PUBLIC_PLAYER_INFO | wc -l`
-PUBLIC_ROLES_USED=`head -n $PUBLIC_NUM_PLAYERS $F_STATIC_ROLES_AVAILABLE`
 SECRET_PLAYER_ROLES=`gpaste <(echo "$PUBLIC_PLAYER_NAMES") <(echo "$PUBLIC_ROLES_USED" | gshuf)`
 
 NUM_PLAYERS=`cat $PUBLIC/players-init.txt | wc -l`
