@@ -11,4 +11,6 @@ PHONES=`awk '{print $2}' $PUBLIC/players-init.txt`
 
 NUM_PLAYERS=`cat $PUBLIC/players-init.txt | wc -l`
 ACTIVE_ROLES=`head -n $NUM_PLAYERS $ASSETS/roles-available.txt`
-PLAYER_ROLES=`echo "$ACTIVE_ROLES" | gshuf`
+PLAYER_ROLES=`gpaste <(echo "$PNAMES") <(echo "$ACTIVE_ROLES" | gshuf)`
+
+PLAYER_ROLES=`gpaste <(echo "$PNAMES") <(echo "$ACTIVE_ROLES" | gshuf)`
