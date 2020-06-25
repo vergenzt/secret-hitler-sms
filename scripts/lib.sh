@@ -103,7 +103,6 @@ legislate() {
       | head -n1
     )
   twilio phone-numbers:update $PUBLIC_SOURCE_PHONE --sms-url=$SECRET_NGROK_URL
-  #- twilio
 
   SECRET_POLICIES_DRAWN=`tail -n3 "$F_SECRET_POLICY_DECK" | tr '\n' '-'`
 
