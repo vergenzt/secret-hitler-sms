@@ -17,4 +17,6 @@ PLAYER_ROLES=`gpaste <(echo "$PNAMES") <(echo "$ACTIVE_ROLES" | gshuf)`
 gpaste <(echo "$PNAMES") <(echo "$PLAYER_ROLES")` > $SECRET/player-roles.txt
 
 # send texts
-while read PNAME PHONE ROLE
+#while read PNAME PHONE ROLE; do
+#
+#done < join $
