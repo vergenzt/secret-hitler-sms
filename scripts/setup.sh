@@ -8,7 +8,7 @@ SECRET=../state/__SECRET__
 PUBLIC=../state/public
 
 if [[ -f $SECRET/player-roles.txt ]]; then
-  echo "$SECRET/player-roles.txt already exists. Is a game in progress?"
+  echo "Error: $SECRET/player-roles.txt already exists. Is a game in progress?"
   echo "Please delete it if you're sure you want to start a new game."
   exit 1
 fi
