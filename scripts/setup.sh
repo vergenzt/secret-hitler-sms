@@ -2,11 +2,11 @@
 set -x
 cd "$(dirname "$0")"
 
-PLAYERS=
+PLAYERS=awk '{print $1}' ../state/public/players-init.txt
 
 # assign player roles
 gpaste \
-  <( cat ../state/public/players-init.txt | awk '{print $1}' ) \
+  <() \
   <( cat ../assets/player-slots.txt \
     | head -n $(wc -l ../state/public/players.txt) \
     | gshuf \
