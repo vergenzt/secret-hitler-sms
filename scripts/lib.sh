@@ -43,8 +43,7 @@ await_sms_reply() {
           "name": "command_line"
         }))
       '
-        | .url
-        | halt
+      | jq '.url'
       '
   )
   echo "Done."
