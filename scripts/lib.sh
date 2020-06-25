@@ -11,8 +11,8 @@ image_url() { echo "$IMAGES_BASE_URL/$1-$2.png"; }
 
 send_sms() {
   set -x
-  PUBLIC_PHONE=shift
-  SECRET_MESSAGE=shift
+  PUBLIC_PHONE=`shift`
+  SECRET_MESSAGE=`shift`
   SECRET_PHOTOS=($@)
   twilio api:core:messages:create \
     --from "$PUBLIC_SOURCE_PHONE" \
