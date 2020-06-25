@@ -10,6 +10,8 @@ PNAMES=`awk '{print $1}' $PUBLIC/players-init.txt`
 PHONES=`awk '{print $2}' $PUBLIC/players-init.txt`
 NUM_PLAYERS=`wc -l $PUBLIC/players-init.txt `
 
+ACTIVE_ROLES=`head -n $NUM_PLAYERS`
+
 # assign player roles
 gpaste \
   <() \
