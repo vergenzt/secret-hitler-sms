@@ -10,7 +10,7 @@ IMAGES_BASE_URL=https://raw.githubusercontent.com/vergenzt/secret-hitler-sms/mas
 image_url() { echo "$IMAGES_BASE_URL/$1-$2.png"; }
 
 F_PUBLIC_SOURCE_PHONE=$PUBLIC/source-phone.txt
-F_PUBLIC_PLAYER_INFO=$PUBLIC/players-init.txt
+F_PUBLIC_PLAYER_INFO=$PUBLIC/player-info.txt
 F_PUBLIC_ROLES_AVAILABLE=$STATIC/roles-available.txt
 F_PUBLIC_POLICIES_AVAILABLE=$STATIC/policies-available.txt
 
