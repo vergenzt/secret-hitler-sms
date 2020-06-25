@@ -72,6 +72,7 @@ policy-%:
 	$(split-page)
 
 policies-%.png:
+	# explanation:
 	convert policy-`eval echo $*` +append $@
 
 board-fascist-5or6.png:  PAGE=14
