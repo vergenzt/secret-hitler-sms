@@ -5,7 +5,7 @@ debug() {
 }
 
 lookup() {
-  echo "$1" | awk "\$1 == \"$1\" { print \$$2 }"
+  echo "$1" | awk "\$1 == \"$2\" { print \$$3 }"
 }
 
 STATIC=static
