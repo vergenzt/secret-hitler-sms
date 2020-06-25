@@ -51,7 +51,8 @@ start_sms_reply_listener() {
 
 await_sms_reply() {
   echo -n "Listening for SMS reply... "
-  nc -l localhost 8080 < $STATIC/twilio-empty-response.xml \
+  TWILIO_RESPONSE=`nc -l localhost 8080 < $STATIC/twilio-empty-response.xml`
+   \
     | $GAVEL_BIN <(echo '
 
     ')
