@@ -7,7 +7,6 @@ debug() {
 }
 undebug() {
   set +x
-  exit
 }
 
 lookup() {
