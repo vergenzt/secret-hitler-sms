@@ -23,7 +23,7 @@ F_SECRET_PLAYER_ROLES=$SECRET/player-roles.txt
 F_SECRET_POLICY_DECK=$SECRET/policy-deck.txt
 F_SECRET_POLICY_DISCARD=$SECRET/policy-discard.txt
 
-SECRET_POLICY_DECK_SIZE=`cat $F_SECRET_POLICY_DECK | wc -l`
+SECRET_POLICY_DECK_LENGTH=`cat $F_SECRET_POLICY_DECK | wc -l`
 
 image_url() { echo "$IMAGES_BASE_URL/$1-$2.png"; }
 
