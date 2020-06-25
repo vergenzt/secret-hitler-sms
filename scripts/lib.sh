@@ -128,7 +128,7 @@ legislate() {
   ensure_drawable_policy_deck
 
   SECRET_POLICIES=($(tail -n3 "$F_SECRET_POLICY_DECK"))
-  read PRESIDENT_MSG <<EOF | sed 's/^ +| +$//g'
+  PRESIDENT_MSG <<EOF | sed 's/^ +| +$//g'
     Congratulations on the election, $PUBLIC_PRESIDENT_PREFIX $PUBLIC_PRESIDENT_NAME. Here are your policy choices. Please reply:
     1) to discard the left ${SECRET_POLICIES[0]} policy and pass the others (${SECRET_POLICIES[1]} and ${SECRET_POLICIES[2]}) to $PUBLIC_CHANCELLOR_NAME.
 EOF
