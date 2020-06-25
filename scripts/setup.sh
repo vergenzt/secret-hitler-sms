@@ -6,7 +6,7 @@ SECRET=../state/__SECRET__
 PUBLIC=../state/public
 sudo chown $STATE_S && sudo chmod 600 $STATE_S
 
-F_PLAYERS_INIT=$STATE_PUB
+F_PLAYERS_INIT=$SECRET/players-init.txt
 F_PLAYER_ROLES=../state/__SECRET__/player-roles.txt
 
 PLAYERS=awk '{print $1}'
