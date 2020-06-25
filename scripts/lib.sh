@@ -54,7 +54,7 @@ assign_player_roles() {
 ensure_drawable_policy_deck() {
   if [[ "$SECRET_POLICY_DECK_LENGTH" -lt 3 ]]; then
 
-    cat $F_PUBLIC_POLICIES_AVAILABLE
+    cat "$F_PUBLIC_POLICIES_AVAILABLE"
 
   fi
 }
