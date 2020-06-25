@@ -53,13 +53,11 @@ await_sms_reply_from() {
   FROM=$1
   TWILIO_RESP=""
   echo -n "Listening for SMS reply... "
-  while grep -q "&From=$(echo $FROM | tr '+' '%2B')&"; do
+  while grep q "&From=$(echo $FROM | tr '+' '%2B')&"; do
     TWILIO_RESP=`nc -l localhost 8080 < $STATIC/twilio-empty-response.xml`
   done
   echo "Done."
   echo "$TWILIO_RESP"
-
-  fi
 }
 
 F_PUBLIC_SOURCE_PHONE=$PUBLIC/source-phone.txt
