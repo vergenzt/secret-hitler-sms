@@ -40,7 +40,7 @@ await_sms_reply() {
     cat $F_SECRET_NGROK_LOG \
       | grep ',"msg":"started tunnel","name":"command_line"' \
       | head -n1 \
-      | jq .url
+      | jq -r .url
   )
   echo "Done."
   echo -n "Updating Twilio callback URL... "
