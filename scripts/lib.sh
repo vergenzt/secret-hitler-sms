@@ -13,7 +13,6 @@ PUBLIC=state/public
 IMAGES_BASE_URL=https://raw.githubusercontent.com/vergenzt/secret-hitler-sms/master/$STATIC/images
 image_url() { echo "$IMAGES_BASE_URL/$1-$2.png"; }
 
-
 send_sms() {
   PUBLIC_PHONE="$1"
   SECRET_MESSAGE="$2"
