@@ -4,6 +4,7 @@ cd "$(dirname "$0")"
 
 
 
+
 F_PLAYERS_INIT=../state/public/players-init.txt
 F_PLAYER_ROLES=../state/__SECRET__/player-roles.txt
 
