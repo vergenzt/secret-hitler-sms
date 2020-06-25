@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-(return 0 2>/dev/null) || cd "$(dirname "$0")"/.. || exit 1
+(return 0 2>/dev/null) || cd "$(dirname "$0")"/.. || return
 debug() {
   trap 'kill $(jobs -p) &>/dev/null; set +x' EXIT SIGINT
   set -x
@@ -122,6 +122,7 @@ legislate() {
 
   if [[ "$1" != "-f" && "$PUBLIC_PRESIDENT_NAME" = "$PUBLIC_CHANCELLOR_NAME" ]]; then
     echo "Error: President must be different than chancellor!"
+    return
   fi
 
   ensure_drawable_policy_deck
