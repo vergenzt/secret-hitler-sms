@@ -46,8 +46,7 @@ await_sms_reply() {
           }))
           | .url
         )
-      ' \
-      | head -n1
+      '
     )
   echo "Done."
   echo -n "Updating Twilio callback URL... "
