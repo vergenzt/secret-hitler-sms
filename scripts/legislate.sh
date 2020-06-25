@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
-source lib.sh
+source _lib.sh
 
 legislate
