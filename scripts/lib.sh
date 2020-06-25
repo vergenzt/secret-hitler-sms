@@ -127,7 +127,7 @@ legislate() {
 
   ensure_drawable_policy_deck
 
-  SECRET_POLICIES=`tail -n3 "$F_SECRET_POLICY_DECK" | tr '\n' '-'`
+  readarray -t SECRET_POLICIES < tail -n3 "$F_SECRET_POLICY_DECK"
   send_sms "$PUBLIC_PRESIDENT_PHONE" <<EOF
     Congratulations on the election, $PUBLIC_PRESIDENT_PREFIX $PUBLIC_PRESIDENT_NAME.
     Here are your policy choices. Reply to choose one.
