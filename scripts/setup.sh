@@ -2,7 +2,6 @@
 cd "$(dirname "$0")"
 
 ASSET_BASE_URL=https://raw.githubusercontent.com/vergenzt/secret-hitler-sms/master/assets
-
 ASSETS=../assets
 SECRET=../state/__SECRET__
 PUBLIC=../state/public
@@ -22,6 +21,6 @@ while read PNAME PHONE ROLE; do
   twilio api:core:messages:create \
     --to "$PHONE" \
     --body "Hi $PNAME! Here's your role for Secret Hitler:" \
-    --media-url
+    --media-url "$ASSET_BASE_URL/player-$ROLE.png"
   echo "Hi $PNAME! Your phone is $PHONE and role is $ROLE."
 done < <(join $PUBLIC/players-init.txt $SECRET/player-roles.txt)
