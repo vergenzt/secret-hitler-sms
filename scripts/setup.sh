@@ -2,6 +2,8 @@
 set -x
 cd "$(dirname "$0")"
 
+PLAYERS_F
+
 # assign player roles
 gpaste \
   <( cat ../state/public/players-init.txt | awk '{print $1}' ) \
