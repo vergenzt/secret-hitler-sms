@@ -75,7 +75,7 @@ policies-%.png:
 	# explanation: bash expands "abc-{1,2,3}.png" into "abc-1.png abc-2.png abc-3.png", so if
 	# target is policies-fascist-liberal-liberal.png, then then statement below evaluates to:
 	#   $ convert policy-fascist.png policy-liberal.png +append policies-fascist-liberal-liberal.png
-	convert policy-`eval "{$(echo $* | tr '-' ',')}"`.png +append $@
+	convert policy-`eval "{\$(echo $* | tr '-' ',')}"`.png +append $@
 
 board-fascist-5or6.png:  PAGE=14
 board-fascist-7or8.png:  PAGE=15
