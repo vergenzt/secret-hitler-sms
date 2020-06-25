@@ -13,9 +13,9 @@ define split-page
 endef
 
 define split-page-and-choose
-	convert $(SOURCE_PDF)[$(PAGE)] \
+	convert \
 		-density 500 \
-		-resample 500 \
+		$(SOURCE_PDF)[$(PAGE)] \
 		-trim \
 		-crop $(GRID) \
 		\( -clone $(RANGE) -shave 40 \) \
