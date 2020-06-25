@@ -37,7 +37,7 @@ endef
 
 all: roles parties policies policies-combos boards
 clean:
-	rm -f *.png
+	rm *.png
 rebuild: clean all
 
 roles: $(shell echo role-{fascist-{1..3},hitler,liberal-{1..6}}.png)
