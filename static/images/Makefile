@@ -40,7 +40,7 @@ boards: $(shell echo board-{fascist-{5or6,7or8,9or10},liberal}.png)
 policies: $(shell echo policy-{fascist,liberal}.png)
 policies-combos: $(shell echo policies-{fascist,liberal}-{fascist,liberal}{,-{fascist,liberal}}.png)
 
-role-%: GRID=4x2@
+role-%.png: GRID=4x2@
 role-fascist-%.png: PAGE=0
 role-fascist-%.png: RANGE=0,2-3
 role-hitler.png: PAGE=0
@@ -68,7 +68,7 @@ policy-%: PAGE=12
 policy-fascist.png: RANGE=0
 policy-liberal.png: RANGE=12
 
-policy-%:
+policy-%.png:
 	$(split-page)
 
 # explanation: bash expands "abc-{1,2,3}.png" into "abc-1.png abc-2.png abc-3.png", so if
