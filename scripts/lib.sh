@@ -17,6 +17,7 @@ send_sms() {
   PUBLIC_PHONE="$1"
   SECRET_MESSAGE="$2"
   shift 2
+  # shellcheck disable SC2206
   SECRET_PHOTOS=($@)
   twilio api:core:messages:create \
     --from "$PUBLIC_SOURCE_PHONE" \
