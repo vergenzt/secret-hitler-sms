@@ -1,3 +1,6 @@
+cd "$(dirname "$0")"
+set -x
+
 
 IMAGES_BASE_URL=https://raw.githubusercontent.com/vergenzt/secret-hitler-sms/master/assets/images
 ASSETS=../assets
