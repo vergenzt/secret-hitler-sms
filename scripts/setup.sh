@@ -6,7 +6,8 @@ SECRET=../state/__SECRET__
 PUBLIC=../state/public
 
 mkdir -p $SECRET $PUBLIC
-sudo chown root $SECRET && sudo chmod 600 $SECRET
+sudo chown root $SECRET
+sudo chmod 600 $SECRET
 
 PNAMES=`awk '{print $1}' $PUBLIC/players-init.txt`
 PHONES=`awk '{print $2}' $PUBLIC/players-init.txt`
