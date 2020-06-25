@@ -35,15 +35,15 @@ assign_player_roles() {
   # save
   echo "$SECRET_PLAYER_ROLES" > $F_SECRET_PLAYER_ROLES
   
-# send texts
-while read PNAME PHONE ROLE PARTY; do
-  twilio api:core:messages:create \
-    --from "$SOURCE_PHONE" \
-    --to "$PHONE" \
-    --body "Hi $PNAME! Here's your secret role and party membership cards for Secret Hitler. 🙂 Enjoy the game!" \
-    --media-url "$IMAGES_BASE_URL/party-$PARTY.png" \
-    --media-url "$IMAGES_BASE_URL/role-$ROLE.png"
-done < <(join $PUBLIC/players-init.txt $SECRET/player-roles.txt)
+  # send texts
+  while read PUBLIC_NAME PUBLIC_PHONE SECRET_ROLE SECRET_PARTY; do
+    twilio api:core:messages:create \
+      --from "$SOURCE_PHONE" \
+      --to "$PHONE" \
+      --body "Hi $PNAME! Here's your secret role and party membership cards for Secret Hitler. 🙂 Enjoy the game!" \
+      --media-url "$IMAGES_BASE_URL/party-$PARTY.png" \
+      --media-url "$IMAGES_BASE_URL/role-$ROLE.png"
+  done < <(join $PUBLIC/players-init.txt $SECRET/player-roles.txt)
 }
 
 
