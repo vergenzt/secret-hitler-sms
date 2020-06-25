@@ -20,7 +20,7 @@ gpaste <(echo "$PNAMES") <(echo "$PLAYER_ROLES") > $SECRET/player-roles.txt
 # send texts
 while read PNAME PHONE ROLE; do
   twilio api:core:messages:create \
-    --from
+    --from "$SOURCE_PHONE" \
     --to "$PHONE" \
     --body "Hi $PNAME! Here's your role for Secret Hitler:" \
     --media-url "$ASSET_BASE_URL/player-$ROLE.png"
