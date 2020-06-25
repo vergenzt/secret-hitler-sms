@@ -53,9 +53,10 @@ await_sms_reply() {
   echo -n "Listening for SMS reply... "
   RESP=`nc -l localhost 8080 < $STATIC/twilio-empty-response.xml`
   PARSED_RESP=`echo "$RESP" | $GAVEL <(echo '
-    
+
   ')`
   echo "Done."
+  echo "$PARSED_RESP"
 }
 
 F_PUBLIC_SOURCE_PHONE=$PUBLIC/source-phone.txt
