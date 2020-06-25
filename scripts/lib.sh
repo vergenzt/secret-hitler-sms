@@ -70,7 +70,6 @@ legislate() {
     exit 1
   fi
 
-  # generate deck if needed
   ensure_drawable_policy_deck
 
   # listen for discard choices
