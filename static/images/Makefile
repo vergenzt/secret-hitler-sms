@@ -88,8 +88,7 @@ policies-%.png:
 	convert `eval "echo policy-{$$(echo "$*" | tr '-' ',')}.png"` +append $@
 
 board-%.png: boardpart-fascist-$*.png boardpart-liberal.png
-	convert $^ $@
-
+	convert $^ -append $@
 
 boardpart-fascist-5or6.png:  PAGE=14
 boardpart-fascist-7or8.png:  PAGE=15
