@@ -10,6 +10,7 @@ read -p "Who's Chancellor? ($PUBLIC_PLAYER_NAMES_PROMPT): " PUBLIC_PRESIDENT_NAM
 ensure_drawable_policy_deck
 
 # draw top 3
+tail -n3 $F_SECRET_POLICY_DECK
 
 # listen for discard choices
 #- useful commands:
