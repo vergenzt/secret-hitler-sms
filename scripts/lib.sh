@@ -44,7 +44,7 @@ await_sms_reply() {
             "msg": "started tunnel",
             "name": "command_line"
           }))
-          | .url, "\n"
+          | .url
         )
       ' \
       | head -n1
