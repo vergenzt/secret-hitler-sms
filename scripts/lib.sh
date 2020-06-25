@@ -131,10 +131,10 @@ legislate() {
   SECRET_POLICIES=($(tail -n3 "$F_SECRET_POLICY_DECK"))
   PRESIDENT_MSG=$(echo -e \
     "Congratulations on the election, $PUBLIC_PRESIDENT_PREFIX President. " \
-    "Here are your policy choices. Please reply:\n" \
-    " 1) discard ${SECRET_POLICIES[0]}; pass ${SECRET_POLICIES[1]}-${SECRET_POLICIES[2]} to Chancellor $PUBLIC_CHANCELLOR_NAME." \
-    " 2) discard ${SECRET_POLICIES[1]}; pass ${SECRET_POLICIES[0]}-${SECRET_POLICIES[2]} to Chancellor $PUBLIC_CHANCELLOR_NAME." \
-    " 3) discard ${SECRET_POLICIES[2]}; pass ${SECRET_POLICIES[0]}-${SECRET_POLICIES[1]} to Chancellor $PUBLIC_CHANCELLOR_NAME." \
+    "Here are your policy choices. Please reply:\n\n" \
+    " 1) discard ${SECRET_POLICIES[0]}; pass ${SECRET_POLICIES[1]}-${SECRET_POLICIES[2]} to Chancellor $PUBLIC_CHANCELLOR_NAME.\n\n" \
+    " 2) discard ${SECRET_POLICIES[1]}; pass ${SECRET_POLICIES[0]}-${SECRET_POLICIES[2]} to Chancellor $PUBLIC_CHANCELLOR_NAME.\n\n" \
+    " 3) discard ${SECRET_POLICIES[2]}; pass ${SECRET_POLICIES[0]}-${SECRET_POLICIES[1]} to Chancellor $PUBLIC_CHANCELLOR_NAME.\n\n" \
   )
   PRESIDENT_IMAGE=`image_url policycombo $(IFS="-"; echo "${SECRET_POLICIES[*]}")`
   send_sms "$PUBLIC_PRESIDENT_PHONE" "$PRESIDENT_MSG" "$PRESIDENT_IMAGE"
