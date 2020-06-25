@@ -8,8 +8,8 @@ SECRET=../state/__SECRET__
 PUBLIC=../state/public
 SOURCE_PHONE=`cat $STATE/source-phone.txt`
 
-if [[ -f $SECRET/player-roles.txt ]]; then
-  echo "Error: $SECRET/player-roles.txt already exists."
+if [[ -f $SECRET_PLAYER_ROLES_F ]]; then
+  echo "Error: $SECRET_PLAYER_ROLES_F already exists."
   echo "Is a game in progress?"
   echo
   echo "Please delete it if you're sure you want to start a new game."
