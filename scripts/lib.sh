@@ -89,7 +89,6 @@ legislate() {
   ensure_drawable_policy_deck
 
   # set up server to listen for discard choices
-  #- useful commands:
 
   F_SECRET_NGROK_LOG=$SECRET/ngrok.log
   ngrok http --log=stdout --log-format=json 80 > $F_SECRET_NGROK_LOG &
