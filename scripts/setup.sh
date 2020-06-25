@@ -9,7 +9,7 @@ gpaste \
     | head -n $(wc -l ../state/public/players.txt | awk '{print $1}') \
     | gshuf \
   ) \
-  | sudo tee ../state/__SECRET__/player-roles.txt
+  | sudo tee ../state/__SECRET__/player-roles.txt &> /dev/null
 chmod 600 ../state/__SECRET__/players.txt
 
 jq -rR ../state/__SECRET__/players.txt '
