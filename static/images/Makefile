@@ -33,7 +33,8 @@ define split-and-rotate
 endef
 
 all: roles parties policies policies-combos boards
-clean: rm *.png
+clean:
+	rm *.png
 
 roles: $(shell echo role-{fascist-{1..3},hitler,liberal-{1..6}}.png)
 parties: $(shell echo party-{fascist,liberal}.png)
