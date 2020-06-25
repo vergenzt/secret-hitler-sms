@@ -21,7 +21,7 @@ image_url() { echo "$IMAGES_BASE_URL/$1-$2.png"; }
 # shellcheck disable=SC2206
 send_sms() {
   PUBLIC_PHONE="$1"
-  SECRET_MESSAGE=echo -e "\n\n$2"
+  SECRET_MESSAGE=echo -en "\n\n$2"
   shift 2
   SECRET_PHOTOS=($@)
   twilio api:core:messages:create \
