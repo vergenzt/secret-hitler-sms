@@ -15,17 +15,14 @@ image_url() { echo "$IMAGES_BASE_URL/$1-$2.png"; }
 
 
 send_sms() {
-  set -x
   PUBLIC_PHONE=$1
   SECRET_MESSAGE=$2
-  shift 2
   SECRET_PHOTOS=($@)
   twilio api:core:messages:create \
     --from "$PUBLIC_SOURCE_PHONE" \
     --to "$PUBLIC_PHONE" \
     --body "$SECRET_MESSAGE" \
     ${SECRET_PHOTOS[@]/#/--media-url }
-  set +x
 }
 
 F_PUBLIC_SOURCE_PHONE=$PUBLIC/source-phone.txt
