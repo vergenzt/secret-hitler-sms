@@ -1,10 +1,10 @@
-hitler fascist
-fascist-1 fascist
-liberal-1 liberal
-liberal-2 liberal
-liberal-3 liberal
-liberal-4 liberal
-fascist-2 fascist
-liberal-5 liberal
-fascist-3 fascist
-liberal-6 liberal
+hitler:fascist
+fascist-1:fascist
+liberal-1:liberal
+liberal-2:liberal
+liberal-3:liberal
+liberal-4:liberal
+fascist-2:fascist
+liberal-5:liberal
+fascist-3:fascist
+liberal-6:liberal
