@@ -17,7 +17,7 @@ send_sms() {
   PUBLIC_PHONE="$1"
   SECRET_MESSAGE="$2"
   shift 2
-  SECRET_PHOTOS="($@)"
+  SECRET_PHOTOS=("$@")
   twilio api:core:messages:create \
     --from "$PUBLIC_SOURCE_PHONE" \
     --to "$PUBLIC_PHONE" \
