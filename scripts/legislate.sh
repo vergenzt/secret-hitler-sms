@@ -9,3 +9,19 @@ SECRET=../state/__SECRET__
 PUBLIC=../state/public
 
 # generate deck if needed
+
+# draw top 3
+
+# send to president
+
+# await discard choice
+
+# discard
+
+# send remainder to chancellor
+
+# await discard choice
+
+# discard
+
+# send remainder to everybody else
