@@ -33,7 +33,7 @@ send_sms() {
 await_sms_reply() {
   # set up server to listen for discard choices
   F_SECRET_NGROK_LOG=$SECRET/ngrok.log
-  ngrok http --log=stdout --log-format=json 80 > $F_SECRET_NGROK_LOG & >/dev/null
+  (ngrok http --log=stdout --log-format=json 80 > $F_SECRET_NGROK_LOG &)
   SECRET_NGROK_URL=$(
     tail -n+0 -f $F_SECRET_NGROK_LOG \
       | jq --unbuffered '
