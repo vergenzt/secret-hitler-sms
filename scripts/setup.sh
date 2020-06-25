@@ -22,7 +22,7 @@ PHONES=`awk '{print $2}' <<<$PLAYER_INFO`
 
 NUM_PLAYERS=`cat $PUBLIC/players-init.txt | wc -l`
 ACTIVE_ROLES=`head -n $NUM_PLAYERS $ASSETS/roles-available.txt`
-PLAYER_ROLES=`echo "$ACTIVE_ROLES" | gshuf`
+PLAYER_ROLES=`gpaste <<<$PNAMES "$ACTIVE_ROLES" | gshuf`
 
 # save roles
 gpaste <(echo "$PNAMES") <(echo "$PLAYER_ROLES") > $SECRET/player-roles.txt
