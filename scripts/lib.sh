@@ -3,6 +3,9 @@
 debug() {
   source scripts/lib.sh; set -x; "$@"; set +x
 }
+undebug() {
+
+}
 
 lookup() {
   echo "$1" | awk "\$1 == \"$2\" { print \$$3 }"
