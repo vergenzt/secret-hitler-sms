@@ -17,7 +17,8 @@ PUBLIC=../state/public
 # await discard choice
 #- useful commands:
 ngrok http --log=stdout --log-format=json 80
-#-
+#- parse ngrok url from log output
+#- twilio phone-numbers:update $SOURCE_PHONE --sms-url=$NGROK_URL
 
 # discard
 
