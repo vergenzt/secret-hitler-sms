@@ -47,7 +47,7 @@ assign_player_roles() {
       --to "$PUBLIC_PHONE" \
       --body "Hi $PUBLIC_NAME! Here's your secret role and party membership cards for Secret Hitler. 🙂 Enjoy the game!" \
       --media-url "`image_url party $SECRET_PARTY`" \
-      --media-url `image_url role $SECRET_ROLE`
+      --media-url "`image_url role $SECRET_ROLE`"
   done < <(join $F_PUBLIC_PLAYER_INFO $F_SECRET_PLAYER_ROLES | tr ':' ' ')
 }
 
