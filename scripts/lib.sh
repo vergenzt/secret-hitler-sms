@@ -132,9 +132,8 @@ legislate() {
     Congratulations on the election, $PUBLIC_PRESIDENT_PREFIX $PUBLIC_PRESIDENT_NAME.
     Here are your policy choices. Reply to choose one.
     Reply 1 to discard $()
-    EOF
+EOF
   send_sms "$PUBLIC_PRESIDENT_PHONE" <<EOF
-  EOF
   await
 
   # send to president
