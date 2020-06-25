@@ -2,9 +2,8 @@
 source lib.sh
 
 # who's president?
+read -p "Who's President?"
 # who's chancellor?
-
-
 
 # generate deck if needed
 ensure_drawable_policy_deck
