@@ -1,13 +1,14 @@
 cd "$(dirname "$0")"/..
 set -x
 
-IMAGES_BASE_URL=https://raw.githubusercontent.com/vergenzt/secret-hitler-sms/master/assets/images
-ASSETS=assets
+IMAGES_BASE_URL=https://raw.githubusercontent.com/vergenzt/secret-hitler-sms/master/STATIC/images
+STATIC=static
 SECRET=state/__SECRET__
 PUBLIC=state/public
 
 F_PUBLIC_SOURCE_PHONE=$PUBLIC/source-phone.txt
 F_PUBLIC_PLAYER_INFO=$PUBLIC/players-init.txt
+F_ASSET_ROLES_AVAILABLE=$STATIC/
 
 PUBLIC_SOURCE_PHONE=`cat $F_PUBLIC_SOURCE_PHONE`
 PUBLIC_PLAYER_INFO=`cat $F_PUBLIC_PLAYER_INFO | grep -v '^(#|\s*$)'`
@@ -17,7 +18,7 @@ PUBLIC_PLAYER_PHONES=`awk '{print $2}' <(echo "$PUBLIC_PLAYER_INFO")`
 F_SECRET_PLAYER_ROLES=$SECRET/player-roles.txt
 
 NUM_PLAYERS=`cat $F_PUBLIC_PLAYER_INFO | wc -l`
-ACTIVE_ROLES=`head -n $NUM_PLAYERS $ASSETS/roles-available.txt`
+ACTIVE_ROLES=`head -n $NUM_PLAYERS $STATIC/roles-available.txt`
 PLAYER_ROLES=`gpaste <(echo $PNAMES) <(echo "$ACTIVE_ROLES" | gshuf)`
 
 assign_player_roles() {
@@ -32,7 +33,7 @@ assign_player_roles() {
 }
 
 NUM_PLAYERS=`cat $PUBLIC/players-init.txt | wc -l`
-ACTIVE_ROLES=`head -n $NUM_PLAYERS $ASSETS/roles-available.txt`
+ACTIVE_ROLES=`head -n $NUM_PLAYERS $STATIC/roles-available.txt`
 PLAYER_ROLES=`gpaste <(echo $PNAMES) <(echo "$ACTIVE_ROLES" | gshuf)`
 
 # save roles
