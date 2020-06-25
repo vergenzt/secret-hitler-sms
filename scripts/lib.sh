@@ -13,7 +13,7 @@ lookup() {
 STATIC=static
 SECRET=state/__SECRET__
 PUBLIC=state/public
-GAVEL_BIN=./gavel.js/bin/gavel
+GAVEL_BIN=gavel.js/bin/gavel
 
 IMAGES_BASE_URL=https://raw.githubusercontent.com/vergenzt/secret-hitler-sms/master/$STATIC/images
 image_url() { echo "$IMAGES_BASE_URL/$1-$2.png"; }
@@ -52,7 +52,7 @@ start_sms_reply_listener() {
 await_sms_reply() {
   echo -n "Listening for SMS reply... "
   nc -l localhost 8080 < $STATIC/twilio-empty-response.xml \
-    | ./
+    | $GAVEL_BIN
   echo "Done."
 }
 
