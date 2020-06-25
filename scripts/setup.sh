@@ -2,7 +2,8 @@
 set -x
 cd "$(dirname "$0")"
 
-
+mkdir -p ../state/__SECRET__
+sudo chown ../state/__SECRET__
 
 
 F_PLAYERS_INIT=../state/public/players-init.txt
