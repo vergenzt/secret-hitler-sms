@@ -92,5 +92,5 @@ board-fascist-7or8.png:  PAGE=15
 board-fascist-9or10.png: PAGE=16
 board-liberal.png:       PAGE=17
 
-board-%:
+board-%.png:
 	$(split-and-rotate)
