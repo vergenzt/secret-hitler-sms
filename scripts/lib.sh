@@ -82,7 +82,9 @@ legislate() {
   read -p "Who's President? ($PUBLIC_PLAYER_NAMES_PROMPT): " PUBLIC_PRESIDENT_NAME
   read -p "Who's Chancellor? ($PUBLIC_PLAYER_NAMES_PROMPT): " PUBLIC_CHANCELLOR_NAME
   PUBLIC_PRESIDENT_PHONE=`echo "$PUBLIC_PLAYER_INFO" | grep "$PUBLIC_PRESIDENT_NAME" | awk '{print $2}'`
+  PUBLIC_PRESIDENT_PREFIX=`echo "$PUBLIC_PLAYER_INFO" | grep "$PUBLIC_PRESIDENT_NAME" | awk '{print $2}'`
   PUBLIC_CHANCELLOR_PHONE=`echo "$PUBLIC_PLAYER_INFO" | grep "$PUBLIC_CHANCELLOR_NAME" | awk '{print $2}'`
+  PUBLIC_CHANCELLOR_PREFIX=`echo "$PUBLIC_PLAYER_INFO" | grep "$PUBLIC_CHANCELLOR_NAME" | awk '{print $2}'`
 
   if [[ "$1" != "-f" && "$PUBLIC_PRESIDENT_NAME" = "$PUBLIC_CHANCELLOR_NAME" ]]; then
     echo "Error: President must be different than chancellor!"
