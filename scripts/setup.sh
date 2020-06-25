@@ -17,7 +17,6 @@ PLAYER_ROLES=`echo "$ACTIVE_ROLES" | gshuf`
 gpaste <(echo "$PNAMES") <(echo "$PLAYER_ROLES") > $SECRET/player-roles.txt
 
 # send texts
-join $PUBLIC/players-init.txt $SECRET/player-roles.txt \
-  | while read PNAME PHONE ROLE; do
+while read PNAME PHONE ROLE; do
   echo "Hi $PNAME! Your phone is $PHONE and role is $ROLE."
-done <
+done < <(join $PUBLIC/players-init.txt $SECRET/player-roles.txt)
