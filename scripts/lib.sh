@@ -19,11 +19,12 @@ send_sms() {
   shift 2
   # shellcheck disable=SC2206
   SECRET_PHOTOS=($@)
+  # shellcheck disable=SC2206
   twilio api:core:messages:create \
     --from "$PUBLIC_SOURCE_PHONE" \
     --to "$PUBLIC_PHONE" \
     --body "$SECRET_MESSAGE" \
-    "${SECRET_PHOTOS[@]/#/--media-url }"
+    ${SECRET_PHOTOS[@]/#/--media-url }
 }
 
 F_PUBLIC_SOURCE_PHONE=$PUBLIC/source-phone.txt
