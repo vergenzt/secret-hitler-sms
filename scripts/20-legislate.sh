@@ -4,7 +4,10 @@ source lib.sh
 # who's president?
 # who's chancellor?
 
+
+
 # generate deck if needed
+ensure_drawable_policy_deck
 
 # draw top 3
 
