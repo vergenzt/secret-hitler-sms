@@ -4,6 +4,10 @@ debug() {
   set -x; "$@"; set +x
 }
 
+lookup() {
+  echo "$1" | awk "\$1 == \"$1"\ { print $2 }"
+}
+
 STATIC=static
 SECRET=state/__SECRET__
 PUBLIC=state/public
