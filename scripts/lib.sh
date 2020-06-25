@@ -51,8 +51,8 @@ start_sms_reply_listener() {
 
 await_sms_reply() {
   echo -n "Listening for SMS reply... "
-  node -r http -r gavel -e '
-    http.createServer(({}))
+  node -r express -r gavel -e '
+
   '
   PARSED_RESP=`echo "$RESP" | node '
     ((std))
