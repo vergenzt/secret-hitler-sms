@@ -28,6 +28,22 @@ send_sms() {
     ${SECRET_PHOTOS[@]/#/--media-url }
 }
 
+  # set up server to listen for discard choices
+  F_SECRET_NGROK_LOG=$SECRET/ngrok.log
+  ngrok http --log=stdout --log-format=json 80 > $F_SECRET_NGROK_LOG &
+  SECRET_NGROK_URL=$(
+    tail -n+0 -f $F_SECRET_NGROK_LOG \
+      | jq --unbuffered '
+        select(contains({
+          "msg": "started tunnel",
+          "name": "command_line"
+        }))
+        | .url
+      ' \
+      | head -n1
+    )
+  twilio phone-numbers:update $PUBLIC_SOURCE_PHONE --sms-url=$SECRET_NGROK_URL
+
 F_PUBLIC_SOURCE_PHONE=$PUBLIC/source-phone.txt
 F_PUBLIC_PLAYER_INFO=$PUBLIC/player-info.txt
 F_PUBLIC_ROLES_AVAILABLE=$STATIC/roles-available.txt
@@ -94,22 +110,6 @@ legislate() {
   fi
 
   ensure_drawable_policy_deck
-
-  # set up server to listen for discard choices
-  F_SECRET_NGROK_LOG=$SECRET/ngrok.log
-  ngrok http --log=stdout --log-format=json 80 > $F_SECRET_NGROK_LOG &
-  SECRET_NGROK_URL=$(
-    tail -n+0 -f $F_SECRET_NGROK_LOG \
-      | jq --unbuffered '
-        select(contains({
-          "msg": "started tunnel",
-          "name": "command_line"
-        }))
-        | .url
-      ' \
-      | head -n1
-    )
-  twilio phone-numbers:update $PUBLIC_SOURCE_PHONE --sms-url=$SECRET_NGROK_URL
 
   SECRET_POLICIES_DRAWN=`tail -n3 "$F_SECRET_POLICY_DECK" | tr '\n' '-'`
   send_sms "$PUBLIC_PRESIDENT_PHONE" "Congratulations, "
