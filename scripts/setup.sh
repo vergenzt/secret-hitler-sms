@@ -33,6 +33,6 @@ while read PNAME PHONE ROLE PARTY; do
     --from "$SOURCE_PHONE" \
     --to "$PHONE" \
     --body "Hi $PNAME! Here's your secret role and party membership cards for Secret Hitler. 🙂 Enjoy the game!" \
-    --media-url "$ASSET_BASE_URL/party-$PARTY.png" \
-    --media-url "$ASSET_BASE_URL/role-$ROLE.png"
+    --media-url "$IMAGES_BASE_URL/party-$PARTY.png" \
+    --media-url "$IMAGES_BASE_URL/role-$ROLE.png"
 done < <(join $PUBLIC/players-init.txt $SECRET/player-roles.txt)
