@@ -36,7 +36,7 @@ F_SECRET_PLAYER_ROLES=$SECRET/player-roles.txt
 F_SECRET_POLICY_DECK=$SECRET/policy-deck.txt
 F_SECRET_POLICY_DISCARD=$SECRET/policy-discard.txt
 
-SECRET_POLICY_DECK_LENGTH=`cat  2>/dev/null$F_SECRET_POLICY_DECK 2>/dev/null | wc -l`
+SECRET_POLICY_DECK_LENGTH=`cat $F_SECRET_POLICY_DECK 2>/dev/null | wc -l`
 
 assign_player_roles() {
   if [[ -f $F_SECRET_PLAYER_ROLES ]]; then
