@@ -1,6 +1,7 @@
 SOURCE_PDF=Secret_Hitler_PnP_color_with_backface.pdf
 SHELL=bash
 PDF_DENSITY=300
+CONVERT_ARGS=-density 300 -define png:include-chunk=none
 
 define split-page
 	convert \

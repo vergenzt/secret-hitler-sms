@@ -91,7 +91,7 @@ legislate() {
   #- useful commands:
 
   F_SECRET_NGROK_LOG=$SECRET/ngrok.log
-  ngrok http --log=F_SECRET_NGROK_LOG --log-format=json 80 &
+  ngrok http --log=$F_SECRET_NGROK_LOG --log-format=json 80 &
   jq
   #- parse ngrok url from log output
   #- twilio phone-numbers:update $SOURCE_PHONE --sms-url=$NGROK_URL
