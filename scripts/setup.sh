@@ -7,7 +7,7 @@ ASSETS=../assets
 SECRET=../state/__SECRET__
 PUBLIC=../state/public
 
-test ! -f $SECRET/player-roles.txt
+test \! -f $SECRET/player-roles.txt
 
 PNAMES=`awk '{print $1}' $PUBLIC/players-init.txt`
 PHONES=`awk '{print $2}' $PUBLIC/players-init.txt`
