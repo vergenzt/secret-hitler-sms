@@ -51,9 +51,8 @@ start_sms_reply_listener() {
 
 await_sms_reply() {
   echo -n "Listening for SMS reply... "
-  nc -l localhost 8080 < $STATIC/twilio-empty-response.xml \
     | node -r http -r gavel -e '
-
+      http.createServer(({}))
     '
   PARSED_RESP=`echo "$RESP" | node '
     ((std))
