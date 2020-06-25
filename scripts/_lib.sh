@@ -1,9 +1,4 @@
 #!/usr/bin/env bash
-debug() {
-  trap 'kill $(jobs -p) &>/dev/null; set +x' EXIT SIGINT
-  set -x
-  "$@"
-}
 
 lookup() {
   echo "$1" | awk "\$1 == \"$2\" { print \$$3 }"
