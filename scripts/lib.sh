@@ -13,13 +13,12 @@ PUBLIC=state/public
 IMAGES_BASE_URL=https://raw.githubusercontent.com/vergenzt/secret-hitler-sms/master/$STATIC/images
 image_url() { echo "$IMAGES_BASE_URL/$1-$2.png"; }
 
+# shellcheck disable=SC2206
 send_sms() {
   PUBLIC_PHONE="$1"
   SECRET_MESSAGE="$2"
   shift 2
-  # shellcheck disable=SC2206
   SECRET_PHOTOS=($@)
-  # shellcheck disable=SC2206
   twilio api:core:messages:create \
     --from "$PUBLIC_SOURCE_PHONE" \
     --to "$PUBLIC_PHONE" \
