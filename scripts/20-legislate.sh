@@ -1,6 +1,4 @@
 #!/usr/bin/env bash
-cd "$(dirname "$0")"
-set -x
 source lib.sh
 
 # who's president?
