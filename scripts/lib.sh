@@ -90,7 +90,7 @@ legislate() {
   # set up server to listen for discard choices
   #- useful commands:
 
-  ngrok http --log=$SECRET/ngrok.log --log-format=json 80
+  ngrok http --log=$SECRET/ngrok.log --log-format=json 80 &
   #- parse ngrok url from log output
   #- twilio phone-numbers:update $SOURCE_PHONE --sms-url=$NGROK_URL
   #- twilio
