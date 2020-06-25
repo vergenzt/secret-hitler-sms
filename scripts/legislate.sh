@@ -15,6 +15,7 @@ PUBLIC=../state/public
 # send to president
 
 # await discard choice
+ngrok http --log=stdout --log-format=json 80
 
 # discard
 
