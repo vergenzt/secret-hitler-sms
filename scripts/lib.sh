@@ -1,8 +1,8 @@
 cd "$(dirname "$0")"/..
 set -x
 
-IMAGES_BASE_URL=https://raw.githubusercontent.com/vergenzt/secret-hitler-sms/master/static/images
 STATIC=static
+IMAGES_BASE_URL=https://raw.githubusercontent.com/vergenzt/secret-hitler-sms/master/$STATIC/images
 SECRET=state/__SECRET__
 PUBLIC=state/public
 
