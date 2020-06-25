@@ -55,8 +55,8 @@ role-hitler.png:
 role-liberal-%.png:
 	$(split-page-and-choose)
 
-party-%: GRID=4x2@
-party-%: PAGE=2
+party-%.png: GRID=4x2@
+party-%.png: PAGE=2
 party-fascist.png: RANGE=2
 party-liberal.png: RANGE=4
 
