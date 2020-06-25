@@ -72,7 +72,7 @@ policy-%:
 	$(split-page)
 
 policies-%.png:
-	convert policy-$(eval $(echo $*)) +
+	convert policy-`eval echo $*` +
 
 board-fascist-5or6.png:  PAGE=14
 board-fascist-7or8.png:  PAGE=15
