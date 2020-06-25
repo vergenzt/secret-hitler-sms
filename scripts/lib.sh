@@ -13,6 +13,7 @@ send_sms() {
   PUBLIC_TO=unshift
   SECRET_MESSAGE=unshift
   SECRET_PHOTOS=("$@")
+  declare IFS=""
   twilio api:core:messages:create \
     --from "$PUBLIC_SOURCE_PHONE" \
     --to "$PUBLIC_PHONE" \
