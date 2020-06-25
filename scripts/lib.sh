@@ -9,6 +9,9 @@ SOURCE_PHONE=`cat $STATE/source-phone.txt`
 
 SECRET_PLAYER_ROLES_F=$SECRET/player-roles.txt
 
+init_player_roles() {
+
+}
 if [[ -f $SECRET_PLAYER_ROLES_F ]]; then
   echo "Error: $SECRET_PLAYER_ROLES_F already exists."
   echo "Is a game in progress?"
