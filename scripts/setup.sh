@@ -15,7 +15,3 @@ gpaste \
 while read
 
 done < ../state/__SECRET__/players.txt '
-
-    | "twilio --to=... --body=... --media-url=..."
-    | xargs -n1 \{\}
-  ''
