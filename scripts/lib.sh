@@ -11,8 +11,7 @@ F_PUBLIC_PLAYER_INFO=$PUBLIC/players-init.txt
 
 PUBLIC_SOURCE_PHONE=`cat $F_PUBLIC_SOURCE_PHONE`
 PUBLIC_PLAYER_INFO=`cat $F_PUBLIC_PLAYER_INFO | grep -v '^(#|\s*$)'`
-
-PUBLIC_PLAYER_NAMES=`awk '{print $1}' <(echo "$PLAYER_INFO")`
+PUBLIC_PLAYER_NAMES=`awk '{print $1}' <(echo "$PUBLIC_PLAYER_INFO")`
 PUBLIC_PLAYER_PHONES=`awk '{print $2}' <(echo $"")
 
 F_SECRET_PLAYER_ROLES=$SECRET/player-roles.txt
