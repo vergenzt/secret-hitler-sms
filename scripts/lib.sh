@@ -3,6 +3,7 @@
 debug() {
   source scripts/lib.sh
   set -x
+  trap undebug EXIT
   "$@"
 }
 undebug() {
