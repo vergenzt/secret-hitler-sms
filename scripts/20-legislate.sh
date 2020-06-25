@@ -2,7 +2,7 @@
 source lib.sh
 
 # who's president?
-read -p "Who's President?"
+read -p "Who's President?" PUBLIC_PRESIDENT_NAME
 # who's chancellor?
 
 # generate deck if needed
