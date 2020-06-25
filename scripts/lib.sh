@@ -8,6 +8,7 @@ PUBLIC=state/public
 
 F_SECRET_PLAYER_ROLES=$SECRET/player-roles.txt
 F_PUBLIC_SOURCE_PHONE=$PUBLIC/source-phone.txt
+F_PUBLIC_PLAYER_INFO=$PUBLIC/player-info.txt
 
 SOURCE_PHONE=`cat $F_PUBLIC_SOURCE_PHONE`
 PLAYER_INFO=`cat $PUBLIC/players-init.txt | grep -v '^(#|\s*$)'`
