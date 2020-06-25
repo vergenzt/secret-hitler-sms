@@ -42,9 +42,8 @@ await_sms_reply() {
           "msg": "started tunnel",
           "name": "command_line"
         }))
-      '
+      ' \
       | jq '.url'
-      '
   )
   echo "Done."
   echo -n "Updating Twilio callback URL... "
