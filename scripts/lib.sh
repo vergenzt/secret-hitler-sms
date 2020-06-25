@@ -33,7 +33,7 @@ send_sms() {
 await_sms_reply() {
   # set up server to listen for discard choices
   echo -n "Starting ngrok server... "
-  F_SECRET_NGROK_LOG=$SECRET/ngrok.log
+  F_SECRET_NGROK_LOG=$SECRET/ngrok.json
   (ngrok http --log=stdout --log-format=json 80 > $F_SECRET_NGROK_LOG &) 2>/dev/null
   SECRET_NGROK_URL=$(
     tail -n+0 -f $F_SECRET_NGROK_LOG \
@@ -43,7 +43,7 @@ await_sms_reply() {
           "name": "command_line"
         }))
       ' \
-      | jq '.url'
+      | jq '.url' \
       | head -n1
   )
   echo "Done."
