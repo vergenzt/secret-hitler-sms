@@ -2,7 +2,7 @@
 cd "$(dirname "$0")"
 
 SOURCE_PHONE=+19044789601
-ASSET_BASE_URL=https://raw.githubusercontent.com/vergenzt/secret-hitler-sms/master/assets
+ASSET_BASE_URL=https://raw.githubusercontent.com/vergenzt/secret-hitler-sms/master/assets/images
 ASSETS=../assets
 SECRET=../state/__SECRET__
 PUBLIC=../state/public
