@@ -16,7 +16,7 @@ send_sms() {
   twilio api:core:messages:create \
     --from "$PUBLIC_SOURCE_PHONE" \
     --to "$PUBLIC_PHONE" \
-    --body "Hi $PUBLIC_NAME! Here's your secret role and party membership cards for Secret Hitler. 🙂 Enjoy the game!" \
+    --body "" \
     --media-url "`image_url party $SECRET_PARTY`" \
     --media-url "`image_url role $SECRET_ROLE`"
 }
@@ -56,12 +56,12 @@ assign_player_roles() {
 
   # send texts
   while read PUBLIC_NAME PUBLIC_PHONE SECRET_ROLE SECRET_PARTY; do
-    twilio api:core:messages:create \
-      --from "$PUBLIC_SOURCE_PHONE" \
-      --to "$PUBLIC_PHONE" \
-      --body "Hi $PUBLIC_NAME! Here's your secret role and party membership cards for Secret Hitler. 🙂 Enjoy the game!" \
-      --media-url "`image_url party $SECRET_PARTY`" \
-      --media-url "`image_url role $SECRET_ROLE`"
+    send_sms \
+      "$PUBLIC_PHONE" \
+      "Hi $PUBLIC_NAME! Here's your secret role and party membership cards for Secret Hitler. 🙂 Enjoy the game!" \
+      "`image_url party $SECRET_PARTY`" \
+      "`image_url role $SECRET_ROLE`"
+      --media-url 
   done < <(join $F_PUBLIC_PLAYER_INFO $F_SECRET_PLAYER_ROLES | tr ',' ' ')
 }
 
