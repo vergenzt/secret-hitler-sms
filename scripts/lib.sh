@@ -5,9 +5,10 @@ IMAGES_BASE_URL=https://raw.githubusercontent.com/vergenzt/secret-hitler-sms/mas
 ASSETS=assets
 SECRET=state/__SECRET__
 PUBLIC=state/public
-SOURCE_PHONE=`cat $STATE/source-phone.txt`
 
 F_SECRET_PLAYER_ROLES=$SECRET/player-roles.txt
+
+SOURCE_PHONE=`cat $STATE/source-phone.txt`
 
 init_player_roles() {
 
