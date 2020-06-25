@@ -9,6 +9,15 @@ PUBLIC=state/public
 IMAGES_BASE_URL=https://raw.githubusercontent.com/vergenzt/secret-hitler-sms/master/$STATIC/images
 image_url() { echo "$IMAGES_BASE_URL/$1-$2.png"; }
 
+send_sms() {
+  twilio api:core:messages:create \
+    --from "$PUBLIC_SOURCE_PHONE" \
+    --to "$PUBLIC_PHONE" \
+    --body "Hi $PUBLIC_NAME! Here's your secret role and party membership cards for Secret Hitler. 🙂 Enjoy the game!" \
+    --media-url "`image_url party $SECRET_PARTY`" \
+    --media-url "`image_url role $SECRET_ROLE`"
+}
+
 F_PUBLIC_SOURCE_PHONE=$PUBLIC/source-phone.txt
 F_PUBLIC_PLAYER_INFO=$PUBLIC/player-info.txt
 F_PUBLIC_ROLES_AVAILABLE=$STATIC/roles-available.txt
@@ -73,6 +82,7 @@ legislate() {
   ensure_drawable_policy_deck
 
   SECRET_POLICIES_DRAWN=`tail -n3 "$F_SECRET_POLICY_DECK" | tr '\n' '-'`
+
 
   # listen for discard choices
   #- useful commands:
