@@ -42,7 +42,7 @@ await_sms_reply() {
           "msg": "started tunnel",
           "name": "command_line (http)"
         }))
-        | .url
+        | .url, halt
       ' \
       | head -n1
   echo "Done."
