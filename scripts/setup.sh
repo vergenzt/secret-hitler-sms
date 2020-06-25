@@ -3,6 +3,7 @@ set -x
 cd "$(dirname "$0")"
 
 PLAYERS=awk '{print $1}' ../state/public/players-init.txt
+PHONES=awk '{print $2}' ../state/public/players-init.txt
 
 # assign player roles
 gpaste \
