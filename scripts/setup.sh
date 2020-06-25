@@ -18,5 +18,5 @@ gpaste <(echo "$PNAMES") <(echo "$PLAYER_ROLES") > $SECRET/player-roles.txt
 
 # send texts
 while read PNAME PHONE ROLE; do
-
-done < join $
+  
+done < join $PUBLIC/players-init.txt $SECRET/player-roles.txt
