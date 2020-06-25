@@ -2,9 +2,11 @@ cd "$(dirname "$0")"/..
 set -x
 
 STATIC=static
-IMAGES_BASE_URL=https://raw.githubusercontent.com/vergenzt/secret-hitler-sms/master/$STATIC/images
 SECRET=state/__SECRET__
 PUBLIC=state/public
+
+IMAGES_BASE_URL=https://raw.githubusercontent.com/vergenzt/secret-hitler-sms/master/$STATIC/images
+image_url() { echo "$IMAGES_BASE_URL/$1-$2.png"; }
 
 F_PUBLIC_SOURCE_PHONE=$PUBLIC/source-phone.txt
 F_PUBLIC_PLAYER_INFO=$PUBLIC/players-init.txt
@@ -24,8 +26,6 @@ F_SECRET_POLICY_DECK=$SECRET/policy-deck.txt
 F_SECRET_POLICY_DISCARD=$SECRET/policy-discard.txt
 
 SECRET_POLICY_DECK_LENGTH=`cat $F_SECRET_POLICY_DECK 2>/dev/null | wc -l`
-
-image_url() { echo "$IMAGES_BASE_URL/$1-$2.png"; }
 
 assign_player_roles() {
   if [[ -f $SECRET_PLAYER_ROLES_F ]]; then
