@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 (return 0 2>/dev/null) || cd "$(dirname "$0")"/.. || exit 1
 debug() {
-  trap "kill $(jobs -p) &>/dev/null; set +x" EXIT SIGINT
+  trap 'kill $(jobs -p) &>/dev/null; set +x' EXIT SIGINT
   set -x
   "$@"
 }
