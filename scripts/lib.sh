@@ -24,7 +24,7 @@ send_sms() {
     --from "$PUBLIC_SOURCE_PHONE" \
     --to "$PUBLIC_PHONE" \
     --body "$SECRET_MESSAGE" \
-    `# shellcheck disable=SC2206` \
+    # shellcheck disable=SC2206 \
     ${SECRET_PHOTOS[@]/#/--media-url }
 }
 
