@@ -10,7 +10,7 @@ gpaste \
     | gshuf \
   ) \
   |  sudo tee       ../state/__SECRET__/player-roles.txt &> /dev/null
-  && sudo chmod 600 ../state/__SECRET__/players.txt
+  && sudo chmod 600 ../state/__SECRET__/player-roles.txt
 
 jq -rR ../state/__SECRET__/players.txt '
     | "twilio --to=... --body=... --media-url=..."
