@@ -37,7 +37,10 @@ await_sms_reply() {
   (ngrok http --log=stdout --log-format=json 80 > $F_SECRET_NGROK_LOG &) 2>/dev/null
   SECRET_NGROK_URL=$(
     tail -n+0 -f $F_SECRET_NGROK_LOG \
-      | jq --raw-output --unbuffered '
+      | jq --null-input --raw-output --unbuffered '
+    first(
+
+    )
         select(contains({
           "msg": "started tunnel",
           "name": "command_line"
