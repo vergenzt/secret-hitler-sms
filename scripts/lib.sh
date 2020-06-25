@@ -131,7 +131,7 @@ legislate() {
   PRESIDENT_MSG=\
     "Congratulations on the election, $PUBLIC_PRESIDENT_PREFIX $PUBLIC_PRESIDENT_NAME. "
     "Here are your policy choices. Please reply:\n"
-    " 1) to discard the left ${SECRET_POLICIES[0]} policy and pass the others (${SECRET_POLICIES[1]} and ${SECRET_POLICIES[2]}) to $PUBLIC_CHANCELLOR_NAME.
+    " 1) to discard the ${SECRET_POLICIES[0]} and pass ${SECRET_POLICIES[1]}-${SECRET_POLICIES[2]} to $PUBLIC_CHANCELLOR_NAME.
 EOF
   PRESIDENT_IMAGE=`image_url policycombo $(IFS="-"; echo "${SECRET_POLICIES[*]}")`
   send_sms "$PUBLIC_PRESIDENT_PHONE" "$PRESIDENT_MSG" "$PRESIDENT_IMAGE"
