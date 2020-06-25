@@ -10,8 +10,8 @@ IMAGES_BASE_URL=https://raw.githubusercontent.com/vergenzt/secret-hitler-sms/mas
 image_url() { echo "$IMAGES_BASE_URL/$1-$2.png"; }
 
 send_sms() {
-  PUBLIC_TO=unshift
-  SECRET_MESSAGE=unshift
+  PUBLIC_TO=shift
+  SECRET_MESSAGE=shift
   SECRET_PHOTOS=("$@")
   declare IFS=""
   twilio api:core:messages:create \
