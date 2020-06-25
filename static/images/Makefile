@@ -85,7 +85,7 @@ policy-%.png:
 # target is policies-fascist-liberal-liberal.png, then then statement below evaluates to:
 #   $ convert policy-fascist.png policy-liberal.png +append policies-fascist-liberal-liberal.png
 policies-%.png:
-	convert `eval "echo policy-{$$(echo "$*" | tr '-' ',')}.png"` +append $@
+	convert $(shell eval "echo policy-{$$(echo "$*" | tr '-' ',')}.png") +append $@
 
 board-%.png: boardpart-fascist-$*.png boardpart-liberal.png
 	convert $^ -append $@
