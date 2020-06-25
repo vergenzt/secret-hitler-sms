@@ -87,10 +87,10 @@ policy-%.png:
 policies-%.png:
 	convert `eval "echo policy-{$$(echo "$*" | tr '-' ',')}.png"` +append $@
 
-board-fascist-5or6.png:  PAGE=14
-board-fascist-7or8.png:  PAGE=15
-board-fascist-9or10.png: PAGE=16
-board-liberal.png:       PAGE=17
+boardpart-fascist-5or6.png:  PAGE=14
+boardpart-fascist-7or8.png:  PAGE=15
+boardpart-fascist-9or10.png: PAGE=16
+boardpart-liberal.png:       PAGE=17
 
-board-%.png:
+boardpart-%.png:
 	$(split-and-rotate)
