@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 (return 0 2>/dev/null) || cd "$(dirname "$0")"/.. || exit 1
 debug() {
-  set -x; "$@"; set +x
+  source scripts/lib.sh; set -x; "$@"; set +x
 }
 
 lookup() {
@@ -46,7 +46,6 @@ await_sms_reply() {
   twilio phone-numbers:update $PUBLIC_SOURCE_PHONE --sms-url=$SECRET_NGROK_URL
 
   echo "blah" | nc -l localhost 8080
-
 }
 
 F_PUBLIC_SOURCE_PHONE=$PUBLIC/source-phone.txt
