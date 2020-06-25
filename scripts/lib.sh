@@ -50,7 +50,7 @@ start_sms_reply_listener() {
 
 await_sms_reply() {
   echo -n "Listening for SMS reply... "
-  echo "<Response></Response>" | nc -l localhost 8080
+  nc -l localhost 8080 < $STATIC/twilio-empty-response.xml
   echo "Done."
 }
 
