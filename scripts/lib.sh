@@ -6,7 +6,6 @@ ASSETS=assets
 SECRET=state/__SECRET__
 PUBLIC=state/public
 
-F_SECRET_PLAYER_ROLES=$SECRET/player-roles.txt
 F_PUBLIC_SOURCE_PHONE=$PUBLIC/source-phone.txt
 F_PUBLIC_PLAYER_INFO=$PUBLIC/players-init.txt
 
