@@ -13,8 +13,6 @@ SOURCE_PHONE=`cat $F_PUBLIC_SOURCE_PHONE`
 
 assign_player_roles() {
 
-}
-
 if [[ -f $SECRET_PLAYER_ROLES_F ]]; then
   echo "Error: $SECRET_PLAYER_ROLES_F already exists."
   echo "Is a game in progress?"
@@ -22,6 +20,8 @@ if [[ -f $SECRET_PLAYER_ROLES_F ]]; then
   echo "Please delete it if you're sure you want to start a new game."
   exit 1
 fi
+
+}
 
 PLAYER_INFO=`cat $PUBLIC/players-init.txt | grep -v '^(#|\s*$)'`
 PNAMES=`awk '{print $1}' <<<$PLAYER_INFO`
