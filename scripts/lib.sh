@@ -11,8 +11,8 @@ image_url() { echo "$IMAGES_BASE_URL/$1-$2.png"; }
 F_PUBLIC_SOURCE_PHONE=$PUBLIC/source-phone.txt
 F_PUBLIC_PLAYER_INFO=$PUBLIC/players-init.txt
 
-F_STATIC_ROLES_AVAILABLE=$STATIC/roles-available.txt
-F_STATIC_POLICIES_AVAILABLE=$STATIC/policies-available.txt
+F_PUBLIC_ROLES_AVAILABLE=$STATIC/roles-available.txt
+F_PUBLIC_POLICIES_AVAILABLE=$STATIC/policies-available.txt
 
 PUBLIC_SOURCE_PHONE=`cat $F_PUBLIC_SOURCE_PHONE`
 PUBLIC_PLAYER_INFO=`cat $F_PUBLIC_PLAYER_INFO | grep -v '^(#|\s*$)'`
