@@ -72,7 +72,7 @@ legislate() {
 
   ensure_drawable_policy_deck
 
-  SECRET_POLICIES_DRAWN=`tail -n3 "$F_SECRET_POLICY_DECK"`
+  SECRET_POLICIES_DRAWN=`tail -n3 "$F_SECRET_POLICY_DECK" | tr '\n' '-'`
 
   # listen for discard choices
   #- useful commands:
