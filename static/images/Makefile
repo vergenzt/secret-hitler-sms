@@ -3,20 +3,22 @@ SHELL=bash
 
 define split-page
 	convert $(SOURCE_PDF)[$(PAGE)] \
-		-resample 300 \
+		-density 500 \
+		-resample 500 \
 		-trim \
 		-crop $(GRID) \
-		\( -clone $(RANGE) -shave 10 \) \
+		\( -clone $(RANGE) -shave 40 \) \
 		-delete 0--2 \
 		$@
 endef
 
 define split-page-and-choose
 	convert $(SOURCE_PDF)[$(PAGE)] \
-		-resample 300 \
+		-density 500 \
+		-resample 500 \
 		-trim \
 		-crop $(GRID) \
-		\( -clone $(RANGE) -shave 10 \) \
+		\( -clone $(RANGE) -shave 40 \) \
 		\( -clone -$(shell echo "$@" | tr -dc 0-9) \) \
 		-delete 0--2 \
 		$@
@@ -24,7 +26,8 @@ endef
 
 define split-and-rotate
 	convert $(SOURCE_PDF)[$(PAGE)] \
-		-resample 300 \
+		-density 500 \
+		-resample 500 \
 		-trim \
 		-shave 3 \
 		-crop 2x1@ \
