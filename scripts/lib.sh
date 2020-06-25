@@ -40,7 +40,7 @@ await_sms_reply() {
       | jq --unbuffered '
         select(contains({
           "msg": "started tunnel",
-          "name": "command_line"
+          "name": "command_line (http)"
         }))
       ' \
       | jq '.url' \
