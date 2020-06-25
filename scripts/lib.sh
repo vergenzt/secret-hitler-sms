@@ -44,7 +44,7 @@ await_sms_reply() {
       | head -n1
     )
   twilio phone-numbers:update $PUBLIC_SOURCE_PHONE --sms-url=$SECRET_NGROK_URL
-  echo "Listening for SMS reply... "
+  echo -n "Listening for SMS reply @ $SECRET_NGROK_URL... "
 
   echo "blah" | nc -l localhost 8080
 }
