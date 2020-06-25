@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 (return 0 2>/dev/null) || cd "$(dirname "$0")"/.. || exit 1
 debug() {
-  set -x
-  trap undebug EXIT
+  set - x
+  trap undebug EXIT INT
   "$@"
 }
 undebug() {
