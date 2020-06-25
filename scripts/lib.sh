@@ -133,7 +133,7 @@ legislate() {
     1) to discard the left ${SECRET_POLICIES[0]} policy and pass the others (${SECRET_POLICIES[1]} and ${SECRET_POLICIES[2]}) to $PUBLIC_CHANCELLOR_NAME.
 EOF
   PRESIDENT_IMAGE=`image_url policycombo $(IFS="-"; echo ${SECRET_POLICIES[*]})`
-  send_sms "$PUBLIC_PRESIDENT_PHONE" "$PRESIDENT_MSG" "$PRESIDENT_IMAGE"
+  echo send_sms "$PUBLIC_PRESIDENT_PHONE" "$PRESIDENT_MSG" "$PRESIDENT_IMAGE"
 
   # send to president
 
