@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 cd "$(dirname "$0")"/.. || exit 1
-set -x
+#set -x
 
 STATIC=static
 SECRET=state/__SECRET__
