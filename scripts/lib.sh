@@ -5,6 +5,8 @@ SECRET=../state/__SECRET__
 PUBLIC=../state/public
 SOURCE_PHONE=`cat $STATE/source-phone.txt`
 
+SECRET_PLAYER_ROLES_F=$SECRET/player-roles.txt
+
 ensure_drawable_policy_deck() {
 
 }
