@@ -87,14 +87,14 @@ legislate() {
 
   ensure_drawable_policy_deck
 
-  SECRET_POLICIES_DRAWN=`tail -n3 "$F_SECRET_POLICY_DECK" | tr '\n' '-'`
-
   # listen for discard choices
   #- useful commands:
   ngrok http --log=stdout --log-format=json 80
   #- parse ngrok url from log output
   #- twilio phone-numbers:update $SOURCE_PHONE --sms-url=$NGROK_URL
   #- twilio
+
+  SECRET_POLICIES_DRAWN=`tail -n3 "$F_SECRET_POLICY_DECK" | tr '\n' '-'`
 
   # send to president
 
