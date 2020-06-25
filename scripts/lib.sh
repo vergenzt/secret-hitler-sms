@@ -133,8 +133,8 @@ legislate() {
     "Congratulations on the election, $PUBLIC_PRESIDENT_PREFIX President. " \
     "Here are your policy choices.\n\n" \
     "Reply 1 to discard the left ${SECRET_POLICIES[0]} policy and pass ${SECRET_POLICIES[1]}-${SECRET_POLICIES[2]} to Chancellor $PUBLIC_CHANCELLOR_NAME.\n\n" \
-    " 2) discard ${SECRET_POLICIES[1]}; pass ${SECRET_POLICIES[0]}-${SECRET_POLICIES[2]} to Chancellor $PUBLIC_CHANCELLOR_NAME.\n\n" \
-    " 3) discard ${SECRET_POLICIES[2]}; pass ${SECRET_POLICIES[0]}-${SECRET_POLICIES[1]} to Chancellor $PUBLIC_CHANCELLOR_NAME.\n\n" \
+    "Reply 2 to discard the middle ${SECRET_POLICIES[0]} policy and pass ${SECRET_POLICIES[0]}-${SECRET_POLICIES[2]} to Chancellor $PUBLIC_CHANCELLOR_NAME.\n\n" \
+    "Reply 3 to discard the right ${SECRET_POLICIES[0]} policy and pass ${SECRET_POLICIES[0]}-${SECRET_POLICIES[1]} to Chancellor $PUBLIC_CHANCELLOR_NAME.\n\n" \
   )
   PRESIDENT_IMAGE=`image_url policycombo $(IFS="-"; echo "${SECRET_POLICIES[*]}")`
   send_sms "$PUBLIC_PRESIDENT_PHONE" "$PRESIDENT_MSG" "$PRESIDENT_IMAGE"
