@@ -53,7 +53,11 @@ assign_player_roles() {
 }
 
 ensure_drawable_policy_deck() {
-  if [[ ! -f "$F_SECRET_POLICY_DECK" -o `cat $F_SECRET_POLICY_DECK`
+  if [[ "$SECRET_POLICY_DECK_LENGTH" -lt 3 ]]; then
+
+    cat $F_STATIC_POLICIES_AVAILABLE
+
+  fi
 }
 
 legislate() {
