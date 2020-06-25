@@ -2,7 +2,7 @@
 set -x
 cd "$(dirname "$0")"
 
-ASSETS=../assets
+STATIC=../assets
 SECRET=../state/__SECRET__
 PUBLIC=../state/public
 
