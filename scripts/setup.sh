@@ -4,7 +4,7 @@ cd "$(dirname "$0")"
 
 SECRET=../state/__SECRET__
 PUBLIC=../state/public
-sudo chown root $STATE_S && sudo chmod 600 $STATE_S
+sudo chown $STATE_S && sudo chmod 600 $STATE_S
 
 PNAMES=`awk '{print $1}' $PUBLIC/players-init.txt`
 PHONES=`awk '{print $2}' $PUBLIC/players-init.txt`
