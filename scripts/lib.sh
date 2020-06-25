@@ -38,6 +38,7 @@ await_sms_reply() {
   SECRET_NGROK_URL=$(
     tail -n+0 -f $F_SECRET_NGROK_LOG \
       | grep -m1 ',"msg":"started tunnel","name":"command_line"' \
+      | head -n1 \
       | jq .url
   )
   echo "Done."
