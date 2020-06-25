@@ -12,7 +12,10 @@ gpaste \
   |  sudo tee       ../state/__SECRET__/player-roles.txt &> /dev/null
   && sudo chmod 600 ../state/__SECRET__/player-roles.txt
 
-sudo jq -rR ../state/__SECRET__/players.txt '
+while read
+
+<  ../state/__SECRET__/players.txt '
+
     | "twilio --to=... --body=... --media-url=..."
     | xargs -n1 \{\}
   ''
