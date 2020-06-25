@@ -51,14 +51,9 @@ start_sms_reply_listener() {
 
 await_sms_reply() {
   echo -n "Listening for SMS reply... "
-  node -r express -r gavel -e '
-
-  '
-  PARSED_RESP=`echo "$RESP" | node '
-    ((std))
-  '`
+  TWILIO_RESP=`nc -l localhost 8080 < $STATIC/twilio-empty-response.xml`
   echo "Done."
-  echo "$PARSED_RESP"
+  echo "$TWILIO_RESP"
 }
 
 F_PUBLIC_SOURCE_PHONE=$PUBLIC/source-phone.txt
