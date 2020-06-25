@@ -1,9 +1,10 @@
 SOURCE_PDF=Secret_Hitler_PnP_color_with_backface.pdf
 SHELL=bash
+PDF_DENSITY=300
 
 define split-page
 	convert \
-		-density 500 \
+		-density $(PDF_DENSITY) \
 		$(SOURCE_PDF)[$(PAGE)] \
 		-trim \
 		-crop $(GRID) \
@@ -14,7 +15,7 @@ endef
 
 define split-page-and-choose
 	convert \
-		-density 500 \
+		-density $(PDF_DENSITY) \
 		$(SOURCE_PDF)[$(PAGE)] \
 		-trim \
 		-crop $(GRID) \
@@ -26,7 +27,7 @@ endef
 
 define split-and-rotate
 	convert \
-		-density 500 \
+		-density $(PDF_DENSITY) \
 		$(SOURCE_PDF)[$(PAGE)] \
 		-trim \
 		-shave 3 \
