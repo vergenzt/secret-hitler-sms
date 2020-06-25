@@ -22,5 +22,4 @@ while read PNAME PHONE ROLE; do
     --to "$PHONE" \
     --body "Hi $PNAME! Here's your role for Secret Hitler:" \
     --media-url "$ASSET_BASE_URL/player-$ROLE.png"
-  echo "Hi $PNAME! Your phone is $PHONE and role is $ROLE."
 done < <(join $PUBLIC/players-init.txt $SECRET/player-roles.txt)
