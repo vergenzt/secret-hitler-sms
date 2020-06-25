@@ -29,8 +29,9 @@ assign_player_roles() {
     exit 1
   fi
 
+  # assign
   SECRET_PLAYER_ROLES=`gpaste <(echo "$PUBLIC_PLAYER_NAMES") <(echo "$PUBLIC_ROLES_ACTIVE" | gshuf)`
-  
+
   # save
   echo "$PLAYER_ROLES" > $SECRET/player-roles.txt
 }
