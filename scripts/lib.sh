@@ -128,7 +128,7 @@ legislate() {
   ensure_drawable_policy_deck
 
   tail -n3 "$F_SECRET_POLICY_DECK" | readarray -t SECRET_POLICIES
-  read PRESIDENT_MSG <<EOF | tr '\n' ' '
+  read PRESIDENT_MSG <<EOF | sed 's/^ +| +$//g' | tr '\n' ' '
     Congratulations on the election, $PUBLIC_PRESIDENT_PREFIX $PUBLIC_PRESIDENT_NAME.
     Here are your policy choices. Reply to choose one.
     Reply 1 to discard $()
