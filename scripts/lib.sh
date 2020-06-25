@@ -14,6 +14,7 @@ SOURCE_PHONE=`cat $F_PUBLIC_SOURCE_PHONE`
 init_player_roles() {
 
 }
+
 if [[ -f $SECRET_PLAYER_ROLES_F ]]; then
   echo "Error: $SECRET_PLAYER_ROLES_F already exists."
   echo "Is a game in progress?"
