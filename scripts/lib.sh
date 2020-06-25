@@ -11,7 +11,7 @@ F_PUBLIC_SOURCE_PHONE=$PUBLIC/source-phone.txt
 F_PUBLIC_PLAYER_INFO=$PUBLIC/player-info.txt
 
 SOURCE_PHONE=`cat $F_PUBLIC_SOURCE_PHONE`
-PLAYER_INFO=`cat $PUBLIC/players-init.txt | grep -v '^(#|\s*$)'`
+PLAYER_INFO=`cat $F_PUBLIC_PLAYER_INFO | grep -v '^(#|\s*$)'`
 
 assign_player_roles() {
 
