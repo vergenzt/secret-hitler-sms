@@ -4,9 +4,9 @@ cd "$(dirname "$0")"
 
 # assign player roles
 gpaste \
-  ../state/public/players-init.txt \
+  <( cat ../state/public/players-init.txt | awk '{print $1}' ) \
   <( cat ../assets/player-slots.txt \
-    | head -n $(wc -l ../state/public/players.txt | awk '{print $1}') \
+    | head -n $(wc -l ../state/public/players.txt') \
     | gshuf \
   ) \
   |  sudo tee       ../state/__SECRET__/player-roles.txt &> /dev/null
