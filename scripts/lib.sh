@@ -50,8 +50,8 @@ start_sms_reply_listener() {
 
 await_sms_reply() {
   echo -n "Listening for SMS reply... "
-
   echo "blah" | nc -l localhost 8080
+  echo "Done."
 }
 
 F_PUBLIC_SOURCE_PHONE=$PUBLIC/source-phone.txt
