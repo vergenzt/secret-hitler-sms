@@ -91,8 +91,8 @@ legislate() {
   #- useful commands:
 
   F_SECRET_NGROK_LOG=$SECRET/ngrok.log
-  ngrok http --log=stdout --log-format=json 80 > $F_SECRET_NGROK_LOG
-  jq --unbuffered 'select()'
+  ngrok http --log=stdout --log-format=json 80 > $F_SECRET_NGROK_LOG &
+  jq --unbuffered 'select(contains({ "msg": "started tunnel", "name": "command_line"})) | .url'
 
   #- parse ngrok url from log output
   #- twilio phone-numbers:update $SOURCE_PHONE --sms-url=$NGROK_URL
