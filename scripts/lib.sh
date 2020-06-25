@@ -53,3 +53,18 @@ assign_player_roles() {
 ensure_drawable_policy_deck() {
 
 }
+
+legislate() {
+# who's president?
+PUBLIC_PLAYER_NAMES_PROMPT=`echo "$PUBLIC_PLAYER_NAMES" | tr '\n' '/'`
+read -p "Who's President? ($PUBLIC_PLAYER_NAMES_PROMPT): " PUBLIC_PRESIDENT_NAME
+read -p "Who's Chancellor? ($PUBLIC_PLAYER_NAMES_PROMPT): " PUBLIC_PRESIDENT_NAME
+
+# generate deck if needed
+ensure_drawable_policy_deck
+
+# draw top 3
+tail -n3 $F_SECRET_POLICY_DECK
+
+
+}
