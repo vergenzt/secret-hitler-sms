@@ -12,7 +12,7 @@ PUBLIC=../state/public
 
 # draw top 3
 
-# await discard choice
+# listen for discard choice
 #- useful commands:
 ngrok http --log=stdout --log-format=json 80
 #- parse ngrok url from log output
@@ -21,6 +21,7 @@ ngrok http --log=stdout --log-format=json 80
 
 # send to president
 
+# await discard choice
 
 # discard
 
