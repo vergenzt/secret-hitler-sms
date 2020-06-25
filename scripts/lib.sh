@@ -20,7 +20,6 @@ PUBLIC_PLAYER_PHONES=`awk '{print $2}' <(echo "$PUBLIC_PLAYER_INFO")`
 F_SECRET_PLAYER_ROLES=$SECRET/player-roles.txt
 
 assign_player_roles() {
-
   if [[ -f $SECRET_PLAYER_ROLES_F ]]; then
     echo "Error: $SECRET_PLAYER_ROLES_F already exists."
     echo -e "Is a game in progress?\n"
