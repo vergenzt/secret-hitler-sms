@@ -93,7 +93,9 @@ legislate() {
   F_SECRET_NGROK_LOG=$SECRET/ngrok.log
   ngrok http --log=stdout --log-format=json 80 > $F_SECRET_NGROK_LOG &
   tail -f $F_SECRET_NGROK_LOG \
-    | jq --unbuffered 'select(contains({ "msg": "started tunnel", "name": "command_line"})) | .url' \
+    | jq --unbuffered '
+      select(contains({ "msg": "started tunnel", "name": "command_line"}))
+      | .url' \
     | head -n1
 
   #- parse ngrok url from log output
