@@ -12,6 +12,8 @@ F_PUBLIC_PLAYER_INFO=$PUBLIC/players-init.txt
 PUBLIC_SOURCE_PHONE=`cat $F_PUBLIC_SOURCE_PHONE`
 PUBLIC_PLAYER_INFO=`cat $F_PUBLIC_PLAYER_INFO | grep -v '^(#|\s*$)'`
 
+F_SECRET_PLAYER_ROLES=$SECRET/player-roles.txt
+
 assign_player_roles() {
 
   if [[ -f $SECRET_PLAYER_ROLES_F ]]; then
@@ -23,7 +25,7 @@ assign_player_roles() {
 
 }
 
-PNAMES=`awk '{print $1}' <<<$PLAYER_INFO`
+PUBLIC_PLAYER_NAMES=`awk '{print $1}' <<<$PLAYER_INFO`
 PHONES=`awk '{print $2}' <<<$PLAYER_INFO`
 
 NUM_PLAYERS=`cat $PUBLIC/players-init.txt | wc -l`
