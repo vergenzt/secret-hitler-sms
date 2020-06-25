@@ -8,7 +8,7 @@ SECRET=../state/__SECRET__
 PUBLIC=../state/public
 
 test ! -f $SECRET/player-roles.txt || ( \
-  echo "$SECRET/player-roles.txt already exists. Is a game in progress?"
+  echo "$SECRET/player-roles.txt already exists. Is a game in progress?" \
 
 PNAMES=`awk '{print $1}' $PUBLIC/players-init.txt`
 PHONES=`awk '{print $2}' $PUBLIC/players-init.txt`
