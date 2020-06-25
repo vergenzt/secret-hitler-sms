@@ -131,8 +131,8 @@ legislate() {
   SECRET_POLICIES=($(tail -n3 "$F_SECRET_POLICY_DECK"))
   PRESIDENT_MSG=$(echo -e \
     "Congratulations on the election, $PUBLIC_PRESIDENT_PREFIX President. " \
-    "Here are your policy choices.
-    " 1) discard ${SECRET_POLICIES[0]}; pass ${SECRET_POLICIES[1]}-${SECRET_POLICIES[2]} to Chancellor $PUBLIC_CHANCELLOR_NAME.\n\n" \
+    "Here are your policy choices.\n\n" \
+    "Reply 1 to discard the left ${SECRET_POLICIES[0]} policy and pass ${SECRET_POLICIES[1]}-${SECRET_POLICIES[2]} to Chancellor $PUBLIC_CHANCELLOR_NAME.\n\n" \
     " 2) discard ${SECRET_POLICIES[1]}; pass ${SECRET_POLICIES[0]}-${SECRET_POLICIES[2]} to Chancellor $PUBLIC_CHANCELLOR_NAME.\n\n" \
     " 3) discard ${SECRET_POLICIES[2]}; pass ${SECRET_POLICIES[0]}-${SECRET_POLICIES[1]} to Chancellor $PUBLIC_CHANCELLOR_NAME.\n\n" \
   )
