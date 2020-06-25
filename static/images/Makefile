@@ -2,9 +2,9 @@ SOURCE_PDF=Secret_Hitler_PnP_color_with_backface.pdf
 SHELL=bash
 
 define split-page
-	convert $(SOURCE_PDF)[$(PAGE)] \
+	convert \
 		-density 500 \
-		-resample 500 \
+		$(SOURCE_PDF)[$(PAGE)] \
 		-trim \
 		-crop $(GRID) \
 		\( -clone $(RANGE) -shave 40 \) \
