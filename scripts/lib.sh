@@ -35,7 +35,7 @@ await_sms_reply() {
   echo -n "Starting ngrok server... "
   F_SECRET_NGROK_LOG=$SECRET/ngrok.json
   (ngrok http --log=stdout --log-format=json 8080 > $F_SECRET_NGROK_LOG &) 2>/dev/null
-  sleep 5
+  sleep 5 # workaround cause tail -f way wasn't terminating
   SECRET_NGROK_URL=$(
     cat $F_SECRET_NGROK_LOG \
       | grep ',"msg":"started tunnel","name":"command_line"' \
