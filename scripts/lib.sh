@@ -20,6 +20,8 @@ PUBLIC_NUM_PLAYERS=`cat $F_PUBLIC_PLAYER_INFO | wc -l`
 PUBLIC_ROLES_ACTIVE=`head -n $PUBLIC_NUM_PLAYERS $F_STATIC_ROLES_AVAILABLE`
 
 F_SECRET_PLAYER_ROLES=$SECRET/player-roles.txt
+F_SECRET_POLICY_DECK=$SECRET/policy-deck.txt
+F_SECRET_POLICY_DISCARD=$SECRET/policy-discard.txt
 
 assign_player_roles() {
   if [[ -f $SECRET_PLAYER_ROLES_F ]]; then
