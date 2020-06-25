@@ -4,7 +4,8 @@ cd "$(dirname "$0")"
 
 # assign player roles
 gpaste \
-  <( cat ../state/public/players-init.txt | awk '{print $1}' ) \
+  <( cat ../state/public/players-init.txt \
+    | awk '{print $1}' ) \
   <( cat ../assets/player-slots.txt \
     | head -n $(wc -l ../state/public/players.txt) \
     | gshuf \
