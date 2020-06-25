@@ -4,6 +4,7 @@ cd "$(dirname "$0")"
 
 SECRET=../state/__SECRET__
 PUBLIC=../state/public
+
 sudo chown root $SECRET && sudo chmod 600 $SECRET
 
 PNAMES=`awk '{print $1}' $PUBLIC/players-init.txt`
