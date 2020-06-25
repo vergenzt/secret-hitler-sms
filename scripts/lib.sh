@@ -20,7 +20,6 @@ PUBLIC_NUM_PLAYERS=`cat $F_PUBLIC_PLAYER_INFO | wc -l`
 PUBLIC_ROLES_ACTIVE=`head -n $PUBLIC_NUM_PLAYERS $F_STATIC_ROLES_AVAILABLE`
 
 F_SECRET_PLAYER_ROLES=$SECRET/player-roles.txt
-SECRET_PLAYER_ROLES=
 
 assign_player_roles() {
   if [[ -f $SECRET_PLAYER_ROLES_F ]]; then
@@ -30,9 +29,9 @@ assign_player_roles() {
     exit 1
   fi
 
-}
 
 SECRET_PLAYER_ROLES=`gpaste <(echo "$PUBLIC_PLAYER_NAMES") <(echo "$PUBLIC_ROLES_ACTIVE" | gshuf)`
+}
 
 NUM_PLAYERS=`cat $PUBLIC/players-init.txt | wc -l`
 ACTIVE_ROLES=`head -n $NUM_PLAYERS $STATIC/roles-available.txt`
