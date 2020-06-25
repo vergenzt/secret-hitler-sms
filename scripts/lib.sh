@@ -130,7 +130,7 @@ legislate() {
   SECRET_POLICIES=($(tail -n3 "$F_SECRET_POLICY_DECK"))
   PRESIDENT_MSG=\
     "Congratulations on the election, $PUBLIC_PRESIDENT_PREFIX $PUBLIC_PRESIDENT_NAME. "
-    "Here are your policy choices. Please reply:
+    "Here are your policy choices. Please reply:\n
     1) to discard the left ${SECRET_POLICIES[0]} policy and pass the others (${SECRET_POLICIES[1]} and ${SECRET_POLICIES[2]}) to $PUBLIC_CHANCELLOR_NAME.
 EOF
   PRESIDENT_IMAGE=`image_url policycombo $(IFS="-"; echo "${SECRET_POLICIES[*]}")`
