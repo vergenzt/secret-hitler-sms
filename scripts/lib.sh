@@ -122,7 +122,6 @@ legislate() {
 
   if [[ "$1" != "-f" && "$PUBLIC_PRESIDENT_NAME" = "$PUBLIC_CHANCELLOR_NAME" ]]; then
     echo "Error: President must be different than chancellor!"
-    exit 1
   fi
 
   ensure_drawable_policy_deck
