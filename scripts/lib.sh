@@ -28,7 +28,7 @@ SECRET_POLICY_DECK_LENGTH=`cat $F_SECRET_POLICY_DECK 2>/dev/null | wc -l`
 
 assign_player_roles() {
   if [[ -f $F_SECRET_PLAYER_ROLES ]]; then
-    echo "Error: $SECRET_PLAYER_ROLES_F already exists."
+    echo "Error: $F_SECRET_PLAYER_ROLES already exists."
     echo -e "Is a game in progress?\n"
     echo "Please delete it if you're sure you want to start a new game."
     exit 1
@@ -46,7 +46,7 @@ assign_player_roles() {
       --from "$PUBLIC_SOURCE_PHONE" \
       --to "$PUBLIC_PHONE" \
       --body "Hi $PUBLIC_NAME! Here's your secret role and party membership cards for Secret Hitler. 🙂 Enjoy the game!" \
-      --media-url `image_url party $SECRET_PARTY` \
+      --media-url "`image_url party $SECRET_PARTY`" \
       --media-url `image_url role $SECRET_ROLE`
   done < <(join $F_PUBLIC_PLAYER_INFO $F_SECRET_PLAYER_ROLES | tr ':' ' ')
 }
