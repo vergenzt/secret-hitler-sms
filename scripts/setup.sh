@@ -15,3 +15,5 @@ PLAYER_ROLES=`gpaste <(echo "$PNAMES") <(echo "$ACTIVE_ROLES" | gshuf)`
 
 # save roles
 gpaste <(echo "$PNAMES") <(echo "$PLAYER_ROLES")` > $SECRET/player-roles.txt
+
+# send texts
