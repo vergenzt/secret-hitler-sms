@@ -87,7 +87,7 @@ legislate() {
 
   ensure_drawable_policy_deck
 
-  # listen for discard choices
+  # set up server to listen for discard choices
   #- useful commands:
   ngrok http --log=stdout --log-format=json 80
   #- parse ngrok url from log output
