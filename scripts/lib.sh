@@ -89,7 +89,6 @@ legislate() {
 
   SECRET_POLICIES_DRAWN=`tail -n3 "$F_SECRET_POLICY_DECK" | tr '\n' '-'`
 
-
   # listen for discard choices
   #- useful commands:
   ngrok http --log=stdout --log-format=json 80
