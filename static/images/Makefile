@@ -31,7 +31,7 @@ define split-and-rotate
 		$@
 endef
 
-all: roles parties policies boards
+all: roles parties policies policy-combos boards 
 .INTERMEDIATE: role-hitler.png
 
 roles: $(shell echo role-{fascist-{1..3},hitler,liberal-{1..6}}.png)
