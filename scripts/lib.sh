@@ -17,7 +17,7 @@ send_sms() {
   twilio api:core:messages:create \
     --from "$PUBLIC_SOURCE_PHONE" \
     --to "$PUBLIC_PHONE" \
-    --body "" \
+    --body "$SECRET_MESSAGE" \
     ${ARGS[@]/#/--media-url }
 }
 
