@@ -29,8 +29,7 @@ assign_player_roles() {
     exit 1
   fi
 
-
-SECRET_PLAYER_ROLES=`gpaste <(echo "$PUBLIC_PLAYER_NAMES") <(echo "$PUBLIC_ROLES_ACTIVE" | gshuf)`
+  SECRET_PLAYER_ROLES=`gpaste <(echo "$PUBLIC_PLAYER_NAMES") <(echo "$PUBLIC_ROLES_ACTIVE" | gshuf)`
 }
 
 NUM_PLAYERS=`cat $PUBLIC/players-init.txt | wc -l`
