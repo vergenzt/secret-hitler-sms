@@ -16,7 +16,7 @@ PUBLIC_PLAYER_PHONES=`awk '{print $2}' <(echo "$PUBLIC_PLAYER_INFO")`
 
 F_SECRET_PLAYER_ROLES=$SECRET/player-roles.txt
 
-NUM_PLAYERS=`cat $PUBLIC/players-init.txt | wc -l`
+NUM_PLAYERS=`cat $F_PUBLIC_PLAYER_INFO | wc -l`
 ACTIVE_ROLES=`head -n $NUM_PLAYERS $ASSETS/roles-available.txt`
 PLAYER_ROLES=`gpaste <(echo $PNAMES) <(echo "$ACTIVE_ROLES" | gshuf)`
 
