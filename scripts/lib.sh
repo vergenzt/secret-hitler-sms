@@ -140,11 +140,6 @@ legislate() {
   PRESIDENT_IMAGE=`image_url policycombo $(IFS="-"; echo "${SECRET_POLICIES[*]}")`
   send_sms "$PUBLIC_PRESIDENT_PHONE" "$PRESIDENT_MSG" "$PRESIDENT_IMAGE"
 
-
-  # send to president
-
-  # await discard choice
-
   # discard
 
   # send remainder to chancellor
