@@ -65,7 +65,8 @@ legislate() {
 
   if [[ "$PUBLIC_PRESIDENT_NAME" = "$PUBLIC_CHANCELLOR_NAME" ]]; then
     echo "Error: President must be different than chancellor!"
-  end
+    exit 1
+  fi
 
   # generate deck if needed
   ensure_drawable_policy_deck
