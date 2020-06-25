@@ -30,14 +30,14 @@ assign_player_roles() {
   fi
 
   SECRET_PLAYER_ROLES=`gpaste <(echo "$PUBLIC_PLAYER_NAMES") <(echo "$PUBLIC_ROLES_ACTIVE" | gshuf)`
+# save roles
+echo "$PLAYER_ROLES" > $SECRET/player-roles.txt
 }
 
 NUM_PLAYERS=`cat $PUBLIC/players-init.txt | wc -l`
 ACTIVE_ROLES=`head -n $NUM_PLAYERS $STATIC/roles-available.txt`
 PLAYER_ROLES=`gpaste <(echo $PNAMES) <(echo "$ACTIVE_ROLES" | gshuf)`
 
-# save roles
-echo "$PLAYER_ROLES" > $SECRET/player-roles.txt
 
 # send texts
 while read PNAME PHONE ROLE PARTY; do
