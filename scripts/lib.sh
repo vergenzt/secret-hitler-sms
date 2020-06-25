@@ -10,6 +10,7 @@ IMAGES_BASE_URL=https://raw.githubusercontent.com/vergenzt/secret-hitler-sms/mas
 image_url() { echo "$IMAGES_BASE_URL/$1-$2.png"; }
 
 send_sms() {
+  set -x
   PUBLIC_TO=shift
   SECRET_MESSAGE=shift
   SECRET_PHOTOS=("$@")
