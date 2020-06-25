@@ -50,7 +50,7 @@ await_sms_reply() {
   echo -n "Updating Twilio callback URL... "
   twilio phone-numbers:update $PUBLIC_SOURCE_PHONE --sms-url=$SECRET_NGROK_URL
   echo "Done."
-  echo -n "Listening for SMS reply @ $SECRET_NGROK_URL... "
+  echo -n "Listening for SMS reply... "
 
   echo "blah" | nc -l localhost 8080
 }
