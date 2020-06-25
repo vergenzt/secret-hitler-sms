@@ -25,9 +25,9 @@ define split-page-and-choose
 endef
 
 define split-and-rotate
-	convert $(SOURCE_PDF)[$(PAGE)] \
+	convert \
 		-density 500 \
-		-resample 500 \
+		$(SOURCE_PDF)[$(PAGE)] \
 		-trim \
 		-shave 3 \
 		-crop 2x1@ \
