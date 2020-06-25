@@ -98,7 +98,8 @@ legislate() {
         "msg": "started tunnel",
         "name": "command_line"
       }))
-      | .url' \
+      | .url
+    ' \
     | head -n1
 
   #- parse ngrok url from log output
