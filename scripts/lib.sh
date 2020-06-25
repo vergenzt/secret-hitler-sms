@@ -13,13 +13,12 @@ SOURCE_PHONE=`cat $F_PUBLIC_SOURCE_PHONE`
 
 assign_player_roles() {
 
-if [[ -f $SECRET_PLAYER_ROLES_F ]]; then
-  echo "Error: $SECRET_PLAYER_ROLES_F already exists."
-  echo "Is a game in progress?"
-  echo
-  echo "Please delete it if you're sure you want to start a new game."
-  exit 1
-fi
+  if [[ -f $SECRET_PLAYER_ROLES_F ]]; then
+    echo "Error: $SECRET_PLAYER_ROLES_F already exists."
+    echo -e "Is a game in progress?\n"
+    echo "Please delete it if you're sure you want to start a new game."
+    exit 1
+  fi
 
 }
 
