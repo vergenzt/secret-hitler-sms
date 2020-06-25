@@ -7,7 +7,7 @@ SECRET=state/__SECRET__
 PUBLIC=state/public
 SOURCE_PHONE=`cat $STATE/source-phone.txt`
 
-SECRET_PLAYER_ROLES_F=$SECRET/player-roles.txt
+F_SECRET_PLAYER_ROLES=$SECRET/player-roles.txt
 
 init_player_roles() {
 
