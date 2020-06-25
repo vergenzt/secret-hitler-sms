@@ -75,7 +75,7 @@ policy-%:
 # target is policies-fascist-liberal-liberal.png, then then statement below evaluates to:
 #   $ convert policy-fascist.png policy-liberal.png +append policies-fascist-liberal-liberal.png
 policies-%.png:
-	convert policy-`eval "echo {$$(echo "$*" | tr '-' ',')}.png"` +append $@
+	convert `eval "echo policy-{$$(echo "$*" | tr '-' ',')}.png"` +append $@
 
 board-fascist-5or6.png:  PAGE=14
 board-fascist-7or8.png:  PAGE=15
