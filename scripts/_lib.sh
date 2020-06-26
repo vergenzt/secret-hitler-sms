@@ -64,7 +64,7 @@ ensure_drawable_policy_deck() {
 draw_cards() {
   N=$1; FROM_DECK=$2; TO_DECK=$3
   awk "NR <= $N { print $0 }" "$FROM_DECK" >> "$TO_DECK"
-  awk "NR > $N { print $0 }" "$FROM_DECK" | sponge > "$FROM_DECK"
+  awk "NR >  $N { print $0 }" "$FROM_DECK" | sponge > "$FROM_DECK"
 }
 
 # remove 1 card from position $I of $FROM_DECK and append to tail of $TO_DECK
