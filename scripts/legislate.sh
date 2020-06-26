@@ -105,4 +105,16 @@ legislate() {
   unset P1 P2
   PUBLIC_POLICY_PASSED=`cat "$F_SECRET_POLICY_OPTIONS"`
 
+  while read PUBLIC_NAME PUBLIC_PHONE SECRET_ROLE SECRET_PARTY; do
+    send_sms \
+      "$PUBLIC_PHONE" \
+      "Hi $PUBLIC_NAME! Here's your SECRET (🤫) role and party membership cards for Secret Hitler. 🙂 Enjoy the game!" \
+      "`image_url party $SECRET_PARTY`" \
+      "`image_url role $SECRET_ROLE`"
+  done < <(\
+    gpaste \
+    <(echo "$PUBLIC_PLAYER_NAMES") \
+    <(echo "$PUBLIC_PLAYER_PHONES") \
+    <(echo "$SECRET_PLAYER_ROLES" | tr ':' ' ') \
+  )
 }
