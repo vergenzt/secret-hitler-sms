@@ -6,5 +6,5 @@ source scripts/__lib.sh
 while [[ "$RESET" != "RESET" ]]; do
   read -p "To reset game state, please type RESET: " RESET
 done
-rm -f $SECRET/{policy-{deck,options,discard,record},player-roles}.txt
+rm -f $SECRET/{policy-{deck,options,discard},player-roles}.txt
 rm -f $PUBLIC/policies-enacted.txt
