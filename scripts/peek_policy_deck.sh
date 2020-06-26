@@ -7,6 +7,7 @@ while [[ -z "$PEEKER" || "$PEEKER" != "$PEEKER_CONFIRM" ]]; do
   read -p "Type again to confirm: " PEEKER_CONFIRM
 done
 
+ensure_drawable_policy_deck
 echo -n "Sending preview of top three policies to $PEEKER... "
 PEEKER_PHONE=$(lookup "$PUBLIC_PLAYER_PHONES" "$PUBLIC_PLAYER_NAMES" "$PEEKER")
 PEEKER_MSG="Here are the current top three policies on the policy deck."
