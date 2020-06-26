@@ -28,8 +28,9 @@ await_sms_reply_from() {
 
     if [[ "$SMS_FROM" = "$1" ]]; then
       echo "$SMS_BODY"
+      break
     else
-      :
+
     fi
   done
   echo "Done."
