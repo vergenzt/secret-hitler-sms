@@ -34,8 +34,6 @@ F_SECRET_POLICY_DISCARD=$SECRET/policy-discard.txt
 
 F_SECRET_NGROK_LOG=$SECRET/ngrok.json
 
-SECRET_POLICY_DECK_LENGTH=`cat $F_SECRET_POLICY_DECK 2>/dev/null | wc -l`
-
 # shellcheck disable=SC2206
 send_sms() {
   PUBLIC_PHONE="$1"
@@ -48,6 +46,10 @@ send_sms() {
     --body "$SECRET_MESSAGE" \
     ${SECRET_PHOTOS[@]/#/--media-url } \
     >/dev/null
+}
+
+policy_deck_length() {
+  cat $F_SECRET_POLICY_DECK 2>/dev/null | wc -l
 }
 
 ensure_drawable_policy_deck() {
