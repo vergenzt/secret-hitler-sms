@@ -14,10 +14,11 @@ echo -n "Assigning player roles... "
 SECRET_PLAYER_ROLES=`echo "$PUBLIC_ROLES_ACTIVE" | gshuf | tee $F_SECRET_PLAYER_ROLES`
 echo "Done."
 
+echo -n
 while read PUBLIC_NAME PUBLIC_PHONE SECRET_ROLE SECRET_PARTY; do
   send_sms \
     "$PUBLIC_PHONE" \
-    "Hi $PUBLIC_NAME! Here's your secret role and party membership cards for Secret Hitler. 🙂 Enjoy the game!" \
+    "Hi $PUBLIC_NAME! Here's your SECRET role and party membership cards for Secret Hitler. 🙂 Enjoy the game!" \
     "`image_url party $SECRET_PARTY`" \
     "`image_url role $SECRET_ROLE`"
 done < <(\
