@@ -53,6 +53,7 @@ legislate() {
   ensure_drawable_policy_deck
 
   SECRET_POLICY_OPTIONS=("$(head -n3 "$F_SECRET_POLICY_DECK")")
+  echo
   tail -n+3 "$F_SECRET_POLICY_DECK" | sponge > "$F_SECRET_POLICY_DECK"
 
   PRESIDENT_MSG=$(echo -e \
