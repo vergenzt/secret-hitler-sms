@@ -4,7 +4,6 @@ trap "kill 0" EXIT
 source scripts/_lib.sh
 
 start_sms_reply_listener() {
-  # set up server to listen for discard choices
   echo -n "Starting ngrok server... "
   F_SECRET_NGROK_LOG=$SECRET/ngrok.json
   ngrok http --log=stdout --log-format=json 8080 > $F_SECRET_NGROK_LOG &
