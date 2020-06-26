@@ -3,4 +3,4 @@
 trap "kill 0" EXIT
 source scripts/__lib.sh
 
-rm -f $SECRET/policy-{deck,options,discard,record}.txt
+rm -f $SECRET/{policy-{deck,options,discard,record},player-roles}.txt
