@@ -19,7 +19,7 @@ start_sms_reply_tunnel() {
 await_sms_reply_from() {
   if [[ -z "$1" ]]; then
     echo "Error: No phone number provided to expect an SMS from!"
-    exit 1
+    return 1
   fi
   TWILIO_RESP=""
   echo -n "Listening for SMS reply... "
