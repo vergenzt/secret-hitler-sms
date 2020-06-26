@@ -44,11 +44,11 @@ legislate() {
   PUBLIC_CHANCELLOR_PHONE=`lookup "$PUBLIC_PLAYER_INFO" "$PUBLIC_CHANCELLOR_NAME" 2`
   PUBLIC_CHANCELLOR_PREFIX=`lookup "$PUBLIC_PLAYER_INFO" "$PUBLIC_CHANCELLOR_NAME" 3`
 
-  # if [[ "$1" != "-f" && "$PUBLIC_PRESIDENT_NAME" = "$PUBLIC_CHANCELLOR_NAME" ]]; then
-  #   echo "Error: President must be different than chancellor!"
-  #   return
-  # fi
-  #
+  if [[ "$1" != "-f" && "$PUBLIC_PRESIDENT_NAME" = "$PUBLIC_CHANCELLOR_NAME" ]]; then
+    echo "Error: President must be different than chancellor!"
+    return
+  fi
+  
   ensure_drawable_policy_deck
 
   SECRET_POLICIES=($(tail -n3 "$F_SECRET_POLICY_DECK"))
