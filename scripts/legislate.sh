@@ -37,6 +37,7 @@ await_sms_reply_from() {
         echo "Received SMS from wrong number. Expected: $SMS_FROM_EXPECTED. Received from: $SMS_FROM." >/dev/stderr
         break;;
     esac
+    sleep 1
   done
 }
 
