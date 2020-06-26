@@ -103,7 +103,7 @@ legislate() {
 
   move_card "$CHANCELLOR_RESPONSE" "$F_SECRET_POLICY_OPTIONS" "$F_SECRET_POLICY_DISCARD"
   unset P1 P2
-  read P1 <(cat "$F_SECRET_POLICY_OPTIONS")
+  read PUBLIC_POLICY_PASSED <(cat "$F_SECRET_POLICY_OPTIONS")
 
   # send remainder to everybody else
 
