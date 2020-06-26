@@ -32,8 +32,8 @@ define split-and-rotate
 		-trim \
 		-shave 12x15 \
 		-crop 2x1@ \
-		\( -clone -2 -rotate -90 -shave 2 \) \
-		\( -clone -2 -rotate  90 -shave 2 \) \
+		\( -clone -2 -rotate -90 -shave 0x4 \) \
+		\( -clone -2 -rotate  90 -shave 0x4 \) \
 		-delete 0-1 \
 		+append \
 		$@
