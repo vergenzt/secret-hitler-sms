@@ -9,3 +9,4 @@ done
 
 echo -n "Sending preview of top three policies to $PEEKER... "
 PEEKER_PHONE=$(lookup "$PUBLIC_PLAYER_PHONES" "$PUBLIC_PLAYER_NAMES" "$PEEKER")
+PEEKER_MSG="Here are the current top three policies on the policy deck."
