@@ -61,7 +61,7 @@ legislate() {
     fi
 
     read -p "Continue? (Y/N) " CONTINUE
-    case CONTINUE in
+    case $CONTINUE in
       y|Y|yes|YES) break;
     esac
   done
