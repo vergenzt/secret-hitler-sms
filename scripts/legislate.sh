@@ -8,7 +8,8 @@ start_sms_reply_listener() {
   ngrok http --log=stdout --log-format=json 8080 \
     | tee $F_SECRET_NGROK_LOG \
     | jq --raw-output --unbuffered 'select(.msg == "started tunnel" and .name == "command_line") | .url' \
-    | xargs -n1 twilio phone-numbers:update $PUBLIC_SOURCE_PHONE --sms-url=\{\} >/dev/null
+    | xargs -n1 twilio phone-numbers:update $PUBLIC_SOURCE_PHONE --sms-url=\{\} >/dev/null \
+    &
 }
 
 await_sms_reply_from() {
