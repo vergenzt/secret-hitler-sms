@@ -70,7 +70,7 @@ draw_cards() {
 # move 1 card from position $I of $FROM_DECK and append to tail of $TO_DECK
 move_card() {
   I=$1; FROM_DECK=$2; TO_DECK=$3
-  awk "NR == $I { print \$0 }" "$FROM_DECK" >> "$TO_DECK"
+  cat "$FROM_DECK" | awk "NR == $I { print \$0 }" "$FROM_DECK" >> "$TO_DECK"
   awk "NR != $I { print \$0 }" "$FROM_DECK" | sponge > "$FROM_DECK"
 }
 
