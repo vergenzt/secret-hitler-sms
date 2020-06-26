@@ -6,7 +6,7 @@ source scripts/__lib.sh
 if [[ -f $SECRET/player-roles.txt ]]; then
   echo "Error: $SECRET/player-roles.txt already exists."
   echo -e "Is a game in progress?\n"
-  echo "Please delete it if you're sure you want to start a new game."
+  echo "Please reset game state if you're sure you want to start a new game."
   exit 1
 fi
 
