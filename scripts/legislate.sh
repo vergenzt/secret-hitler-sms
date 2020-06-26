@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 (return 0 2>/dev/null) || cd "$(dirname "$0")"/.. || exit 1
+trap "kill 0" EXIT
 source scripts/_lib.sh
 
 ensure_drawable_policy_deck() {
