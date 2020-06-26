@@ -99,7 +99,7 @@ legislate() {
     esac
   done
 
-  move_card "$PRESIDENT_RESPONSE" "$F_SECRET_POLICY_OPTIONS" "$F_SECRET_POLICY_DISCARD"
+  move_card "$PRESIDENT_RESPONSE" "$F_SECRET_POLICY_OPTIONS" "$SECRET/policy-discard.txt"
   unset P1 P2 P3
   P1=`pick_card 1 "$F_SECRET_POLICY_OPTIONS"`
   P2=`pick_card 2 "$F_SECRET_POLICY_OPTIONS"`
@@ -123,7 +123,7 @@ legislate() {
     esac
   done
 
-  move_card "$CHANCELLOR_RESPONSE" "$F_SECRET_POLICY_OPTIONS" "$F_SECRET_POLICY_DISCARD"
+  move_card "$CHANCELLOR_RESPONSE" "$F_SECRET_POLICY_OPTIONS" "$SECRET/policy-discard.txt"
   unset P1 P2
   PUBLIC_POLICY_PASSED=`pick_card 1 "$F_SECRET_POLICY_OPTIONS"`
 
