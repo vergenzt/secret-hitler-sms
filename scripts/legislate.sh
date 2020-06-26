@@ -78,7 +78,7 @@ legislate() {
     esac
   done
 
-  move_card 3 "$F_SECRET_POLICY_DECK" "$F_SECRET_POLICY_OPTIONS"
+  move_card "$PRESIDENT_RESPONSE" "$F_SECRET_POLICY_DECK" "$F_SECRET_POLICY_OPTIONS"
   read P1 P2 P3 <(cat "$F_SECRET_POLICY_OPTIONS" | tr '\n' ' ')
 
   # send remainder to chancellor
