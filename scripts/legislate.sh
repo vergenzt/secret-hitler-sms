@@ -62,7 +62,7 @@ legislate() {
     echo -en "Reply 2 to discard the middle $P2 policy and pass $P1-$P3 to Chancellor $PUBLIC_CHANCELLOR_NAME.\n\n"
     echo -en "Reply 3 to discard the right $P3 policy and pass $P1-$P2 to Chancellor $PUBLIC_CHANCELLOR_NAME."
   )
-  PRESIDENT_IMAGE=`image_url policycombo "$(IFS="-"; echo "${SECRET_POLICY_OPTIONS[*]}")"`
+  PRESIDENT_IMAGE=`image_url policycombo "$P1-$P2-$P3"`
   send_sms "$PUBLIC_PRESIDENT_PHONE" "$PRESIDENT_MSG" "$PRESIDENT_IMAGE"
   echo "Sent. Awaiting response."
 
