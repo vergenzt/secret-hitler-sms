@@ -58,6 +58,7 @@ legislate() {
   fi
 
   draw_cards 3 "$F_SECRET_POLICY_DECK" "$F_SECRET_POLICY_OPTIONS"
+  P1=`pick_card 1 "$F_SECRET_POLICY_OPTIONS"`
 
   echo -n "Sending policy options to President $PUBLIC_PRESIDENT_NAME... "
   PRESIDENT_MSG=$(
