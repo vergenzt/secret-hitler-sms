@@ -83,22 +83,22 @@ legislate() {
   read P1 P2 <(cat "$F_SECRET_POLICY_OPTIONS" | tr '\n' ' ')
 
   echo -n "Sending remaining policy options to Chancellor $PUBLIC_CHANCELLOR_NAME... "
-  PRESIDENT_MSG=$(
-    echo -en "Congratulations on the election, $PUBLIC_PRESIDENT_TITLE President. "
+  CHANCELLOR_MSG=$(
+    echo -en "Congratulations on the election, $PUBLIC_CHANCELLOR_TITLE President. "
     echo -en "Here are your policy choices.\n\n"
     echo -en "Reply 1 to discard the left $P1 policy and pass $P2-$P3 to Chancellor $PUBLIC_CHANCELLOR_NAME.\n\n"
     echo -en "Reply 2 to discard the middle $P2 policy and pass $P1-$P3 to Chancellor $PUBLIC_CHANCELLOR_NAME.\n\n"
     echo -en "Reply 3 to discard the right $P3 policy and pass $P1-$P2 to Chancellor $PUBLIC_CHANCELLOR_NAME."
   )
-  PRESIDENT_IMAGE=`image_url policycombo "$P1-$P2-$P3"`
-  send_sms "$PUBLIC_PRESIDENT_PHONE" "$PRESIDENT_MSG" "$PRESIDENT_IMAGE"
+  CHANCELLOR_IMAGE=`image_url policycombo "$P1-$P2-$P3"`
+  send_sms "$PUBLIC_CHANCELLOR_PHONE" "$CHANCELLOR_MSG" "$CHANCELLOR_IMAGE"
   echo "Sent. Awaiting response."
 
   while true; do
-    PRESIDENT_RESPONSE=`await_sms_reply_from "$PUBLIC_PRESIDENT_PHONE"`
-    case "$PRESIDENT_RESPONSE" in
+    CHANCELLOR_RESPONSE=`await_sms_reply_from "$PUBLIC_CHANCELLOR_PHONE"`
+    case "$CHANCELLOR_RESPONSE" in
       [1-3]) break;;
-      *) echo "Error: Invalid response: $PRESIDENT_RESPONSE! Please reply again.";;
+      *) echo "Error: Invalid response: $CHANCELLOR_RESPONSE! Please reply again.";;
     esac
   done
 
