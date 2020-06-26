@@ -24,10 +24,10 @@ await_sms_reply_from() {
   while true; do
     SMS_INFO=`nc -l localhost 8080 < $STATIC/twilio-empty-response.xml | tail -n1 | tr '&=' '\n '`
     SMS_FROM=`urldecode "$(lookup "$SMS_INFO" "From")"`
+      SMS_BODY=`urldecode "$(lookup "$SMS_INFO" "Body")"`
 
     echo "Received SMS from $SMS_FROM."
     if [[ "$SMS_FROM" = "$1" ]]; then
-      SMS_BODY=`urldecode "$(lookup "$SMS_INFO" "Body")"`
       echo "$SMS_BODY"
     else
       :
