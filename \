@@ -1,4 +1,0 @@
-#!/usr/bin/env bash
-source _lib.sh
-
-assign_player_roles

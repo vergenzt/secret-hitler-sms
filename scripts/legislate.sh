@@ -2,7 +2,6 @@
 (return 0 2>/dev/null) || cd "$(dirname "$0")"/.. || exit 1
 source scripts/_lib.sh
 
-
 ensure_drawable_policy_deck() {
   if [[ "$SECRET_POLICY_DECK_LENGTH" -lt 3 ]]; then
     echo "$SECRET_POLICY_DECK_LENGTH policies remaining; re-shuffling policy deck."
