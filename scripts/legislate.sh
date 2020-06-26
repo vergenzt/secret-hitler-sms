@@ -2,7 +2,7 @@
 (return 0 2>/dev/null) || cd "$(dirname "$0")"/.. || exit 1
 # set -x
 trap "set +x; kill 0" EXIT
-source scripts/_lib.sh
+source scripts/__lib.sh
 
 start_sms_reply_tunnel() {
   ngrok http --log=stdout --log-format=json 8080 > $F_SECRET_NGROK_LOG &
