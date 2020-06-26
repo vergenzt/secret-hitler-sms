@@ -105,6 +105,4 @@ legislate() {
   unset P1 P2
   PUBLIC_POLICY_PASSED=`cat "$F_SECRET_POLICY_OPTIONS"`
 
-  # send remainder to everybody else
-
 }
