@@ -132,6 +132,9 @@ legislate() {
       "`image_url policy "$PUBLIC_POLICY_PASSED"`"
   done
 
+  echo
+  (cd $SECRET && wc -l policy-*.txt)
+  echo
   ensure_drawable_policy_deck
 }
 
