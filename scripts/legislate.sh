@@ -70,6 +70,7 @@ legislate() {
   send_sms "$PUBLIC_PRESIDENT_PHONE" "$PRESIDENT_MSG" "$PRESIDENT_IMAGE"
   echo "Sent. Awaiting response."
 
+  PRESIDENT_RESPONSE=""
   while true; do
     PRESIDENT_RESPONSE=`await_sms_reply_from "$PUBLIC_PRESIDENT_PHONE"`
     case "$PRESIDENT_RESPONSE" in
@@ -78,7 +79,7 @@ legislate() {
     esac
   done
 
-  draw_cards 3 "$F_SECRET_POLICY_DECK" "$F_SECRET_POLICY_OPTIONS"
+  move_card 3 "$F_SECRET_POLICY_DECK" "$F_SECRET_POLICY_OPTIONS"
   read P1 P2 P3 <(cat "$F_SECRET_POLICY_OPTIONS" | tr '\n' ' ')
 
   # send remainder to chancellor
