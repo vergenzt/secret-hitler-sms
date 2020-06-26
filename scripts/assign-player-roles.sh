@@ -3,15 +3,15 @@
 trap "kill 0" EXIT
 source scripts/_lib.sh
 
-if [[ -f $F_SECRET_PLAYER_ROLES ]]; then
-  echo "Error: $F_SECRET_PLAYER_ROLES already exists."
+if [[ -f $SECRET/player-roles.txt ]]; then
+  echo "Error: $SECRET/player-roles.txt already exists."
   echo -e "Is a game in progress?\n"
   echo "Please delete it if you're sure you want to start a new game."
   exit 1
 fi
 
 echo -n "Assigning & sending player roles... "
-SECRET_PLAYER_ROLES=`echo "$PUBLIC_ROLES_ACTIVE" | gshuf | tee $F_SECRET_PLAYER_ROLES`
+SECRET_PLAYER_ROLES=`echo "$PUBLIC_ROLES_ACTIVE" | gshuf | tee $SECRET/player-roles.txt`
 
 while read PUBLIC_NAME PUBLIC_PHONE SECRET_ROLE SECRET_PARTY; do
   send_sms \
