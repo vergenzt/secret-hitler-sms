@@ -10,6 +10,8 @@ start_sms_reply_tunnel() {
     if [[ ! -z "$SECRET_NGROK_URL" ]]; then
       twilio phone-numbers:update $PUBLIC_SOURCE_PHONE --sms-url=$SECRET_NGROK_URL >/dev/null
       break
+    else
+      sleep 1
     fi
   done
 }
