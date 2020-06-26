@@ -22,7 +22,7 @@ await_sms_reply_from() {
     return 1
   fi
   while true; do
-    TWILIO_RESP=`nc -l localhost 8080 < $STATIC/twilio-empty-response.xml | tail -n1`
+    TWILIO_RESP=`nc -l localhost 8080 < $STATIC/twilio-empty-response.xml | tail -n1 | tr '&' '\n'`
     grep -q "&From=$(echo "$1" | tr '+' '%2B')&" <(echo "$TWILIO_RESP")
   done
   echo "Done."
