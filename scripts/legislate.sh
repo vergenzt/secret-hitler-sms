@@ -66,7 +66,7 @@ legislate() {
 
   echo -n "Sending policy options to President $PUBLIC_PRESIDENT_NAME... "
   PRESIDENT_MSG=$(
-    echo -en "Congratulations on your election, $PUBLIC_PRESIDENT_TITLE President. "
+    echo -en "Congratulations on your election, $PUBLIC_PRESIDENT_TITLE President! "
     echo -en "Here are your policy choices.\n\n"
     echo -en "Reply 1 to discard the left $P1 policy and pass $P2-$P3 to Chancellor $PUBLIC_CHANCELLOR_NAME.\n\n"
     echo -en "Reply 2 to discard the middle $P2 policy and pass $P1-$P3 to Chancellor $PUBLIC_CHANCELLOR_NAME.\n\n"
