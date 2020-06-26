@@ -58,11 +58,11 @@ legislate() {
   PRESIDENT_MSG=$(
     echo -en "Congratulations on the election, $PUBLIC_PRESIDENT_TITLE President. "
     echo -en "Here are your policy choices.\n\n"
-    echo -en "Reply 1 to discard the left ${SECRET_POLICIES[0]} policy and pass ${SECRET_POLICIES[1]}-${SECRET_POLICIES[2]} to Chancellor $PUBLIC_CHANCELLOR_NAME.\n\n"\
-    echo -en "Reply 2 to discard the middle ${SECRET_POLICIES[1]} policy and pass ${SECRET_POLICIES[0]}-${SECRET_POLICIES[2]} to Chancellor $PUBLIC_CHANCELLOR_NAME.\n\n"\
-    echo -en "Reply 3 to discard the right ${SECRET_POLICIES[2]} policy and pass ${SECRET_POLICIES[0]}-${SECRET_POLICIES[1]} to Chancellor $PUBLIC_CHANCELLOR_NAME.\n\n"\
+    echo -en "Reply 1 to discard the left ${SECRET_POLICY_OPTIONS[0]} policy and pass ${SECRET_POLICY_OPTIONS[1]}-${SECRET_POLICY_OPTIONS[2]} to Chancellor $PUBLIC_CHANCELLOR_NAME.\n\n"\
+    echo -en "Reply 2 to discard the middle ${SECRET_POLICY_OPTIONS[1]} policy and pass ${SECRET_POLICY_OPTIONS[0]}-${SECRET_POLICY_OPTIONS[2]} to Chancellor $PUBLIC_CHANCELLOR_NAME.\n\n"\
+    echo -en "Reply 3 to discard the right ${SECRET_POLICY_OPTIONS[2]} policy and pass ${SECRET_POLICY_OPTIONS[0]}-${SECRET_POLICY_OPTIONS[1]} to Chancellor $PUBLIC_CHANCELLOR_NAME.\n\n"\
   )
-  PRESIDENT_IMAGE=`image_url policycombo "$(IFS="-"; echo "${SECRET_POLICIES[*]}")"`
+  PRESIDENT_IMAGE=`image_url policycombo "$(IFS="-"; echo "${SECRET_POLICY_OPTIONS[*]}")"`
   send_sms "$PUBLIC_PRESIDENT_PHONE" "$PRESIDENT_MSG" "$PRESIDENT_IMAGE"
   echo "Sent. Awaiting response."
 
