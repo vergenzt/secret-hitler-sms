@@ -71,10 +71,8 @@ legislate() {
       1) test; break;;
       2) test; break;;
       3) test; break;;
-      *)
-        echo "Invalid selection! Please submit again."
-        ;;
-
+      *) echo "Invalid selection! Please submit again.";;
+    esac
 
   done
 
