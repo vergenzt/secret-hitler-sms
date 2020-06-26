@@ -79,7 +79,8 @@ legislate() {
   done
 
   move_card "$PRESIDENT_RESPONSE" "$F_SECRET_POLICY_OPTIONS" "$F_SECRET_POLICY_DISCARD"
-  read P1 P2 P3 <(cat "$F_SECRET_POLICY_OPTIONS" | tr '\n' ' ')
+  unset P3
+  read P1 P2 <(cat "$F_SECRET_POLICY_OPTIONS" | tr '\n' ' ')
 
   # send remainder to chancellor
 
