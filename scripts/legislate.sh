@@ -81,7 +81,7 @@ legislate() {
 
   move_card "$PRESIDENT_RESPONSE" "$F_SECRET_POLICY_OPTIONS" "$F_SECRET_POLICY_DISCARD"
   unset P3
-  read P1 P2 <(cat "$F_SECRET_POLICY_OPTIONS" | tr '\n' ' ')
+  read P1 P2 <(cat "$F_SECRET_POLICY_OPTIONS" | tr '\n' ' '; echo)
 
   echo -n "Sending remaining policy options to Chancellor $PUBLIC_CHANCELLOR_NAME... "
   CHANCELLOR_MSG=$(
