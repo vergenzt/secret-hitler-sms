@@ -73,7 +73,7 @@ legislate() {
     esac
   done
 
-  draw_cards 3 "$F_SECRET_POLICY_DECK" "$F_SECRET_POLICY_OPTIONS"
+  draw_cards 3 "$SECRET/policy-deck.txt" "$F_SECRET_POLICY_OPTIONS"
   P1=`pick_card 1 "$F_SECRET_POLICY_OPTIONS"`
   P2=`pick_card 2 "$F_SECRET_POLICY_OPTIONS"`
   P3=`pick_card 3 "$F_SECRET_POLICY_OPTIONS"`

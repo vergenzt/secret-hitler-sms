@@ -50,13 +50,13 @@ send_sms() {
 }
 
 policy_deck_length() {
-  cat $F_SECRET_POLICY_DECK 2>/dev/null | wc -l
+  cat $SECRET/policy-deck.txt 2>/dev/null | wc -l
 }
 
 ensure_drawable_policy_deck() {
   if [[ `policy_deck_length` -lt 3 ]]; then
     echo "$(policy_deck_length) policies in deck; shuffling."
-    cat "$F_PUBLIC_POLICIES_AVAILABLE" | gshuf > $F_SECRET_POLICY_DECK
+    cat "$F_PUBLIC_POLICIES_AVAILABLE" | gshuf > $SECRET/policy-deck.txt
   fi
 }
 
