@@ -66,3 +66,8 @@ draw_cards() {
   head -n3 "$FROM_DECK" | tee "$TO_DECK"
   tail -n+3 "$FROM_DECK" | sponge > "$FROM_DECK"
 }
+
+# remove 1 card from position $I of $FROM_DECK and append to tail of $TO_DECK
+remove_card() {
+
+}
