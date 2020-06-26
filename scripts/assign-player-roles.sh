@@ -29,4 +29,6 @@ done < <(\
   gpaste \
   <(echo "$PUBLIC_PLAYER_NAMES") \
   <(echo "$PUBLIC_PLAYER_PHONES") \
-  <(echo "$")| tr ':' ' ')
+  <(echo "$SECRET_PLAYER_ROLES") \
+  | tr ':' ' '
+)
