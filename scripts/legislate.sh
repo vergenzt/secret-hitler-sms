@@ -64,6 +64,8 @@ legislate() {
   send_sms "$PUBLIC_PRESIDENT_PHONE" "$PRESIDENT_MSG" "$PRESIDENT_IMAGE"
   PRESIDENT_RESPONSE=`await_sms_reply_from "$PUBLIC_PRESIDENT_PHONE"`
 
+  case "$PRESIDENT_RESPONSE" in
+
   # discard
 
   # send remainder to chancellor
