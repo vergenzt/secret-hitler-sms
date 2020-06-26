@@ -42,7 +42,7 @@ await_sms_reply_from() {
 
 legislate() {
   echo "Deck sizes:"
-  wc -l $SECRET/policy-*.txt
+  (cd $SECRET && wc -l $SECRET/policy-*.txt)
 
   # who's president?
   read -p "Who's President?  ($PUBLIC_PLAYER_NAMES_PROMPT): " PUBLIC_PRESIDENT_NAME
