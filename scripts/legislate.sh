@@ -126,7 +126,7 @@ legislate() {
   PUBLIC_POLICY_PASSED=`pick_card 1 "$SECRET/policy-options.txt"`
   move_card 1 "$SECRET/policy-options.txt" "$PUBLIC/policies-enacted.txt"
 
-  for PHONE in "$PUBLIC_PLAYER_PHONES"; do
+  for PHONE in $PUBLIC_PLAYER_PHONES; do
     send_sms "$PHONE" \
       "President $PUBLIC_PRESIDENT_NAME and Chancellor $PUBLIC_CHANCELLOR_NAME have passed a $PUBLIC_POLICY_PASSED policy." \
       "`image_url policy "$PUBLIC_POLICY_PASSED"`"
