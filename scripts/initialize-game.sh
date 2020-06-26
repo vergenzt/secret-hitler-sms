@@ -19,6 +19,7 @@ touch $SECRET/policy-{deck,options,discard,record}.txt
 ensure_drawable_policy_deck
 echo "Done."
 
+echo "Distributing player roles via SMS... "
 while read PUBLIC_NAME PUBLIC_PHONE SECRET_ROLE SECRET_PARTY; do
   send_sms \
     "$PUBLIC_PHONE" \
