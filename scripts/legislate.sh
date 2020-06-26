@@ -23,6 +23,7 @@ await_sms_reply_from() {
   fi
   while true; do
     SMS_INFO=`nc -l localhost 8080 < $STATIC/twilio-empty-response.xml | tail -n1 | tr '&=' '\n '`
+    SMS_FROM=`urldecode $(lookup "$SMS_INFO" "From")`
 
     #grep -q "&From=$(echo "$1" | tr '+' '%2B')&" <(echo "$TWILIO_RESP")
   done
