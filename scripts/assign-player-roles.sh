@@ -10,7 +10,7 @@ if [[ -f $F_SECRET_PLAYER_ROLES ]]; then
   exit 1
 fi
 
-echo -n "Assigning player roles... "
+echo -n "Assigning & sending player roles... "
 SECRET_PLAYER_ROLES=`echo "$PUBLIC_ROLES_ACTIVE" | gshuf | tee $F_SECRET_PLAYER_ROLES`
 echo "Done."
 
