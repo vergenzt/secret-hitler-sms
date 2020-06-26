@@ -30,7 +30,7 @@ define split-and-rotate
 	  $(CONVERT_FLAGS) \
 		$(SOURCE_PDF)[$(PAGE)] \
 		-trim \
-		-shave 10x15 \
+		-shave 10x10 \
 		-crop 2x1@ \
 		\( -clone -2 -rotate -90 \) \
 		\( -clone -2 -rotate  90 -distort SRT 0,-2,0 \) \
