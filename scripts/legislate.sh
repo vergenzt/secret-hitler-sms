@@ -42,7 +42,8 @@ await_sms_reply_from() {
 
 legislate() {
   echo "Deck sizes:"
-  (cd $SECRET && wc -l policy-*.txt 2>/dev/null || echo "(not initialized yet)")
+
+  ensure_drawable_policy_deck
 
   # who's president?
   read -p "Who's President?  ($PUBLIC_PLAYER_NAMES_PROMPT): " PUBLIC_PRESIDENT_NAME
@@ -56,8 +57,6 @@ legislate() {
     echo "Error: President must be different than chancellor!"
     return
   fi
-
-  ensure_drawable_policy_deck
 
   draw_cards 3 "$F_SECRET_POLICY_DECK" "$F_SECRET_POLICY_OPTIONS"
   read P1 P2 P3 <(cat "$F_SECRET_POLICY_OPTIONS")
