@@ -13,7 +13,7 @@ fi
 
 # assign
 echo "Assigning player roles!"
-SECRET_PLAYER_ROLES=`echo "$PUBLIC_ROLES_ACTIVE" | gshuf)`
+SECRET_PLAYER_ROLES=`echo "$PUBLIC_ROLES_ACTIVE" | gshuf`
 
 # save
 echo "$SECRET_PLAYER_ROLES" > $F_SECRET_PLAYER_ROLES
