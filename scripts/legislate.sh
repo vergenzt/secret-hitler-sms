@@ -60,7 +60,7 @@ legislate() {
       continue
     fi
 
-    read -p "Continue? (Y/N) " CONTINUE
+    read -p "Confirm? (Y/N) " CONTINUE
     case $CONTINUE in
       y|Y|yes|YES) break;
     esac
