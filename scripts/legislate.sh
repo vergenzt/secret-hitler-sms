@@ -131,6 +131,8 @@ legislate() {
     | xargs send_sms \{\} \
       "President $PUBLIC_PRESIDENT_NAME and Chancellor $PUBLIC_CHANCELLOR_NAME have passed a $PUBLIC_POLICY_PASSED policy." \
       "`image_url policy "$PUBLIC_POLICY_PASSED"`"
+      
+  ensure_drawable_policy_deck
 }
 
 legislate
