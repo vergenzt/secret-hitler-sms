@@ -69,7 +69,7 @@ legislate() {
     PRESIDENT_RESPONSE=`await_sms_reply_from "$PUBLIC_PRESIDENT_PHONE"`
     case "$PRESIDENT_RESPONSE" in
       [1-3]) break;;
-      *) echo "Invalid selection! Please submit again.";;
+      *) echo "Error: Invalid response: "$PRESIDENT_RESPONSE"! Please submit again.";;
     esac
   done
 
