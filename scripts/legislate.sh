@@ -12,6 +12,7 @@ start_sms_reply_listener() {
       | xargs -n1 twilio phone-numbers:update $PUBLIC_SOURCE_PHONE --sms-url=\{\} >/dev/null \
       &
   ) 2>/dev/null
+  echo "Done."
 }
 
 await_sms_reply_from() {
