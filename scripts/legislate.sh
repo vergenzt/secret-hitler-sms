@@ -55,10 +55,13 @@ legislate() {
     PUBLIC_CHANCELLOR_PHONE=`lookup "$PUBLIC_PLAYER_PHONES" "$PUBLIC_PLAYER_NAMES" "$PUBLIC_CHANCELLOR_NAME"`
     PUBLIC_CHANCELLOR_TITLE=`lookup "$PUBLIC_PLAYER_TITLES" "$PUBLIC_PLAYER_NAMES" "$PUBLIC_CHANCELLOR_NAME"`
 
-  if [[ "$1" != "-f" && "$PUBLIC_PRESIDENT_NAME" = "$PUBLIC_CHANCELLOR_NAME" ]]; then
-    echo "Error: President must be different than chancellor!"
-    return
-  fi
+    if [[ "$1" != "-f" && "$PUBLIC_PRESIDENT_NAME" = "$PUBLIC_CHANCELLOR_NAME" ]]; then
+      echo "Error: President must be different than chancellor!"
+      continue
+    fi
+
+    read -p "Continue? (Y/N) "
+  done
 
   draw_cards 3 "$F_SECRET_POLICY_DECK" "$F_SECRET_POLICY_OPTIONS"
   P1=`pick_card 1 "$F_SECRET_POLICY_OPTIONS"`
