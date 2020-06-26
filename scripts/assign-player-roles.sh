@@ -10,11 +10,9 @@ if [[ -f $F_SECRET_PLAYER_ROLES ]]; then
   exit 1
 fi
 
-# assign
 echo "Assigning player roles... "
 SECRET_PLAYER_ROLES=`echo "$PUBLIC_ROLES_ACTIVE" | gshuf | tee $F_SECRET_PLAYER_ROLES`
 
-# send texts
 while read PUBLIC_NAME PUBLIC_PHONE SECRET_ROLE SECRET_PARTY; do
   send_sms \
     "$PUBLIC_PHONE" \
