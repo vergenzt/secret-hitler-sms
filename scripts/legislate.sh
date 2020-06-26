@@ -52,7 +52,7 @@ legislate() {
 
   ensure_drawable_policy_deck
   draw_cards 3 "$F_SECRET_POLICY_DECK" "$F_SECRET_POLICY_OPTIONS"
-  read -r SECRET_P1 SECRET_P2 SECRET_P3
+  read SECRET_P1 SECRET_P2 SECRET_P3 "$F_SECRET_POLICY_OPTIONS"
 
   echo -n "Sending policy options to President $PUBLIC_PRESIDENT_NAME... "
   PRESIDENT_MSG=$(
