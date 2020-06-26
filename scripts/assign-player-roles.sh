@@ -25,4 +25,4 @@ while read PUBLIC_NAME PUBLIC_PHONE SECRET_ROLE SECRET_PARTY; do
     "Hi $PUBLIC_NAME! Here's your secret role and party membership cards for Secret Hitler. 🙂 Enjoy the game!" \
     "`image_url party $SECRET_PARTY`" \
     "`image_url role $SECRET_ROLE`"
-done < <(join $F_PUBLIC_PLAYER_INFO $F_SECRET_PLAYER_ROLES | tr ',' ' ')
+done < <(join $F_PUBLIC_PLAYER_INFO $F_SECRET_PLAYER_ROLES | tr ':' ' ')
