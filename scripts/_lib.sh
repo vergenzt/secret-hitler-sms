@@ -59,3 +59,8 @@ ensure_drawable_policy_deck() {
     cat "$F_PUBLIC_POLICIES_AVAILABLE" | gshuf > $F_SECRET_POLICY_DECK
   fi
 }
+
+draw_cards() {
+  FROM_DECK=$1
+  TO_DECK=$2
+}
