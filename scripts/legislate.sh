@@ -26,13 +26,11 @@ await_sms_reply_from() {
     SMS_FROM=`urldecode "$(lookup "$SMS_INFO" "From")"`
 
     echo "Received SMS from $SMS_FROM."
-    if [[ "$SMS_FROM" = "$1" ]]; then
+    if [[ "$SMS_FROM" -eq "$1" ]]; then
 
     else
 
     fi
-
-    #grep -q "&From=$(echo "$1" | tr '+' '%2B')&" <(echo "$TWILIO_RESP")
   done
   echo "Done."
 }
