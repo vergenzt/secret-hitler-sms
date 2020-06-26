@@ -60,6 +60,7 @@ ensure_drawable_policy_deck() {
   fi
 }
 
+# draw $N cards from head of $FROM_DECK and append to tail of $TO_DECk
 draw_cards() {
   N=$1; FROM_DECK=$2; TO_DECK=$3
   head -n3 "$FROM_DECK" | tee "$TO_DECK"
