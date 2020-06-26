@@ -10,8 +10,6 @@ start_sms_reply_listener() {
   SECRET_NGROK_URL=$(
     cat $F_SECRET_NGROK_LOG \
       | grep ',"msg":"started tunnel","name":"command_line"' \
-      | head -n1 \
-      | jq -r .url
   )
   echo "Done."
   echo -n "Updating Twilio callback URL... "
