@@ -3,5 +3,7 @@
 trap "kill 0" EXIT
 source scripts/__lib.sh
 
-read -p "To reset game state, please type RESET: " RESET
-rm -f $SECRET/{policy-{deck,options,discard,record},player-roles}.txt
+while [[ "$RESET" -ne "RESET" ]]; do
+  read -p "To reset game state, please type RESET: " RESET
+  rm -f $SECRET/{policy-{deck,options,discard,record},player-roles}.txt
+done
