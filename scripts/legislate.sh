@@ -53,6 +53,12 @@ legislate() {
     PUBLIC_PRESIDENT_PHONE=`lookup "$PUBLIC_PLAYER_PHONES" "$PUBLIC_PLAYER_NAMES" "$PUBLIC_PRESIDENT_NAME"`
     PUBLIC_PRESIDENT_TITLE=`lookup "$PUBLIC_PLAYER_TITLES" "$PUBLIC_PLAYER_NAMES" "$PUBLIC_PRESIDENT_NAME"`
 
+    if [[ "$PUBLIC_PRESIDENT_NAME" = "$PUBLIC_CHANCELLOR_NAME" ]]; then
+      echo "Error: President must be different than chancellor!"
+      continue
+    fi
+
+
     PUBLIC_CHANCELLOR_PHONE=`lookup "$PUBLIC_PLAYER_PHONES" "$PUBLIC_PLAYER_NAMES" "$PUBLIC_CHANCELLOR_NAME"`
     PUBLIC_CHANCELLOR_TITLE=`lookup "$PUBLIC_PLAYER_TITLES" "$PUBLIC_PLAYER_NAMES" "$PUBLIC_CHANCELLOR_NAME"`
 
@@ -101,7 +107,7 @@ legislate() {
   echo -n "Sending remaining policy options to Chancellor $PUBLIC_CHANCELLOR_NAME... "
   CHANCELLOR_MSG=$(
     echo -en "Congratulations on your election, $PUBLIC_CHANCELLOR_TITLE Chancellor. "
-    echo -en "Here are your policy choices.\n\n"
+    echo -en "Here are your remaining policy choices.\n\n"
     echo -en "Reply 1 to discard the left $P1 policy and pass $P2.\n\n"
     echo -en "Reply 2 to discard the right $P2 policy and pass $P1."
   )
