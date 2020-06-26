@@ -89,7 +89,7 @@ legislate() {
     echo -en "Reply 1 to discard the left $P1 policy and pass $P2.\n\n"
     echo -en "Reply 2 to discard the right $P2 policy and pass $P1."
   )
-  CHANCELLOR_IMAGE=`image_url policycombo "$P1-$P2-$P3"`
+  CHANCELLOR_IMAGE=`image_url policycombo "$P1-$P2"`
   send_sms "$PUBLIC_CHANCELLOR_PHONE" "$CHANCELLOR_MSG" "$CHANCELLOR_IMAGE"
   echo "Sent. Awaiting response."
 
