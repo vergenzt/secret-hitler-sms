@@ -41,8 +41,10 @@ await_sms_reply_from() {
 }
 
 legislate() {
+
   ensure_drawable_policy_deck
   echo "Deck sizes:"
+  (cd $SECRET && wc -l policy-*.txt 2>/dev/null || echo "(not initialized yet)")
 
   # who's president?
   read -p "Who's President?  ($PUBLIC_PLAYER_NAMES_PROMPT): " PUBLIC_PRESIDENT_NAME
