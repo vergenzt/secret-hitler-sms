@@ -16,6 +16,7 @@ echo "Done."
 
 echo -n "Initializing decks... "
 touch $SECRET/policy-{deck,options,discard,record}.txt
+ensure_drawable_policy_deck
 
 while read PUBLIC_NAME PUBLIC_PHONE SECRET_ROLE SECRET_PARTY; do
   send_sms \
