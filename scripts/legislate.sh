@@ -108,7 +108,7 @@ legislate() {
   echo "$PUBLIC_PLAYER_PHONES" \
     xargs send_sms \
       \{\} \
-      "Hi $PUBLIC_NAME! Here's your SECRET (🤫) role and party membership cards for Secret Hitler. 🙂 Enjoy the game!" \
+      "President $PUBLIC_PRESIDENT_NAME and Chancellor $PUBLIC_CHANCELLOR_NAME have passed a $PUBLIC_POLICY_PASSED policy." \
       "`image_url party $SECRET_PARTY`" \
       "`image_url role $SECRET_ROLE`"
   done < <(\
