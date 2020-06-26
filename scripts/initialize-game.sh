@@ -34,4 +34,6 @@ done < <(\
 )
 echo "Done."
 echo
-echo "... Let the games begin!!!"
+echo "..."
+echo
+echo "Let the games begin!!!"
