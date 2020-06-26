@@ -62,5 +62,5 @@ ensure_drawable_policy_deck() {
 
 draw_cards() {
   N=$1; FROM_DECK=$2; TO_DECK=$3
-
+  
 }
