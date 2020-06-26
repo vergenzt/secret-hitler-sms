@@ -105,8 +105,8 @@ legislate() {
   unset P1 P2
   PUBLIC_POLICY_PASSED=`cat "$F_SECRET_POLICY_OPTIONS"`
 
-  while read PUBLIC_PHONE; do
-    send_sms \
+  echo "$PUBLIC_PLAYER_PHONES" \
+    xargs send_sms \
       "$PUBLIC_PHONE" \
       "Hi $PUBLIC_NAME! Here's your SECRET (🤫) role and party membership cards for Secret Hitler. 🙂 Enjoy the game!" \
       "`image_url party $SECRET_PARTY`" \
