@@ -128,6 +128,10 @@ legislate() {
 
   MSG="President $PUBLIC_PRESIDENT_NAME and Chancellor $PUBLIC_CHANCELLOR_NAME have passed a $PUBLIC_POLICY_PASSED policy." \
 
+  echo
+  echo $MSG
+  echo
+
   for PHONE in $PUBLIC_PLAYER_PHONES; do
     send_sms "$PHONE" \
       "President $PUBLIC_PRESIDENT_NAME and Chancellor $PUBLIC_CHANCELLOR_NAME have passed a $PUBLIC_POLICY_PASSED policy." \
