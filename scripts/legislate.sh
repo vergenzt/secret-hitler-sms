@@ -32,13 +32,6 @@ await_sms_reply_from() {
   echo "$TWILIO_RESP"
 }
 
-ensure_drawable_policy_deck() {
-  if [[ "$SECRET_POLICY_DECK_LENGTH" -lt 3 ]]; then
-    echo "$SECRET_POLICY_DECK_LENGTH policies remaining; re-shuffling policy deck."
-    cat "$F_PUBLIC_POLICIES_AVAILABLE" | gshuf > $F_SECRET_POLICY_DECK
-  fi
-}
-
 legislate() {
   # who's president?
   read -p "Who's President?  ($PUBLIC_PLAYER_NAMES_PROMPT): " PUBLIC_PRESIDENT_NAME
