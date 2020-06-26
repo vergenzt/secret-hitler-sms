@@ -16,7 +16,7 @@ echo "Done."
 
 echo -n "Initializing decks... "
 touch $SECRET/policy-{deck,options,discard,record}.txt
-ensure_drawable_policy_deck
+ensure_drawable_policy_deck >/dev/null
 echo "Done."
 
 echo "Distributing player roles via SMS... "
