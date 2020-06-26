@@ -21,8 +21,6 @@ await_sms_reply_from() {
     echo "Error: No phone number provided to expect an SMS from!"
     return 1
   fi
-  TWILIO_RESP=""
-  echo -n "Listening for SMS reply... "
   while true; do
     TWILIO_RESP=`nc -l localhost 8080 < $STATIC/twilio-empty-response.xml | tee /dev/stderr`
     grep -q "&From=$(echo "$1" | tr '+' '%2B')&" <(echo "$TWILIO_RESP")
