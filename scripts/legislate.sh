@@ -51,6 +51,7 @@ legislate() {
   fi
 
   ensure_drawable_policy_deck
+  draw_cards 3 "$F_SECRET_POLICY_DECK" "$F_SECRET_POLICY_OPTIONS"
 
   PRESIDENT_MSG=$(echo -e \
     "Congratulations on the election, $PUBLIC_PRESIDENT_PREFIX President."\
