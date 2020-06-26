@@ -7,7 +7,7 @@ start_sms_reply_listener() {
   echo -n "Starting ngrok server... "
   ngrok http --log=stdout --log-format=json 8080 \
     | tee $F_SECRET_NGROK_LOG \
-    | jq --unbuffered '.'
+    | jq --unbuffered 'select(contains({ msg: "started tunnel", name: "command_line" }))'
   sleep 3 # workaround cause tail -f way wasn't terminating
   SECRET_NGROK_URL=$(
     cat $F_SECRET_NGROK_LOG \
