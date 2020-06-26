@@ -58,7 +58,7 @@ legislate() {
     echo -en "Congratulations on the election, $PUBLIC_PRESIDENT_TITLE President. "
     echo -en "Here are your policy choices.\n\n"
     for i in `seq 1 3`; do
-      echo -en "Reply $i to discard the 
+      echo -en "Reply $i to discard the
 
     done
     "Reply 1 to discard the left ${SECRET_POLICIES[0]} policy and pass ${SECRET_POLICIES[1]}-${SECRET_POLICIES[2]} to Chancellor $PUBLIC_CHANCELLOR_NAME.\n\n"\
