@@ -14,7 +14,7 @@ echo -n "Assigning player roles... "
 SECRET_PLAYER_ROLES=`echo "$PUBLIC_ROLES_ACTIVE" | gshuf | tee $SECRET/player-roles.txt`
 echo "Done."
 echo -n "Initializing decks... "
-rm $SECRET/{policy-{deck,options,discard,record},player-roles}.txt
+rm $SECRET/policy-{deck,options,discard,record}.txt
 
 while read PUBLIC_NAME PUBLIC_PHONE SECRET_ROLE SECRET_PARTY; do
   send_sms \
