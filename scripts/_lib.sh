@@ -62,5 +62,6 @@ ensure_drawable_policy_deck() {
 
 draw_cards() {
   N=$1; FROM_DECK=$2; TO_DECK=$3
-  
+  head -n3 "$F_SECRET_POLICY_DECK" | tee "$F_SECRET_POLICY_OPTIONS"
+  tail -n+3 "$F_SECRET_POLICY_DECK" | sponge > "$F_SECRET_POLICY_DECK"
 }
