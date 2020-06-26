@@ -53,6 +53,7 @@ legislate() {
   ensure_drawable_policy_deck
 
   SECRET_POLICY_OPTIONS=("$(head -n3 "$F_SECRET_POLICY_DECK")")
+  tail -n+3 "$F_SECRET_POLICY_DECK"
 
   PRESIDENT_MSG=$(echo -e \
     "Congratulations on the election, $PUBLIC_PRESIDENT_PREFIX President."\
@@ -66,6 +67,8 @@ legislate() {
 
   while true; do
     PRESIDENT_RESPONSE=`await_sms_reply_from "$PUBLIC_PRESIDENT_PHONE"`
+    case "$PRESIDENT_RESPONSE" in
+      1)
 
 
 
