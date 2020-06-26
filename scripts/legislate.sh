@@ -4,7 +4,7 @@ trap "kill 0" EXIT
 source scripts/_lib.sh
 
 start_sms_reply_tunnel() {
-  ngrok http --log=stdout --log-format=json 8080 \
+  ngrok http --log=stdout --log-format=json 8080 &
     | tee $F_SECRET_NGROK_LOG \
     | jq --raw-output --unbuffered 'select(.msg == "started tunnel" and .name == "command_line") | .url' \
     | xargs -n1 twilio phone-numbers:update $PUBLIC_SOURCE_PHONE --sms-url=\{\} >/dev/null \
