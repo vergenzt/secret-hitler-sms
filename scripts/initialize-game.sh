@@ -32,4 +32,6 @@ done < <(\
   <(echo "$PUBLIC_PLAYER_PHONES") \
   <(echo "$SECRET_PLAYER_ROLES" | tr ':' ' ') \
 )
-echo "Done!"
+echo "Done."
+echo
+echo "... Let the games begin!!!"
