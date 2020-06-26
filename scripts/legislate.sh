@@ -7,11 +7,11 @@ start_sms_reply_tunnel() {
   ngrok http --log=stdout --log-format=json 8080 > $F_SECRET_NGROK_LOG &
   while true; do
     SECRET_NGROK_URL=`jq -r --unbuffered 'select(.msg == "started tunnel" and .name == "command_line") | .url' $F_SECRET_NGROK_LOG`
-    if [[ ! -z "$SECRET_NGROK_URL" ]]; then
+    if [[ -z "$SECRET_NGROK_URL" ]]; then
+      sleep 1
+    else
       twilio phone-numbers:update $PUBLIC_SOURCE_PHONE --sms-url=$SECRET_NGROK_URL >/dev/null
       break
-    else
-      sleep 1
     fi
   done
 }
