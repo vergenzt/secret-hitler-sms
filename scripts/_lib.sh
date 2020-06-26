@@ -70,5 +70,5 @@ draw_cards() {
 # remove 1 card from position $I of $FROM_DECK and append to tail of $TO_DECK
 remove_card() {
   I=$1; FROM_DECK=$2; TO_DECK=$3
-  awk "NR == $I { print $0 }"
+  awk "NR == $I { print $0 }" "$FROM_DECK" >> "$TO_DECK"
 }
