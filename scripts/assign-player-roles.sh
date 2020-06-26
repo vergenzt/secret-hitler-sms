@@ -13,7 +13,7 @@ fi
 
 # assign
 echo "Assigning player roles!"
-SECRET_PLAYER_ROLES=`gpaste <(echo "$PUBLIC_PLAYER_NAMES") <(echo "$PUBLIC_ROLES_ACTIVE" | gshuf)`
+SECRET_PLAYER_ROLES=`echo "$PUBLIC_ROLES_ACTIVE" | gshuf)`
 
 # save
 echo "$SECRET_PLAYER_ROLES" > $F_SECRET_PLAYER_ROLES
@@ -25,4 +25,8 @@ while read PUBLIC_NAME PUBLIC_PHONE SECRET_ROLE SECRET_PARTY; do
     "Hi $PUBLIC_NAME! Here's your secret role and party membership cards for Secret Hitler. 🙂 Enjoy the game!" \
     "`image_url party $SECRET_PARTY`" \
     "`image_url role $SECRET_ROLE`"
-done < <(join $F_PUBLIC_PLAYER_INFO $F_SECRET_PLAYER_ROLES | tr ':' ' ')
+done < <(\
+  gpaste \
+  <(echo "$PUBLIC_PLAYER_NAMES") \
+  <(echo "$PUBLIC_PLAYER_PHONES") \
+  <(echo "$")| tr ':' ' ')
