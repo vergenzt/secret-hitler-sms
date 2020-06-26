@@ -109,12 +109,4 @@ legislate() {
     xargs send_sms \
       \{\} \
       "President $PUBLIC_PRESIDENT_NAME and Chancellor $PUBLIC_CHANCELLOR_NAME have passed a $PUBLIC_POLICY_PASSED policy." \
-      "`image_url party $SECRET_PARTY`" \
-      "`image_url role $SECRET_ROLE`"
-  done < <(\
-    gpaste \
-    <(echo "$PUBLIC_PLAYER_NAMES") \
-    <(echo "$PUBLIC_PLAYER_PHONES") \
-    <(echo "$SECRET_PLAYER_ROLES" | tr ':' ' ') \
-  )
 }
