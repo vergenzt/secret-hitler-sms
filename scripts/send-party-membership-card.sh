@@ -5,7 +5,7 @@ source scripts/__lib.sh
 FROM="$1"
 TO="$2"
 
-echo "You are about to send "
+echo "You are about to show $FROM's Party Membership card to $TO."
 while [[ "$RESET" != "RESET" ]]; do
   read -p "To reset game state, please type RESET: " RESET
 done
