@@ -44,6 +44,7 @@ legislate() {
   ensure_drawable_policy_deck
   echo
   (cd $SECRET && wc -l policy-*.txt)
+  echo
 
   # who's president?
   read -p "Who's President?  ($PUBLIC_PLAYER_NAMES_PROMPT): " PUBLIC_PRESIDENT_NAME
