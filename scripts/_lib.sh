@@ -55,7 +55,7 @@ policy_deck_length() {
 
 ensure_drawable_policy_deck() {
   if [[ `policy_deck_length` -lt 3 ]]; then
-    echo "$(policy_deck_length) policies remaining; shuffling policy deck."
+    echo "$(policy_deck_length) policies in deck; shuffling policy deck."
     cat "$F_PUBLIC_POLICIES_AVAILABLE" | gshuf > $F_SECRET_POLICY_DECK
   fi
 }
