@@ -28,7 +28,7 @@ await_sms_reply_from() {
     echo "Received SMS from $SMS_FROM."
     if [[ "$SMS_FROM" = "$1" ]]; then
       SMS_BODY=`urldecode "$(lookup "$SMS_INFO" "Body")"`
-      echo "$SMS_BODY" | awk '{ print $1 }'
+      echo "$SMS_BODY"
     else
       :
     fi
