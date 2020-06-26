@@ -73,10 +73,10 @@ legislate() {
     esac
   done
 
-  draw_cards 3 "$SECRET/policy-deck.txt" "$F_SECRET_POLICY_OPTIONS"
-  P1=`pick_card 1 "$F_SECRET_POLICY_OPTIONS"`
-  P2=`pick_card 2 "$F_SECRET_POLICY_OPTIONS"`
-  P3=`pick_card 3 "$F_SECRET_POLICY_OPTIONS"`
+  draw_cards 3 "$SECRET/policy-deck.txt" "$SECRET/policy-options.txt"
+  P1=`pick_card 1 "$SECRET/policy-options.txt"`
+  P2=`pick_card 2 "$SECRET/policy-options.txt"`
+  P3=`pick_card 3 "$SECRET/policy-options.txt"`
 
   echo -n "Sending policy options to President $PUBLIC_PRESIDENT_NAME... "
   PRESIDENT_MSG=$(
@@ -99,10 +99,10 @@ legislate() {
     esac
   done
 
-  move_card "$PRESIDENT_RESPONSE" "$F_SECRET_POLICY_OPTIONS" "$SECRET/policy-discard.txt"
+  move_card "$PRESIDENT_RESPONSE" "$SECRET/policy-options.txt" "$SECRET/policy-discard.txt"
   unset P1 P2 P3
-  P1=`pick_card 1 "$F_SECRET_POLICY_OPTIONS"`
-  P2=`pick_card 2 "$F_SECRET_POLICY_OPTIONS"`
+  P1=`pick_card 1 "$SECRET/policy-options.txt"`
+  P2=`pick_card 2 "$SECRET/policy-options.txt"`
 
   echo -n "Sending remaining policy options to Chancellor $PUBLIC_CHANCELLOR_NAME... "
   CHANCELLOR_MSG=$(
@@ -123,9 +123,9 @@ legislate() {
     esac
   done
 
-  move_card "$CHANCELLOR_RESPONSE" "$F_SECRET_POLICY_OPTIONS" "$SECRET/policy-discard.txt"
+  move_card "$CHANCELLOR_RESPONSE" "$SECRET/policy-options.txt" "$SECRET/policy-discard.txt"
   unset P1 P2
-  PUBLIC_POLICY_PASSED=`pick_card 1 "$F_SECRET_POLICY_OPTIONS"`
+  PUBLIC_POLICY_PASSED=`pick_card 1 "$SECRET/policy-options.txt"`
 
   echo "$PUBLIC_PLAYER_PHONES" \
     | xargs send_sms \{\} \
