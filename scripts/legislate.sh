@@ -53,7 +53,7 @@ legislate() {
   ensure_drawable_policy_deck
   draw_cards 3 "$F_SECRET_POLICY_DECK" "$F_SECRET_POLICY_OPTIONS"
 
-  echo "Sending policy options to President $PUBLIC_PRESIDENT_NAME... "
+  echo -n "Sending policy options to President $PUBLIC_PRESIDENT_NAME... "
   PRESIDENT_MSG=$(echo -e \
     "Congratulations on the election, $PUBLIC_PRESIDENT_PREFIX President."\
     "Here are your policy choices.\n\n"\
@@ -63,6 +63,7 @@ legislate() {
   )
   PRESIDENT_IMAGE=`image_url policycombo $(IFS="-"; echo "${SECRET_POLICIES[*]}")`
   send_sms "$PUBLIC_PRESIDENT_PHONE" "$PRESIDENT_MSG" "$PRESIDENT_IMAGE"
+  echo "Sent."
 
   while true; do
     PRESIDENT_RESPONSE=`await_sms_reply_from "$PUBLIC_PRESIDENT_PHONE"`
