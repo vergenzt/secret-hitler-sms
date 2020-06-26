@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 lookup() {
-  echo "$1" | awk "\$1 == \"$2\" { print \$$3 }"
+  echo "$1" | awk "\$1 == \"$2\" { print \$0 }"
 }
 
 # https://stackoverflow.com/a/37840948
