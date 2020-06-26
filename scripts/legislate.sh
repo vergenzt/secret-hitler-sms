@@ -27,7 +27,6 @@ await_sms_reply_from() {
     #grep -q "&From=$(echo "$1" | tr '+' '%2B')&" <(echo "$TWILIO_RESP")
   done
   echo "Done."
-  echo "$TWILIO_RESP"
 }
 
 legislate() {
