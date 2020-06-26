@@ -26,7 +26,7 @@ await_sms_reply_from() {
     SMS_FROM=`urldecode "$(lookup "$SMS_INFO" "From")"`
     SMS_BODY=`urldecode "$(lookup "$SMS_INFO" "Body")"`
 
-    echo "Received SMS from $SMS_FROM."
+    echo "Received SMS from $SMS_FROM: "
     if [[ "$SMS_FROM" = "$1" ]]; then
       echo "$SMS_BODY"
     else
