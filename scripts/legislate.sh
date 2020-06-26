@@ -75,6 +75,7 @@ legislate() {
   PRESIDENT_IMAGE=`image_url policycombo "$P1-$P2-$P3"`
   send_sms "$PUBLIC_PRESIDENT_PHONE" "$PRESIDENT_MSG" "$PRESIDENT_IMAGE"
   echo "Sent. Awaiting response."
+  start_sms_reply_tunnel
 
   while sleep 1; do
     PRESIDENT_RESPONSE=`await_sms_reply_from "$PUBLIC_PRESIDENT_PHONE"`
@@ -91,7 +92,7 @@ legislate() {
 
   echo -n "Sending remaining policy options to Chancellor $PUBLIC_CHANCELLOR_NAME... "
   CHANCELLOR_MSG=$(
-    echo -en "Congratulations on your election, $PUBLIC_CHANCELLOR_TITLE Chancellor! "
+    echo -en "Congratulations on your election, $PUBLIC_CHANCELLOR_TITLE Chancellor. "
     echo -en "Here are your policy choices.\n\n"
     echo -en "Reply 1 to discard the left $P1 policy and pass $P2.\n\n"
     echo -en "Reply 2 to discard the right $P2 policy and pass $P1."
