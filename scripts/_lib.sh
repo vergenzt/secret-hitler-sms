@@ -77,5 +77,5 @@ move_card() {
 # pick a card from position $I of $FROM_DECk
 pick_card() {
   I=$1; FROM_DECK=$2
-  awk "NR == $I { print \$0 }" "$FROM_DECK"
+  awk "NR == $I { print \$0 }" "$FROM_DECK" | tr -d '[[:digit:]]'
 }
