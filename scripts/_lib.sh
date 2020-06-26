@@ -78,3 +78,4 @@ move_card() {
 pick_card() {
   I=$1; FROM_DECK=$2
   awk "NR == $I { print \$0 }" "$FROM_DECK"
+}
