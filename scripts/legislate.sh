@@ -30,7 +30,7 @@ await_sms_reply_from() {
       echo "$SMS_BODY"
       break
     else
-      echo "Received SMS from wrong number. Expected: $1. Received from: $SMS_FROM."
+      echo "Received SMS from wrong number. Expected: $1. Received from: $SMS_FROM." >/dev/stderr
     fi
   done
 }
