@@ -42,3 +42,10 @@ F_SECRET_POLICY_DECK=$SECRET/policy-deck.txt
 F_SECRET_POLICY_DISCARD=$SECRET/policy-discard.txt
 
 SECRET_POLICY_DECK_LENGTH=`cat $F_SECRET_POLICY_DECK 2>/dev/null | wc -l`
+
+ensure_drawable_policy_deck() {
+  if [[ "$SECRET_POLICY_DECK_LENGTH" -lt 3 ]]; then
+    echo "$SECRET_POLICY_DECK_LENGTH policies remaining; re-shuffling policy deck."
+    cat "$F_PUBLIC_POLICIES_AVAILABLE" | gshuf > $F_SECRET_POLICY_DECK
+  fi
+}
