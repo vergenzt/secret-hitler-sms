@@ -66,7 +66,8 @@ legislate() {
   while true; do
     PRESIDENT_RESPONSE=`await_sms_reply_from "$PUBLIC_PRESIDENT_PHONE"`
 
-    case "$PRESIDENT_RESPONSE" in
+
+
   done
 
   # discard
