@@ -13,6 +13,10 @@ start_sms_reply_tunnel() {
 
 await_sms_reply_from() {
   FROM=$1
+  if [[ -z "$FROM" ]]; then
+    echo "Error: No phone number provided to expect an SMS from!"
+
+  fi
   TWILIO_RESP=""
   echo -n "Listening for SMS reply... "
   until grep -q "&From=$(echo $FROM | tr '+' '%2B')&" <(echo $TWILIO_RESP); do
