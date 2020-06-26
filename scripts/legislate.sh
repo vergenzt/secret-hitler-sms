@@ -29,7 +29,7 @@ await_sms_reply_from() {
     SMS_BODY=`urldecode "$(lookup "$SMS_INFO" "Body")"`
 
     case "$SMS_FROM" in
-      "$1")
+      "$SMS_FROM_EXPECTE")
         echo "$SMS_BODY"; break;;
       *)
         echo "Received SMS from wrong number. Expected: $1. Received from: $SMS_FROM." >/dev/stderr; break;;
