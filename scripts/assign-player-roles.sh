@@ -11,7 +11,7 @@ if [[ -f $F_SECRET_PLAYER_ROLES ]]; then
 fi
 
 # assign
-echo "Assigning player roles!"
+echo "Assigning player roles... "
 SECRET_PLAYER_ROLES=`echo "$PUBLIC_ROLES_ACTIVE" | gshuf`
 
 # save in order of player-info.txt
