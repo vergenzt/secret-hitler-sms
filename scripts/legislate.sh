@@ -17,6 +17,7 @@ start_sms_reply_tunnel() {
 }
 
 await_sms_reply_from() {
+  SMS_FROM_EXPECTED="$1"
   if [[ -z "$1" ]]; then
     echo "Error: No phone number provided to expect an SMS from!" >/dev/stderr
     return 1
@@ -28,7 +29,8 @@ await_sms_reply_from() {
     SMS_BODY=`urldecode "$(lookup "$SMS_INFO" "Body")"`
 
     case "$SMS_FROM" in
-      "$1") echo "$SMS_BODY"; break;;
+      "$1")
+        echo "$SMS_BODY"; break;;
       *)
         echo "Received SMS from wrong number. Expected: $1. Received from: $SMS_FROM." >/dev/stderr; break;;
     esac
