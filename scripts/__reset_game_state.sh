@@ -3,5 +3,5 @@
 trap "kill 0" EXIT
 source scripts/__lib.sh
 
-read -p "To reset game state, please type RESET: "
+read -p "To reset game state, please type RESET: " RESET
 rm -f $SECRET/{policy-{deck,options,discard,record},player-roles}.txt
