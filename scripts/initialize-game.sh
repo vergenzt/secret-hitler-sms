@@ -14,12 +14,12 @@ echo -n "Assigning player roles... "
 SECRET_PLAYER_ROLES=`echo "$PUBLIC_ROLES_ACTIVE" | gshuf | tee $SECRET/player-roles.txt`
 echo "Done."
 
-echo -n "Initializing decks... "
+echo -n "Initializing & shuffling decks... "
 touch $SECRET/policy-{deck,options,discard,record}.txt
 ensure_drawable_policy_deck &>/dev/null
 echo "Done."
 
-echo -n "Distributing player roles via SMS... "
+echo -n "Distributing secret player roles via SMS... "
 while read PUBLIC_NAME PUBLIC_PHONE SECRET_ROLE SECRET_PARTY; do
   send_sms \
     "$PUBLIC_PHONE" \
