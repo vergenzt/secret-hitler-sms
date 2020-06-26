@@ -33,7 +33,7 @@ define split-and-rotate
 		-shave 11x11 \
 		-crop 2x1@ \
 		\( -clone -2 -rotate -90 \) \
-		\( -clone -2 -rotate  90 -distort SRT 0,-2,0 \) \
+		\( -clone -2 -rotate  90 -distort SRT 0,-3,0 \) \
 		-delete 0-1 \
 		+append \
 		$@
