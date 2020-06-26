@@ -28,7 +28,7 @@ await_sms_reply_from() {
     SMS_INFO=`nc -l localhost 8080 < $STATIC/twilio-empty-response.xml | tail -n1 | tr '&=' '\n '`
     SMS_KEYS=`awk '{print $1}' <(echo "$SMS_INFO")`
     SMS_VALS=`awk '{print $1}' <(echo "$SMS_INFO")`
-    echo $SMS_INFO >/dev/stderr
+    echo "$SMS_INFO" >/dev/stderr
     SMS_FROM=`urldecode "$(lookup "$SMS_VALS" "$SMS_KEYS" "From")"`
     SMS_BODY=`urldecode "$(lookup "$SMS_VALS" "$SMS_KEYS" "Body")"`
     set +x
@@ -38,7 +38,7 @@ await_sms_reply_from() {
         echo "$SMS_BODY"
         return;;
       *)
-        echo "Received SMS from wrong number. Expected: $SMS_FROM_EXPECTED. Received from: $SMS_FROM." >/dev/stderr ;;
+        echo "Received SMS from wrong number. Expected: $SMS_FROM_EXPECTED. Received from: $SMS_FROM." >/dev/stderr;;
     esac
   done
 }
