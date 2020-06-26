@@ -3,6 +3,7 @@
 source scripts/__lib.sh
 
 FROM="$1"
+TO="$2"
 
 echo "You are about to send "
 while [[ "$RESET" != "RESET" ]]; do
