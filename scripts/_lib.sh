@@ -24,35 +24,6 @@ send_sms() {
     >/dev/null
 }
 
-start_sms_reply_listener() {
-  # set up server to listen for discard choices
-  echo -n "Starting ngrok server... "
-  F_SECRET_NGROK_LOG=$SECRET/ngrok.json
-  ngrok http --log=stdout --log-format=json 8080 > $F_SECRET_NGROK_LOG &
-  sleep 5 # workaround cause tail -f way wasn't terminating
-  SECRET_NGROK_URL=$(
-    cat $F_SECRET_NGROK_LOG \
-      | grep ',"msg":"started tunnel","name":"command_line"' \
-      | head -n1 \
-      | jq -r .url
-  )
-  echo "Done."
-  echo -n "Updating Twilio callback URL... "
-  twilio phone-numbers:update $PUBLIC_SOURCE_PHONE --sms-url=$SECRET_NGROK_URL >/dev/null
-  echo "Done."
-}
-
-await_sms_reply_from() {
-  FROM=$1
-  TWILIO_RESP=""
-  echo -n "Listening for SMS reply... "
-  until grep -q "&From=$(echo $FROM | tr '+' '%2B')&" <(echo $TWILIO_RESP); do
-    TWILIO_RESP=`nc -l localhost 8080 < $STATIC/twilio-empty-response.xml | tee /dev/stderr`
-  done
-  echo "Done."
-  echo "$TWILIO_RESP"
-}
-
 F_PUBLIC_SOURCE_PHONE=$PUBLIC/source-phone.txt
 F_PUBLIC_PLAYER_INFO=$PUBLIC/player-info.txt
 F_PUBLIC_ROLES_AVAILABLE=$STATIC/roles-available.txt
