@@ -73,6 +73,7 @@ legislate() {
       3) test; break;;
       *)
         echo "Invalid selection! Please submit again."
+        ;;
 
 
   done
