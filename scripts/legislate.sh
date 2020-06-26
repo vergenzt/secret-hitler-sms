@@ -4,7 +4,6 @@ trap "kill 0" EXIT
 source scripts/_lib.sh
 
 start_sms_reply_listener() {
-  echo -n "Starting ngrok server... "
   (
     ngrok http --log=stdout --log-format=json 8080 \
       | tee $F_SECRET_NGROK_LOG \
@@ -12,7 +11,6 @@ start_sms_reply_listener() {
       | xargs -n1 twilio phone-numbers:update $PUBLIC_SOURCE_PHONE --sms-url=\{\} >/dev/null \
       &
   ) 2>/dev/null
-  echo "Done."
 }
 
 await_sms_reply_from() {
