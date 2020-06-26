@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 lookup() {
-  gpaste <(echo "$1") <(echo "$2")# | awk "\$1 == \"$3\" { print \$2 }"
+  gpaste <(echo "$1") <(echo "$2") # | awk "\$1 == \"$3\" { print \$2 }"
 }
 
 # https://stackoverflow.com/a/37840948
