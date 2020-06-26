@@ -125,7 +125,6 @@ legislate() {
 
   move_card "$CHANCELLOR_RESPONSE" "$SECRET/policy-options.txt" "$SECRET/policy-discard.txt"
   unset P1 P2
-  move_card 1 "$SECRET/policy-options.txt" "$PUBLIC/policies-enacted.txt"
   PUBLIC_POLICY_PASSED=`pick_card 1 "$SECRET/policy-options.txt"`
 
   echo "$PUBLIC_PLAYER_PHONES" \
