@@ -128,15 +128,16 @@ legislate() {
 
   MSG="President $PUBLIC_PRESIDENT_NAME and Chancellor $PUBLIC_CHANCELLOR_NAME have passed a $PUBLIC_POLICY_PASSED policy." \
 
-  echo
-  echo $MSG
-  echo
-
   for PHONE in $PUBLIC_PLAYER_PHONES; do
     send_sms "$PHONE" \
       "President $PUBLIC_PRESIDENT_NAME and Chancellor $PUBLIC_CHANCELLOR_NAME have passed a $PUBLIC_POLICY_PASSED policy." \
       "`image_url policy "$PUBLIC_POLICY_PASSED"`"
   done
+
+  sleep 3
+  echo
+  echo $MSG
+  echo
 
   echo
   wc -l $SECRET/policy-*.txt $PUBLIC/policies-enacted.txt
