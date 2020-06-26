@@ -23,7 +23,7 @@ await_sms_reply_from() {
     echo "Error: No phone number provided to expect an SMS from!" >/dev/stderr
     return 1
   fi
-  while true; do
+  while sleep 1; do
     SMS_INFO=`nc -l localhost 8080 < $STATIC/twilio-empty-response.xml | tail -n1 | tr '&=' '\n '`
     echo $SMS_INFO >/dev/stderr
     SMS_FROM=`urldecode "$(lookup "$SMS_INFO" "From")"`
@@ -37,7 +37,6 @@ await_sms_reply_from() {
         echo "Received SMS from wrong number. Expected: $SMS_FROM_EXPECTED. Received from: $SMS_FROM." >/dev/stderr
         break;;
     esac
-    sleep 1
   done
 }
 
