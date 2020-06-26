@@ -83,6 +83,7 @@ legislate() {
       [1-3]) break;;
       *) echo "Error: Invalid response: $PRESIDENT_RESPONSE! Please reply again.";;
     esac
+    sleep 1
   done
 
   move_card "$PRESIDENT_RESPONSE" "$F_SECRET_POLICY_OPTIONS" "$F_SECRET_POLICY_DISCARD"
