@@ -54,7 +54,8 @@ legislate() {
   draw_cards 3 "$F_SECRET_POLICY_DECK" "$F_SECRET_POLICY_OPTIONS"
 
   echo -n "Sending policy options to President $PUBLIC_PRESIDENT_NAME... "
-  PRESIDENT_MSG=$(echo -en \
+  PRESIDENT_MSG=$(
+    echo -en \
     "Congratulations on the election, $PUBLIC_PRESIDENT_TITLE President."\
     "Here are your policy choices.\n\n";\
     "Reply 1 to discard the left ${SECRET_POLICIES[0]} policy and pass ${SECRET_POLICIES[1]}-${SECRET_POLICIES[2]} to Chancellor $PUBLIC_CHANCELLOR_NAME.\n\n"\
