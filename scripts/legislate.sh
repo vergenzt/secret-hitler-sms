@@ -18,7 +18,7 @@ start_sms_reply_tunnel() {
 
 await_sms_reply_from() {
   SMS_FROM_EXPECTED="$1"
-  if [[ -z "$1" ]]; then
+  if [[ -z "$SMS_FROM_EXPECTED" ]]; then
     echo "Error: No phone number provided to expect an SMS from!" >/dev/stderr
     return 1
   fi
