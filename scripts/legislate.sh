@@ -52,10 +52,6 @@ legislate() {
 
   ensure_drawable_policy_deck
 
-  # draw three cards
-  head -n3 "$F_SECRET_POLICY_DECK" | tee "$F_SECRET_POLICY_OPTIONS"
-  tail -n+3 "$F_SECRET_POLICY_DECK" | sponge > "$F_SECRET_POLICY_DECK"
-
   PRESIDENT_MSG=$(echo -e \
     "Congratulations on the election, $PUBLIC_PRESIDENT_PREFIX President."\
     "Here are your policy choices.\n\n"\
