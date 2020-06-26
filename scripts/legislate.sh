@@ -42,6 +42,7 @@ await_sms_reply_from() {
 
 legislate() {
   ensure_drawable_policy_deck
+  echo
   (cd $SECRET && wc -l policy-*.txt)
 
   # who's president?
