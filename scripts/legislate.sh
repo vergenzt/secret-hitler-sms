@@ -33,7 +33,6 @@ await_sms_reply_from() {
 
     fi
   done
-  echo "Done."
 }
 
 legislate() {
