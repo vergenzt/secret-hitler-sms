@@ -12,10 +12,7 @@ fi
 
 # assign
 echo "Assigning player roles... "
-SECRET_PLAYER_ROLES=`echo "$PUBLIC_ROLES_ACTIVE" | gshuf`
-
-# save in order of player-info.txt
-echo "$SECRET_PLAYER_ROLES" > $F_SECRET_PLAYER_ROLES
+SECRET_PLAYER_ROLES=`echo "$PUBLIC_ROLES_ACTIVE" | gshuf | tee $F_SECRET_PLAYER_ROLES`
 
 # send texts
 while read PUBLIC_NAME PUBLIC_PHONE SECRET_ROLE SECRET_PARTY; do
