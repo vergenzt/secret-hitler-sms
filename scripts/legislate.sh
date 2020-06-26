@@ -5,7 +5,6 @@ source scripts/_lib.sh
 
 start_sms_reply_listener() {
   echo -n "Starting ngrok server... "
-  F_SECRET_NGROK_LOG=$SECRET/ngrok.json
   ngrok http --log=stdout --log-format=json 8080 > $F_SECRET_NGROK_LOG &
   sleep 3 # workaround cause tail -f way wasn't terminating
   SECRET_NGROK_URL=$(
