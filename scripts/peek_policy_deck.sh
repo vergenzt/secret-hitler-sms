@@ -11,6 +11,6 @@ ensure_drawable_policy_deck
 
 echo -n "Sending preview of top three policies to $PEEKER... "
 PEEKER_PHONE=$(lookup "$PUBLIC_PLAYER_PHONES" "$PUBLIC_PLAYER_NAMES" "$PEEKER")
-PEEKER_MSG="Here are the current top three policies on the policy deck."
+PEEKER_MSG="$PEEKER, here are the current top three policies on the policy deck."
 PEEKER_IMG=`image_url policycombo "$(head -n3 $SECRET/policy-deck.txt | tr -d '[[:digit:]]' | tr '\n' '-')"`
 send_sms "$PEEKER_PHONE" "$PEEKER_MSG" "$PEEKER_IMG"
