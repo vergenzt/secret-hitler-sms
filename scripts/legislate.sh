@@ -48,7 +48,7 @@ legislate() {
     echo "Error: President must be different than chancellor!"
     return
   fi
-  
+
   ensure_drawable_policy_deck
 
   SECRET_POLICIES=($(tail -n3 "$F_SECRET_POLICY_DECK"))
