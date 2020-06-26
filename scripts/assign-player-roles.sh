@@ -2,7 +2,6 @@
 (return 0 2>/dev/null) || cd "$(dirname "$0")"/.. || exit 1
 trap "kill 0" EXIT
 source scripts/_lib.sh
-set -x
 
 if [[ -f $F_SECRET_PLAYER_ROLES ]]; then
   echo "Error: $F_SECRET_PLAYER_ROLES already exists."
