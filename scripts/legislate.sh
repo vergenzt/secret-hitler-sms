@@ -77,13 +77,12 @@ legislate() {
   send_sms "$PUBLIC_PRESIDENT_PHONE" "$PRESIDENT_MSG" "$PRESIDENT_IMAGE"
   echo "Sent. Awaiting response."
 
-  while true; do
+  while sleep 1; do
     PRESIDENT_RESPONSE=`await_sms_reply_from "$PUBLIC_PRESIDENT_PHONE"`
     case "$PRESIDENT_RESPONSE" in
       [1-3]) break;;
       *) echo "Error: Invalid response: $PRESIDENT_RESPONSE! Please reply again.";;
     esac
-    sleep 1
   done
 
   move_card "$PRESIDENT_RESPONSE" "$F_SECRET_POLICY_OPTIONS" "$F_SECRET_POLICY_DISCARD"
