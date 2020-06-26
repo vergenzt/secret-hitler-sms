@@ -3,6 +3,9 @@ lookup() {
   echo "$1" | awk "\$1 == \"$2\" { print \$$3 }"
 }
 
+# https://stackoverflow.com/a/37840948
+function urldecode() { : "${*//+/ }"; echo -e "${_//%/\\x}"; }
+
 STATIC=static
 SECRET=state/__SECRET__
 PUBLIC=state/public
