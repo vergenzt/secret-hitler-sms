@@ -96,7 +96,7 @@ legislate() {
   while true; do
     CHANCELLOR_RESPONSE=`await_sms_reply_from "$PUBLIC_CHANCELLOR_PHONE"`
     case "$CHANCELLOR_RESPONSE" in
-      [1-3]) break;;
+      [1-2]) break;;
       *) echo "Error: Invalid response: $CHANCELLOR_RESPONSE! Please reply again.";;
     esac
   done
