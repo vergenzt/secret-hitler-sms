@@ -7,7 +7,7 @@ start_sms_reply_listener() {
   echo -n "Starting ngrok server... "
   ngrok http --log=stdout --log-format=json 8080 \
     | tee $F_SECRET_NGROK_LOG \
-    | jq --raw-output --unbuffered 'select(.msg == "started tunnel" and .name == "command_line") | .url'
+    | jq --raw-output --unbuffered 'select(.msg == "started tunnel" and .name == "command_line") | .url' \
     | xargs -n1 twilio phone-numbers:update $PUBLIC_SOURCE_PHONE --sms-url=$SECRET_NGROK_URL >/dev/null
   sleep 3 # workaround cause tail -f way wasn't terminating
   SECRET_NGROK_URL=$(
