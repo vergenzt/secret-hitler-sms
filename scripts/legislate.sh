@@ -102,8 +102,8 @@ legislate() {
   done
 
   move_card "$CHANCELLOR_RESPONSE" "$F_SECRET_POLICY_OPTIONS" "$F_SECRET_POLICY_DISCARD"
-  unset P3
-  read P1 P2 <(cat "$F_SECRET_POLICY_OPTIONS" | tr '\n' ' ')
+  unset P2
+  read P1 <(cat "$F_SECRET_POLICY_OPTIONS" | tr '\n' ' ')
 
   # send remainder to everybody else
 
