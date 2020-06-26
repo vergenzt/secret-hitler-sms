@@ -9,7 +9,7 @@ start_sms_reply_listener() {
     | tee $F_SECRET_NGROK_LOG \
     | jq --raw-output --unbuffered 'select(.msg == "started tunnel" and .name == "command_line") | .url' \
     | xargs -n1 twilio phone-numbers:update $PUBLIC_SOURCE_PHONE --sms-url=\{\} >/dev/null \
-    &
+    & 2>/dev/null
 }
 
 await_sms_reply_from() {
