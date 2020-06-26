@@ -6,3 +6,5 @@ while [[ -z "$PEEKER" || "$PEEKER" != "$PEEKER_CONFIRM" ]]; do
   read -p "Who gets to peek at the policy deck? ($PUBLIC_PLAYER_NAMES_PROMPT): " PEEKER
   read -p "Type again to confirm: " PEEKER_CONFIRM
 done
+
+echo -n "Sending preview of top three policies to $PEEKER... "
