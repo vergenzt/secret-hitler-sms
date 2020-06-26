@@ -29,8 +29,9 @@ await_sms_reply_from() {
 
     case "$SMS_FROM" in
       "$1") echo "$SMS_BODY"; break;;
-      *) echo "Received SMS from wrong number. Expected: $1. Received from: $SMS_FROM." >/dev/stderr
-    fi
+      *)
+        echo "Received SMS from wrong number. Expected: $1. Received from: $SMS_FROM." >/dev/stderr; break;;
+    esac
   done
 }
 
