@@ -84,11 +84,10 @@ legislate() {
 
   echo -n "Sending remaining policy options to Chancellor $PUBLIC_CHANCELLOR_NAME... "
   CHANCELLOR_MSG=$(
-    echo -en "Congratulations on the election, $PUBLIC_CHANCELLOR_TITLE President. "
+    echo -en "Congratulations on the election, $PUBLIC_CHANCELLOR_TITLE Chancellor. "
     echo -en "Here are your policy choices.\n\n"
-    echo -en "Reply 1 to discard the left $P1 policy and pass $P2-$P3 to Chancellor $PUBLIC_CHANCELLOR_NAME.\n\n"
-    echo -en "Reply 2 to discard the middle $P2 policy and pass $P1-$P3 to Chancellor $PUBLIC_CHANCELLOR_NAME.\n\n"
-    echo -en "Reply 3 to discard the right $P3 policy and pass $P1-$P2 to Chancellor $PUBLIC_CHANCELLOR_NAME."
+    echo -en "Reply 1 to discard the left $P1 policy and pass $P2.\n\n"
+    echo -en "Reply 2 to discard the middle $P2 policy and pass $P1.\n\n"
   )
   CHANCELLOR_IMAGE=`image_url policycombo "$P1-$P2-$P3"`
   send_sms "$PUBLIC_CHANCELLOR_PHONE" "$CHANCELLOR_MSG" "$CHANCELLOR_IMAGE"
