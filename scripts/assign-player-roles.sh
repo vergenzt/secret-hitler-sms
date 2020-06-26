@@ -12,7 +12,6 @@ fi
 
 echo -n "Assigning & sending player roles... "
 SECRET_PLAYER_ROLES=`echo "$PUBLIC_ROLES_ACTIVE" | gshuf | tee $F_SECRET_PLAYER_ROLES`
-echo "Done."
 
 while read PUBLIC_NAME PUBLIC_PHONE SECRET_ROLE SECRET_PARTY; do
   send_sms \
@@ -26,3 +25,4 @@ done < <(\
   <(echo "$PUBLIC_PLAYER_PHONES") \
   <(echo "$SECRET_PLAYER_ROLES" | tr ':' ' ') \
 )
+echo "Done."
