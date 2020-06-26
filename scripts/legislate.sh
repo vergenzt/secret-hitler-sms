@@ -15,7 +15,7 @@ await_sms_reply_from() {
   FROM=$1
   if [[ -z "$FROM" ]]; then
     echo "Error: No phone number provided to expect an SMS from!"
-
+    exit 1
   fi
   TWILIO_RESP=""
   echo -n "Listening for SMS reply... "
