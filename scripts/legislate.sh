@@ -60,7 +60,10 @@ legislate() {
       continue
     fi
 
-    read -p "Continue? (Y/N) "
+    read -p "Continue? (Y/N) " CONTINUE
+    case CONTINUE in
+      y|Y|yes|YES) break;
+    esac
   done
 
   draw_cards 3 "$F_SECRET_POLICY_DECK" "$F_SECRET_POLICY_OPTIONS"
