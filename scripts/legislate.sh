@@ -27,7 +27,7 @@ await_sms_reply_from() {
     set -x
     SMS_INFO=`nc -l localhost 8080 < $STATIC/twilio-empty-response.xml | tail -n1 | tr '&=' '\n '`
     SMS_KEYS=`awk '{print $1}' <(echo "$SMS_INFO")`
-    SMS_VALS=`awk '{print $1}' <(echo "$SMS_INFO")`
+    SMS_VALS=`awk '{print $2}' <(echo "$SMS_INFO")`
     echo "$SMS_INFO" >/dev/stderr
     SMS_FROM=`urldecode "$(lookup "$SMS_VALS" "$SMS_KEYS" "From")"`
     SMS_BODY=`urldecode "$(lookup "$SMS_VALS" "$SMS_KEYS" "Body")"`
