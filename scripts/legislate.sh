@@ -23,7 +23,7 @@ await_sms_reply_from() {
   fi
   TWILIO_RESP=""
   echo -n "Listening for SMS reply... "
-  until grep -q "&From=$(echo "$1" | tr '+' '%2B')&" <(echo "$TWILIO_RESP"); do
+  while true; do
     TWILIO_RESP=`nc -l localhost 8080 < $STATIC/twilio-empty-response.xml | tee /dev/stderr`
   done
   echo "Done."
