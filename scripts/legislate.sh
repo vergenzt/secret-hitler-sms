@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 (return 0 2>/dev/null) || cd "$(dirname "$0")"/.. || exit 1
-#set -x
+set -x
 trap "set +x; kill 0" EXIT
 source scripts/_lib.sh
 
