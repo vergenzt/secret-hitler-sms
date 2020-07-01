@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 cd "$(dirname "$0")"/.. || exit 1
-source scripts/__lib.sh
+source scripts/lib/{vars,utils,sms,deck}.bash
 
 while [[ "$RESET" != "RESET" ]]; do
   read -p "To reset game state, please type RESET: " RESET
