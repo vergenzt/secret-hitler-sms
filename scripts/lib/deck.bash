@@ -7,6 +7,7 @@ policy_deck_length() {
 ensure_drawable_policy_deck() {
   if [[ `policy_deck_length` -lt 3 ]]; then
     echo "$(policy_deck_length) policies in deck; shuffling."
+    draw_cards `policy_deck_length` >> $SECRET/policy-deck.txt
     cat "$SECRET/policy-discard.txt" "$SECRET/policy-deck.txt" | gshuf | sponge $SECRET/policy-deck.txt
   fi
 }
