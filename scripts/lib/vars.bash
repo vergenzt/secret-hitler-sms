@@ -26,7 +26,7 @@ image_url() { echo "$IMAGES_BASE_URL/$1-$2.png"; }
 
 parse_from_yq() {
   FILE="$1"
-  SCHEMA="${FILE%.*}"
+  SCHEMA="${FILE%.*}".schema.yaml
 }
 
 public_source_phone() { yq $SECRET/}
