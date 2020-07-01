@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+SECRET=$BATS_TMPDIR/state/__SECRET__
+PUBLIC=$BATS_TMPDIR/state/public
+
 STATIC=static
 IMAGES_BASE_URL=https://raw.githubusercontent.com/vergenzt/secret-hitler-sms/master/$STATIC/images
 image_url() { echo "$IMAGES_BASE_URL/$1-$2.png"; }
