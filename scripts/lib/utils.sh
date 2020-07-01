@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+
 lookup() {
   gpaste <(echo "$2") <(echo "$1") | awk "\$1 == \"$3\" { print \$2 }"
 }
