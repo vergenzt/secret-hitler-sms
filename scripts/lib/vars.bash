@@ -28,6 +28,7 @@ read_yaml() {
 }
 
 public_source_phone() { read_yaml $PUBLIC/source-phone; }
+public_player_names() { read_yaml $PUBLIC/player-info *.name; }
 
 
 export PUBLIC_SOURCE_PHONE=`cat $PUBLIC/source-phone.txt 2>/dev/null`
