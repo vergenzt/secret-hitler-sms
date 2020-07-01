@@ -2,10 +2,10 @@
 
 SECRET=state/__SECRET__
 PUBLIC=state/public
+
 if [ ! -z "$BATS_TMPDIR" ]; then
   SECRET=$BATS_TMPDIR/$SECRET
   PUBLIC=$BATS_TMPDIR/$PUBLIC
-
 fi
 
 STATIC=static
