@@ -1,6 +1,9 @@
 #!/usr/bin/env bash
 cd "$(dirname "$0")"/.. || exit 1
-source scripts/__lib.sh
+$1/vars.bash
+$1/utils.bash
+$1/sms.bash
+$1/deck.bash
 trap "kill 0" EXIT
 
 start_sms_reply_tunnel() {
