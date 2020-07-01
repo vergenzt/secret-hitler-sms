@@ -4,5 +4,5 @@ load vars
 load deck
 
 @test "ensure_drawable_policy_deck" {
-  tee state/__SECRET
+  tee $SECRET/policy-deck.txt
 }
