@@ -33,7 +33,7 @@ read_yaml() {
   yq read "$DATA" "$YAMLPATH"
 }
 
-public_source_phone() { read_yaml $PUBLIC/source-phone.yaml
+public_source_phone() { read_yaml $PUBLIC/source-phone
 
 export PUBLIC_SOURCE_PHONE=`cat $PUBLIC/source-phone.txt 2>/dev/null`
 export PUBLIC_PLAYER_INFO=`cat $PUBLIC/player-info.txt | grep -v '^#'`
