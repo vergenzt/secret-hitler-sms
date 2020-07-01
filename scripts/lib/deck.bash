@@ -1,5 +1,9 @@
 #!/usr/bin/env bash
 
+deck_length() {
+  cat "$1" 2>/dev/null | wc -l
+}
+
 policy_deck_length() {
   cat $SECRET/policy-deck.txt 2>/dev/null | wc -l
 }
