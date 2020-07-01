@@ -1,4 +1,5 @@
-- {party: fascist, id: 1}
+- party: fascist
+  id: 1
 - {party: fascist, id: 2}
 - {party: fascist, id: 3}
 - {party: fascist, id: 4}
