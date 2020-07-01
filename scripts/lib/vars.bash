@@ -27,7 +27,7 @@ image_url() { echo "$IMAGES_BASE_URL/$1-$2.png"; }
 read_yaml() {
   BASENAME="$1"
   DATA="$BASENAME".yaml
-  SCHEMA="${FILE%.*}".schema.yaml
+  SCHEMA="$BASENAME".schema.yaml
   YAMLPATH="$2"
   pajv validate -s "$SCHEMA" -d "$DATA"
   yq read "$DATA" "$YAMLPATH"
