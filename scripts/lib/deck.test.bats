@@ -1,6 +1,7 @@
 #!/usr/bin/env bats
 
-load vars-test.sh
+load vars-base-test.sh
+load vars.sh
 load deck.sh
 
 @test "ensure_drawable_policy_deck" {
