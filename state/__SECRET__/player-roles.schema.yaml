@@ -3,9 +3,5 @@ type: object
 additionalProperties:
   type: string
 examples:
-  - - name: Tim
-      phone: +1555123456
-      honorific: Mr.
-    - name: Amanda
-      phone: +1555123456
-      honorific: Madam
+  - Tim: { role: hitler, party: fascist }
+    Amanda: { role: liberal, party: liberal }
