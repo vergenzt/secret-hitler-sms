@@ -1,6 +1,5 @@
 #!/usr/bin/env bats
 
-load vars-base-test.sh
 load vars.sh
 load deck.sh
 
