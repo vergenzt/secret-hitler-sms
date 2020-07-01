@@ -24,7 +24,11 @@ image_url() { echo "$IMAGES_BASE_URL/$1-$2.png"; }
 [ -f "$PUBLIC/player-info.txt" ]
 [ -f "$STATIC/roles-available.txt" ]
 
-public_source_phone() { }
+parse_from_yq() {
+  FILENAME=$1
+}
+
+public_source_phone() { yq $SECRET/}
 
 export PUBLIC_SOURCE_PHONE=`cat $PUBLIC/source-phone.txt 2>/dev/null`
 export PUBLIC_PLAYER_INFO=`cat $PUBLIC/player-info.txt | grep -v '^#'`
