@@ -14,6 +14,6 @@ load deck
 	card5
 	EOF
 
-	run ensure_drawable_policy_deck
+	ensure_drawable_policy_deck
 
 }
