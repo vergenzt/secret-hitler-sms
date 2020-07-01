@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
 cd "$(dirname "$0")"/.. || exit 1
-# shellcheck source=.
 source scripts/lib/{vars,utils,sms,deck}.bash
 
 while [[ -z "$PEEKER" || "$PEEKER" != "$PEEKER_CONFIRM" ]]; do
