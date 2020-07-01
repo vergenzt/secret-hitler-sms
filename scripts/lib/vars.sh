@@ -3,6 +3,7 @@
 SECRET=state/__SECRET__
 PUBLIC=state/public
 
+# set up temporary test directories
 if [ ! -z "$BATS_TMPDIR" ]; then
   SECRET=$BATS_TMPDIR/$SECRET
   PUBLIC=$BATS_TMPDIR/$PUBLIC
