@@ -1,0 +1,11 @@
+description: A map from player names to player roles.
+type: object
+additionalProperties:
+  type: string
+examples:
+  - - name: Tim
+      phone: +1555123456
+      honorific: Mr.
+    - name: Amanda
+      phone: +1555123456
+      honorific: Madam

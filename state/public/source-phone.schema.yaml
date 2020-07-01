@@ -1,0 +1,4 @@
+pattern: ^\+\d+$
+description: The owned Twilio phone number to send SMSes from.
+examples:
+  - +15551234567
