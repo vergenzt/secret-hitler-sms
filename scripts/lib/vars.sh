@@ -2,6 +2,11 @@
 
 SECRET=state/__SECRET__
 PUBLIC=state/public
+if [ ! -z "$BATS_TMPDIR" ]; then
+  SECRET=$BATS_TMPDIR/$SECRET
+  PUBLIC=$BATS_TMPDIR/$PUBLIC
+
+fi
 
 STATIC=static
 IMAGES_BASE_URL=https://raw.githubusercontent.com/vergenzt/secret-hitler-sms/master/$STATIC/images
