@@ -18,10 +18,13 @@ STATIC=static
 IMAGES_BASE_URL=https://raw.githubusercontent.com/vergenzt/secret-hitler-sms/master/$STATIC/images
 image_url() { echo "$IMAGES_BASE_URL/$1-$2.png"; }
 
+
 # check file presence
 [ -f "$PUBLIC/source-phone.txt" ]
 [ -f "$PUBLIC/player-info.txt" ]
 [ -f "$STATIC/roles-available.txt" ]
+
+public_source_phone() { }
 
 export PUBLIC_SOURCE_PHONE=`cat $PUBLIC/source-phone.txt 2>/dev/null`
 export PUBLIC_PLAYER_INFO=`cat $PUBLIC/player-info.txt | grep -v '^#'`
