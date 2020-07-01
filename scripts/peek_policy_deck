@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 cd "$(dirname "$0")"/.. || exit 1
-source scripts/__lib.sh
+$1/vars.bash
+$1/utils.bash
 
 while [[ -z "$PEEKER" || "$PEEKER" != "$PEEKER_CONFIRM" ]]; do
   read -p "Who gets to peek at the policy deck? ($PUBLIC_PLAYER_NAMES_PROMPT): " PEEKER
