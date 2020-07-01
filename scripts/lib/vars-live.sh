@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
 
-
-SECRET=state/__SECRET__
+SECRET=$BATS_TMPDIR/state/__SECRET__
 PUBLIC=state/public
