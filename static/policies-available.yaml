@@ -9,9 +9,9 @@
 - {party: fascist, id: 9}
 - {party: fascist, id: 10}
 - {party: fascist, id: 11}
-liberal1
-liberal2
-liberal3
-liberal4
-liberal5
-liberal6
+- {party: liberal, id: 12}
+- {party: liberal, id: 13}
+- {party: liberal, id: 14}
+- {party: liberal, id: 15}
+- {party: liberal, id: 16}
+- {party: liberal, id: 17}
