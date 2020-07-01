@@ -35,6 +35,7 @@ read_yaml() {
 
 public_source_phone() { read_yaml $PUBLIC/source-phone; }
 
+
 export PUBLIC_SOURCE_PHONE=`cat $PUBLIC/source-phone.txt 2>/dev/null`
 export PUBLIC_PLAYER_INFO=`cat $PUBLIC/player-info.txt | grep -v '^#'`
 export PUBLIC_PLAYER_TITLES=`awk '{print $1}' <(echo "$PUBLIC_PLAYER_INFO")`
