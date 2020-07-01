@@ -24,7 +24,7 @@ image_url() { echo "$IMAGES_BASE_URL/$1-$2.png"; }
 [ -f "$PUBLIC/player-info.txt" ]
 [ -f "$STATIC/roles-available.txt" ]
 
-parse_from_yq() {
+parse_yaml() {
   DATA="$1"
   PATH="$2"
   SCHEMA="${FILE%.*}".schema.yaml
