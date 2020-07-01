@@ -32,7 +32,7 @@ public_player_names() { read_yaml $PUBLIC/player-info *.name; }
 public_player_phones() { read_yaml $PUBLIC/player-info *.phone; }
 public_player_honorifics() { read_yaml $PUBLIC/player-info *.honorific; }
 
-secret_player_role() {}
+secret_player_role() { read_yaml $SECRET/player-roles "$1"; }
 
 
 export PUBLIC_SOURCE_PHONE=`cat $PUBLIC/source-phone.txt 2>/dev/null`
