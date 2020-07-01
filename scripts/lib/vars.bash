@@ -24,7 +24,7 @@ image_url() { echo "$IMAGES_BASE_URL/$1-$2.png"; }
 [ -f "$PUBLIC/player-info.txt" ]
 [ -f "$STATIC/roles-available.txt" ]
 
-parse_yaml() {
+read_yaml() {
   DATA="$1"
   PATH="$2"
   SCHEMA="${FILE%.*}".schema.yaml
@@ -32,7 +32,7 @@ parse_yaml() {
   yq read "$DATA" "$PATH"
 }
 
-public_source_phone() { yq $SECRET/}
+public_source_phone() { read_yaml $PUBLIC/source-phone.yaml
 
 export PUBLIC_SOURCE_PHONE=`cat $PUBLIC/source-phone.txt 2>/dev/null`
 export PUBLIC_PLAYER_INFO=`cat $PUBLIC/player-info.txt | grep -v '^#'`
