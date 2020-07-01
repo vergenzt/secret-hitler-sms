@@ -2,5 +2,3 @@
 
 SECRET=state/__SECRET__
 PUBLIC=state/public
-
-source vars.sh
