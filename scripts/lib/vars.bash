@@ -28,9 +28,9 @@ read_yaml() {
   BASENAME="$1"
   DATA="$BASENAME".yaml
   SCHEMA="${FILE%.*}".schema.yaml
-  PATH="$2"
+  YAMLPATH="$2"
   pajv validate -s "$SCHEMA" -d "$DATA"
-  yq read "$DATA" "$PATH"
+  yq read "$DATA" "$YAMLPATH"
 }
 
 public_source_phone() { read_yaml $PUBLIC/source-phone.yaml
