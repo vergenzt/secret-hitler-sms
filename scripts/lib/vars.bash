@@ -19,11 +19,6 @@ IMAGES_BASE_URL=https://raw.githubusercontent.com/vergenzt/secret-hitler-sms/mas
 image_url() { echo "$IMAGES_BASE_URL/$1-$2.png"; }
 
 
-# check file presence
-[ -f "$PUBLIC/source-phone.txt" ]
-[ -f "$PUBLIC/player-info.txt" ]
-[ -f "$STATIC/roles-available.txt" ]
-
 read_yaml() {
   BASENAME="$1"
   DATA="$BASENAME".yaml
