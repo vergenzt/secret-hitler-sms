@@ -28,6 +28,7 @@ parse_from_yq() {
   DATA="$1"
   SCHEMA="${FILE%.*}".schema.yaml
   pajv validate -s "$SCHEMA" -d "$DATA"
+
 }
 
 public_source_phone() { yq $SECRET/}
