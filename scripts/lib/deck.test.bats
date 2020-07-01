@@ -7,9 +7,9 @@ load deck
 	tee $SECRET/policy-deck.txt <<-EOF
 	card1
 	card2
-	card3
 	EOF
 	tee $SECRET/policy-discard.txt <<-EOF
+	card3
 	card4
 	card5
 	EOF
