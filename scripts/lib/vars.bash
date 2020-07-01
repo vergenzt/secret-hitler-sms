@@ -25,9 +25,10 @@ image_url() { echo "$IMAGES_BASE_URL/$1-$2.png"; }
 [ -f "$STATIC/roles-available.txt" ]
 
 read_yaml() {
-  DATA="$1"
-  PATH="$2"
+  BASENAME="$1"
+  DATA="$BASENAME".yaml
   SCHEMA="${FILE%.*}".schema.yaml
+  PATH="$2"
   pajv validate -s "$SCHEMA" -d "$DATA"
   yq read "$DATA" "$PATH"
 }
