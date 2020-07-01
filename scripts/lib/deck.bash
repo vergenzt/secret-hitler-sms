@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 deck_length() {
-  cat "$1" 2>/dev/null | wc -l
+  cat "$1".yaml 2>/dev/null | wc -l
 }
 
 ensure_drawable_policy_deck() {
