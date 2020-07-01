@@ -25,7 +25,8 @@ image_url() { echo "$IMAGES_BASE_URL/$1-$2.png"; }
 [ -f "$STATIC/roles-available.txt" ]
 
 parse_from_yq() {
-  FILE=$1
+  FILE="$1"
+  SCHEMA="${FILE%.*}"
 }
 
 public_source_phone() { yq $SECRET/}
