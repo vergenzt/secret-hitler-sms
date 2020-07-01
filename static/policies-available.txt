@@ -1,4 +1,4 @@
-fascist1
+- {party: fascist, id: 1}
 fascist2
 fascist3
 fascist4
