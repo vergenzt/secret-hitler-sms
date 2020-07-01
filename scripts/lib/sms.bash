@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+echo TEST
+
 # shellcheck disable=SC2206
 send_sms() {
   PUBLIC_PHONE="$1"
