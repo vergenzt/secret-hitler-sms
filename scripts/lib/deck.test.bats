@@ -14,4 +14,5 @@ load deck
 	card5
 	EOF
 
+	ensure_drawable_policy_deck
 }
