@@ -1,5 +1,5 @@
 #!/usr/bin/env bats
 
 @test "ensure_drawable_policy_deck" {
-  echo $PWD >&2
+  pwd >&2
 }
