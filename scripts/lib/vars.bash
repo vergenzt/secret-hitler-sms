@@ -2,8 +2,6 @@
 # shellcheck disable=SC2155
 set -o errexit
 
-
-
 export SECRET=state/__SECRET__
 export PUBLIC=state/public
 
