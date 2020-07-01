@@ -9,4 +9,9 @@ load deck
 	card2
 	card3
 	EOF
+	tee $SECRET/policy-discard.txt <<-EOF
+	card1
+	card2
+	card3
+	EOF
 }
