@@ -26,9 +26,10 @@ image_url() { echo "$IMAGES_BASE_URL/$1-$2.png"; }
 
 parse_from_yq() {
   DATA="$1"
+  PATH="$2"
   SCHEMA="${FILE%.*}".schema.yaml
   pajv validate -s "$SCHEMA" -d "$DATA"
-
+  yq read "$DATA" "$PATH"
 }
 
 public_source_phone() { yq $SECRET/}
