@@ -2,6 +2,6 @@
 
 load vars
 
-@test "read_yaml" {
-  :
+@test "public info" {
+
 }
