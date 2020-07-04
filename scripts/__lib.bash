@@ -59,6 +59,9 @@ ensure_drawable_policy_deck() {
     echo "$(policy_deck_length) policies in deck; shuffling."
     cat "$SECRET/policy-discard.txt" "$SECRET/policy-deck.txt" | gshuf | sponge $SECRET/policy-deck.txt
     cp /dev/null $SECRET/policy-discard.txt
+    echo
+    wc -l $STATE/*/policy-*.txt
+    echo
   fi
 }
 
