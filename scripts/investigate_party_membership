@@ -7,7 +7,7 @@ while [[ -z "$CONFIRM" || "$CONFIRM" != "Yes" ]]; do
   read -p "Who is the INVESTIGATOR? ($PUBLIC_PLAYER_NAMES_PROMPT): " INVESTIGATOR
   read -p "Who is the SUSPECT?      ($PUBLIC_PLAYER_NAMES_PROMPT): " SUSPECT
   echo
-  echo "Please confirm:"
+  echo    "Please confirm:"
   read -p "Who is the INVESTIGATOR? (confirm): " INVESTIGATOR_CONFIRM
   read -p "Who is the SUSPECT?      (confirm): " SUSPECT_CONFIRM
   echo
