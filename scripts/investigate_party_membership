@@ -6,7 +6,7 @@ while [[ -z "$CONFIRM" || "$CONFIRM" != "Yes" ]]; do
 
   while [[ -z "$INVESTIGATOR" || "$INVESTIGATOR" != "$INVESTIGATOR_CONFIRM" ]]; do
     read -p "Who is conducting the investigation? ($PUBLIC_PLAYER_NAMES_PROMPT): " INVESTIGATOR
-    read -p "Type again to confirm: " INVESTIGATOR_CONFIRM
+    read -p "Who is conducting the investigation? (CONFIRM): " INVESTIGATOR
   done
   echo
 
