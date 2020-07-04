@@ -3,7 +3,7 @@
 source scripts/__lib.bash
 
 while [[ -z "$INVESTIGATOR" || "$INVESTIGATOR" != "$INVESTIGATOR_CONFIRM" ]]; do
-  read -p "Who gets to peek at the policy deck? ($PUBLIC_PLAYER_NAMES_PROMPT): " INVESTIGATOR
+  read -p "Who is conducting the investigation? ($PUBLIC_PLAYER_NAMES_PROMPT): " INVESTIGATOR
   read -p "Type again to confirm: " INVESTIGATOR_CONFIRM
 done
 
