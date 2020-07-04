@@ -7,6 +7,7 @@ lookup() {
 function urldecode() { : "${*//+/ }"; echo -e "${_//%/\\x}"; }
 
 STATIC=static
+STATE=state
 SECRET=state/__SECRET__
 PUBLIC=state/public
 
