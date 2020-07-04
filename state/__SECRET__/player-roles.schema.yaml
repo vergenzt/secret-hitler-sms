@@ -1,6 +1,6 @@
 description: A map from player names to player roles.
 type: object
-additionalProperties
+additionalProperties:
   type: string
 examples:
   - Tim: { role: hitler, party: fascist }
