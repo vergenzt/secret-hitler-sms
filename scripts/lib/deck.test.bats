@@ -19,10 +19,10 @@ EOF
 ==> state/__SECRET__/policy-deck.txt <==
 card1
 card2
-
-==> state/__SECRET__/policy-discard.txt <==
 card3
 card4
 card5
+
+==> state/__SECRET__/policy-discard.txt <==
 EOF
 }
