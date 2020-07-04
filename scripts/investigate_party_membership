@@ -8,7 +8,7 @@ while [[ -z "$INVESTIGATOR" || "$INVESTIGATOR" != "$INVESTIGATOR_CONFIRM" ]]; do
 done
 
 while [[ -z "$SUSPECT" || "$SUSPECT" != "$SUSPECT_CONFIRM" ]]; do
-  read -p "Who is the suspect to investigate? ($PUBLIC_PLAYER_NAMES_PROMPT): " SUSPECT
+  read -p "Who is the suspect under investigation? ($PUBLIC_PLAYER_NAMES_PROMPT): " SUSPECT
   read -p "Type again to confirm: " SUSPECT_CONFIRM
 done
 
