@@ -41,8 +41,3 @@ card1
 card2
 EOF
 }
-
-
-teardown() {
-  rm -r ${STATE:?}/*
-}
