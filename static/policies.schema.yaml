@@ -1,6 +1,0 @@
-type: array
-items:
-  type: object
-  properties:
-    party:
-      enum: [fascist, liberal]

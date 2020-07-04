@@ -1,9 +1,6 @@
 #!/usr/bin/env bash
-cd "$(dirname "$0")"/.. || exit 1
-. scripts/lib/vars.bash
-. scripts/lib/utils.bash
-. scripts/lib/sms.bash
-. scripts/lib/deck.bash
+(return 0 2>/dev/null) || cd "$(dirname "$0")"/.. || exit 1
+source scripts/__lib.sh
 trap "kill 0" EXIT
 
 start_sms_reply_tunnel() {
@@ -53,7 +50,7 @@ legislate() {
     read -p "Who's President?  ($PUBLIC_PLAYER_NAMES_PROMPT): " PUBLIC_PRESIDENT_NAME
     read -p "Who's Chancellor? ($PUBLIC_PLAYER_NAMES_PROMPT): " PUBLIC_CHANCELLOR_NAME
     PUBLIC_PRESIDENT_PHONE=`lookup "$PUBLIC_PLAYER_PHONES" "$PUBLIC_PLAYER_NAMES" "$PUBLIC_PRESIDENT_NAME"`
-    PUBLIC_PRESIDENT_TITLE=`lookup "$PUBLIC_PLAYER_HONORIFICS" "$PUBLIC_PLAYER_NAMES" "$PUBLIC_PRESIDENT_NAME"`
+    PUBLIC_PRESIDENT_TITLE=`lookup "$PUBLIC_PLAYER_TITLES" "$PUBLIC_PLAYER_NAMES" "$PUBLIC_PRESIDENT_NAME"`
 
     if [[ "$PUBLIC_PRESIDENT_NAME" = "$PUBLIC_CHANCELLOR_NAME" ]]; then
       echo "Error: President must be different than chancellor!"
@@ -61,7 +58,7 @@ legislate() {
     fi
 
     PUBLIC_CHANCELLOR_PHONE=`lookup "$PUBLIC_PLAYER_PHONES" "$PUBLIC_PLAYER_NAMES" "$PUBLIC_CHANCELLOR_NAME"`
-    PUBLIC_CHANCELLOR_TITLE=`lookup "$PUBLIC_PLAYER_HONORIFICS" "$PUBLIC_PLAYER_NAMES" "$PUBLIC_CHANCELLOR_NAME"`
+    PUBLIC_CHANCELLOR_TITLE=`lookup "$PUBLIC_PLAYER_TITLES" "$PUBLIC_PLAYER_NAMES" "$PUBLIC_CHANCELLOR_NAME"`
 
     if [[ "$PUBLIC_PRESIDENT_NAME" = "$PUBLIC_CHANCELLOR_NAME" ]]; then
       echo "Error: President must be different than chancellor!"

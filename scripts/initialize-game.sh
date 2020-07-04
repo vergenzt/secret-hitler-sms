@@ -1,9 +1,6 @@
 #!/usr/bin/env bash
-cd "$(dirname "$0")"/.. || exit 1
-. scripts/lib/vars.bash
-. scripts/lib/utils.bash
-. scripts/lib/sms.bash
-. scripts/lib/deck.bash
+(return 0 2>/dev/null) || cd "$(dirname "$0")"/.. || exit 1
+source scripts/__lib.sh
 
 if [[ -f $SECRET/player-roles.txt ]]; then
   echo "Error: $SECRET/player-roles.txt already exists."
