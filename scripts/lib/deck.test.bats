@@ -4,7 +4,7 @@ load vars
 load deck
 
 setup() {
-  rm -r ${STATE:?}
+  rm -r ${STATE:?}/*
 }
 
 @test "ensure_drawable_policy_deck" {
