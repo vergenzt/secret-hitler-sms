@@ -6,7 +6,7 @@ cd $STATE || exit
 
 # override shuffle function
 gshuf() {
-
+  sort
 }
 
 @test "ensure_drawable_policy_deck" {
