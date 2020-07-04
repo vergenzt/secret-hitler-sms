@@ -1,14 +1,15 @@
 #!/usr/bin/env bash
 
 export STATE=state
-export SECRET=state/__SECRET__
-export PUBLIC=state/public
 
 # set up temporary test state directories
 if [ ! -z "$BATS_TMPDIR" ]; then
   SECRET=$BATS_TMPDIR/$SECRET
   PUBLIC=$BATS_TMPDIR/$PUBLIC
 fi
+
+export SECRET=state/__SECRET__
+export PUBLIC=state/public
 
 mkdir -p "$SECRET"
 mkdir -p "$PUBLIC"
