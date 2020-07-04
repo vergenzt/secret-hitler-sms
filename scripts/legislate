@@ -140,7 +140,7 @@ legislate() {
   echo
 
   echo
-  wc -l $SECRET/policy-*.txt $PUBLIC/policy-history.txt
+  wc -l $STATE/*/policy-*.txt
   echo
   ensure_drawable_policy_deck
 }
