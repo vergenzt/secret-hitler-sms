@@ -12,6 +12,8 @@ while [[ -z "$SUSPECT" || "$SUSPECT" != "$SUSPECT_CONFIRM" ]]; do
   read -p "Type again to confirm: " SUSPECT_CONFIRM
 done
 
+echo
+
 ensure_drawable_policy_deck
 
 echo -n "Sending preview of top three policies to $INVESTIGATOR... "
