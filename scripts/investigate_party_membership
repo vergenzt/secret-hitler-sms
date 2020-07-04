@@ -7,6 +7,11 @@ while [[ -z "$INVESTIGATOR" || "$INVESTIGATOR" != "$INVESTIGATOR_CONFIRM" ]]; do
   read -p "Type again to confirm: " INVESTIGATOR_CONFIRM
 done
 
+while [[ -z "$SUSPECT" || "$SUSPECT" != "$SUSPECT_CONFIRM" ]]; do
+  read -p "Who is the suspect to investigate? ($PUBLIC_PLAYER_NAMES_PROMPT): " SUSPECT
+  read -p "Type again to confirm: " SUSPECT_CONFIRM
+done
+
 ensure_drawable_policy_deck
 
 echo -n "Sending preview of top three policies to $INVESTIGATOR... "
