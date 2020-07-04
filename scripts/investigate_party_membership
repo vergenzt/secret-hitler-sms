@@ -2,17 +2,19 @@
 (return 0 2>/dev/null) || cd "$(dirname "$0")"/.. || exit 1
 source scripts/__lib.bash
 
-while [[ -z "$CONFIRM" || "$CONFIRM" != "Yes"]]
-while [[ -z "$INVESTIGATOR" || "$INVESTIGATOR" != "$INVESTIGATOR_CONFIRM" ]]; do
-  read -p "Who is conducting the investigation? ($PUBLIC_PLAYER_NAMES_PROMPT): " INVESTIGATOR
-  read -p "Type again to confirm: " INVESTIGATOR_CONFIRM
-done
+while [[ -z "$CONFIRM" || "$CONFIRM" != "Yes" ]]; do
 
-while [[ -z "$SUSPECT" || "$SUSPECT" != "$SUSPECT_CONFIRM" ]]; do
-  read -p "Who is the suspect under investigation? ($PUBLIC_PLAYER_NAMES_PROMPT): " SUSPECT
-  read -p "Type again to confirm: " SUSPECT_CONFIRM
-done
+  while [[ -z "$INVESTIGATOR" || "$INVESTIGATOR" != "$INVESTIGATOR_CONFIRM" ]]; do
+    read -p "Who is conducting the investigation? ($PUBLIC_PLAYER_NAMES_PROMPT): " INVESTIGATOR
+    read -p "Type again to confirm: " INVESTIGATOR_CONFIRM
+  done
 
+  while [[ -z "$SUSPECT" || "$SUSPECT" != "$SUSPECT_CONFIRM" ]]; do
+    read -p "Who is the suspect under investigation? ($PUBLIC_PLAYER_NAMES_PROMPT): " SUSPECT
+    read -p "Type again to confirm: " SUSPECT_CONFIRM
+  done
+
+done
 echo
 
 ensure_drawable_policy_deck
