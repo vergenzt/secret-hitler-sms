@@ -1,7 +1,7 @@
 #!/usr/bin/env bats
 
 setup() {
-  rm -r ${STATE:?}
+  rm -r ${STATE:?}/*
   load vars
   load deck
 }
