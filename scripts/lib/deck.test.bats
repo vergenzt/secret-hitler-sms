@@ -4,7 +4,7 @@ load vars
 load deck
 cd $STATE || exit
 
-# override shuffle function
+# override shuffle function so we can compare correctly
 gshuf() { sort "$@"; }
 
 @test "ensure_drawable_policy_deck" {
