@@ -1,9 +1,9 @@
 #!/usr/bin/env bats
 
 setup() {
-  rm -r ${STATE:?}/*
   load vars
   load deck
+  rm -r ${STATE:?}/*
 }
 
 @test "ensure_drawable_policy_deck" {
