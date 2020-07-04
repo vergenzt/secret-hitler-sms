@@ -136,9 +136,6 @@ legislate() {
   echo $MSG
   echo
 
-  echo
-  wc -l $STATE/*/policy-*.txt
-  echo
   ensure_drawable_policy_deck
 }
 
