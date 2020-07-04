@@ -11,12 +11,7 @@ while [[ -z "$CONFIRM" || "$CONFIRM" != "Yes" ]]; do
     echo "Please confirm:"
     read -p "Who is conducting the investigation?    (confirm): " INVESTIGATOR_CONFIRM
     read -p "Who is the suspect under investigation? (confirm): " SUSPECT_CONFIRM
-  done
-  echo
-
-  while [[ -z "$SUSPECT" || "$SUSPECT" != "$SUSPECT_CONFIRM" ]]; do
-  done
-  echo
+    echo
 
   read -p "Send $SUSPECT's party membership card to $INVESTIGATOR? (Type \"Yes\" to confirm) "
   echo
