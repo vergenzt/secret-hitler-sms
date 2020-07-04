@@ -16,12 +16,13 @@ card5
 EOF
 	ensure_drawable_policy_deck
 	diff -U0 - <(tail -n+1 $SECRET/policy-*.txt | sed "s:$BATS_TMPDIR\/::g") <<EOF
-==> state/__SECRET__/policy-discard.txt <==
 ==> state/__SECRET__/policy-deck.txt <==
 card1
 card2
 card3
 card4
 card5
+
+==> state/__SECRET__/policy-discard.txt <==
 EOF
 }
