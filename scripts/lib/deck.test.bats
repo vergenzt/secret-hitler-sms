@@ -2,7 +2,6 @@
 
 load vars
 load deck
-cd $STATE || exit
 
 setup() {
   rm -r ${STATE:?}/*
