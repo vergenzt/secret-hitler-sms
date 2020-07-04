@@ -22,8 +22,8 @@ draw_cards() {
 # remove 1 card from position $I of $FROM_DECK and send to stdout
 remove_card() {
   I=$1; FROM_DECK=$2
-  cat "$FROM_DECK" | awk "NR == $I { print \$0 }"
   cat "$FROM_DECK" | awk "NR != $I { print \$0 }" | sponge "$FROM_DECK"
+  cat "$FROM_DECK" | awk "NR == $I { print \$0 }"
 }
 
 # pick a card from position $I of $FROM_DECK
