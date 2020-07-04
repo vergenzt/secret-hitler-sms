@@ -16,7 +16,7 @@ echo "Done."
 echo -n "Initializing & shuffling decks... "
 touch $SECRET/policy-{deck,options,discard}.txt
 touch $PUBLIC/policies-enacted.txt
-ensure_drawable_policy_deck
+cat $PUBLIC/policies-available.txt | gshuf > $SECRET/policy-deck.txt
 echo "Done."
 
 echo -n "Distributing secret player roles via SMS... "
