@@ -124,7 +124,7 @@ legislate() {
   move_card "$CHANCELLOR_RESPONSE" "$SECRET/policy-options.txt" "$SECRET/policy-discard.txt"
   unset P1 P2
   PUBLIC_POLICY_PASSED=`pick_card 1 "$SECRET/policy-options.txt"`
-  move_card 1 "$SECRET/policy-options.txt" "$PUBLIC/policies-enacted.txt"
+  move_card 1 "$SECRET/policy-options.txt" "$PUBLIC/policy-history.txt"
 
   MSG="President $PUBLIC_PRESIDENT_NAME and Chancellor $PUBLIC_CHANCELLOR_NAME have passed a $PUBLIC_POLICY_PASSED policy." \
 
@@ -140,7 +140,7 @@ legislate() {
   echo
 
   echo
-  wc -l $SECRET/policy-*.txt $PUBLIC/policies-enacted.txt
+  wc -l $SECRET/policy-*.txt $PUBLIC/policy-history.txt
   echo
   ensure_drawable_policy_deck
 }
