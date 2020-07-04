@@ -2,9 +2,8 @@
 
 setup() {
   rm -r ${STATE:?}
-
-load vars
-load deck
+  load vars
+  load deck
 }
 
 @test "ensure_drawable_policy_deck" {
