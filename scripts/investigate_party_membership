@@ -25,7 +25,7 @@ ensure_drawable_policy_deck
 echo -n "Sending $SUSPECT's party membership card to $INVESTIGATOR... "
 INVESTIGATOR_PHONE=$(lookup "$PUBLIC_PLAYER_PHONES" "$PUBLIC_PLAYER_NAMES" "$INVESTIGATOR")
 INVESTIGATOR_MSG="$INVESTIGATOR, here is $SUSPECT's party membership card."
-SUSPECT_PARTYMEM=$(lookup "`cut -d: -f2 $SECRET/player-roles.txt`" "$PUBLIC_PLAYER_NAMES "$SUSPECT" | )
+SUSPECT_PARTYMEM=$(image_url party $(lookup "`cut -d: -f2 $SECRET/player-roles.txt`" "$PUBLIC_PLAYER_NAMES "$SUSPECT")
 INVESTIGATOR_IMG=`image_url policycombo "$(echo -n "$(head -n3 $SECRET/policy-deck.txt)" | tr -d '[[:digit:]]' | tr '\n' '-')"`
 send_sms "$INVESTIGATOR_PHONE" "$INVESTIGATOR_MSG" "$INVESTIGATOR_IMG"
 echo "Done."
