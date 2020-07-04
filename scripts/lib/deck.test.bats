@@ -6,7 +6,7 @@ cd $STATE || exit
 
 
 @test "ensure_drawable_policy_deck" {
-  # override shuffle function so we can compare
+  # override shuffle function for test
   gshuf() { sort "$@"; }
 
   cat >$SECRET/policy-deck <<EOF
