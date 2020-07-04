@@ -12,8 +12,10 @@ while [[ -z "$CONFIRM" || "$CONFIRM" != "Yes" ]]; do
   read -p "Who is the suspect under investigation? (confirm): " SUSPECT_CONFIRM
   echo
 
-  if [[ "$INVESTIGATOR" != "$INVESTIGATOR_CONFIRM" || "$SUSPECT" != "$SUSPECT_CONFIRM" ]]; do
-  if []
+  if [[ "$INVESTIGATOR" != "$INVESTIGATOR_CONFIRM" || "$SUSPECT" != "$SUSPECT_CONFIRM" ]]; then
+    echo
+    echo "Invalid choices! Please try again."
+    echo
   read -p "Send $SUSPECT's party membership card to $INVESTIGATOR? (Type \"Yes\" to confirm) "
   echo
 done
