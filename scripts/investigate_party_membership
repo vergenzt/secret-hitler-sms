@@ -5,11 +5,11 @@ source scripts/__lib.bash
 while [[ -z "$CONFIRM" || "$CONFIRM" != "Yes" ]]; do
 
   while [[ -z "$INVESTIGATOR" || "$INVESTIGATOR" != "$INVESTIGATOR_CONFIRM" ]]; do
-    read -p "Who is conducting the investigation? ($PUBLIC_PLAYER_NAMES_PROMPT): " INVESTIGATOR
+    read -p "Who is conducting the investigation?    ($PUBLIC_PLAYER_NAMES_PROMPT): " INVESTIGATOR
     read -p "Who is the suspect under investigation? ($PUBLIC_PLAYER_NAMES_PROMPT): " SUSPECT
     echo
     echo "Please confirm:"
-    read -p "Who is conducting the investigation? (confirm): " INVESTIGATOR_CONFIRM
+    read -p "Who is conducting the investigation?    (confirm): " INVESTIGATOR_CONFIRM
     read -p "Who is the suspect under investigation? (confirm): " SUSPECT_CONFIRM
   done
   echo
