@@ -4,10 +4,12 @@ load vars
 load deck
 cd $STATE || exit
 
-# override shuffle function so we can compare
-gshuf() { sort "$@"; }
 
 @test "ensure_drawable_policy_deck" {
+
+  # override shuffle function so we can compare
+  gshuf() { sort "$@"; }
+  
   cat >$SECRET/policy-deck <<EOF
 card1
 card2
