@@ -9,9 +9,7 @@ setup() {
 @test "initialize-game" {
 
   ./scripts/initialize-game
-  diff -u <<EOF -
-
-EOF
+  #tail -n+0 $BATS_TMPDIR/diff -u <<EOF -
 
 
 }
