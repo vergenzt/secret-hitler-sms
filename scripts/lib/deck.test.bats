@@ -1,9 +1,10 @@
 #!/usr/bin/env bats
 
 setup() {
+  rm -r ${BATS_TMPDIR:?}/*
+  export STATE=$BATS_TMPDIR/state
   load vars
   load deck
-  rm -r ${STATE:?}/*
 }
 
 @test "ensure_drawable_policy_deck" {

@@ -1,16 +1,11 @@
 #!/usr/bin/env bash
 
-export STATE=state
-
-# set up temporary test state directories
-if [ ! -z "$BATS_TMPDIR" ]; then
-  STATE=$BATS_TMPDIR/$STATE
-fi
-
+export STATE=${STATE:-state}
 export SECRET=$STATE/__SECRET__
 export PUBLIC=$STATE/public
-mkdir -p "$SECRET"
-mkdir -p "$PUBLIC"
+
+mkdir -p $SECRET
+mkdir -p $PUBLIC
 
 STATIC=static
 IMAGES_BASE_URL=https://raw.githubusercontent.com/vergenzt/secret-hitler-sms/master/$STATIC/images
