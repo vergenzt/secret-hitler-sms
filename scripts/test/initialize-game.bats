@@ -11,5 +11,7 @@ setup() {
   ./scripts/initialize-game
   diff -u <<EOF -
 
+EOF
+
 
 }
