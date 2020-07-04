@@ -4,6 +4,11 @@ load vars
 load deck
 cd $STATE || exit
 
+# override shuffle function
+gshuf() {
+
+}
+
 @test "ensure_drawable_policy_deck" {
   tee $SECRET/policy-deck <<EOF >/dev/null
 card1
