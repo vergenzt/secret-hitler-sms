@@ -40,4 +40,5 @@ EOF
 card1
 card2
 EOF
+  [ `deck_length $SECRET/policy-deck` -eq 2 ]
 }
