@@ -2,7 +2,7 @@
 
 load vars
 load deck
-cd $STATE
+cd $STATE || exit
 
 @test "ensure_drawable_policy_deck" {
 	tee $SECRET/policy-deck.txt <<EOF >/dev/null
