@@ -8,9 +8,8 @@ if [ ! -z "$BATS_TMPDIR" ]; then
   PUBLIC=$BATS_TMPDIR/$PUBLIC
 fi
 
-export SECRET=state/__SECRET__
-export PUBLIC=state/public
-
+export SECRET=$STATE/__SECRET__
+export PUBLIC=$STATE/public
 mkdir -p "$SECRET"
 mkdir -p "$PUBLIC"
 
