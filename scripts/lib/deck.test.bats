@@ -4,6 +4,9 @@ load vars
 load deck
 cd $STATE || exit
 
+setup() {
+  rm -r ${STATE:?}/*
+}
 
 @test "ensure_drawable_policy_deck" {
   # override shuffle function for test
