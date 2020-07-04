@@ -28,3 +28,7 @@ card5
 ==> state/__SECRET__/policy-discard <==
 EOF
 }
+
+teardown() {
+  rm -r $STATE/*
+}
