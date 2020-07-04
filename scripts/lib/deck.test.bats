@@ -6,7 +6,7 @@ cd $STATE || exit
 
 @test "ensure_drawable_policy_deck" {
 	set -x
-	
+
 	tee $SECRET/policy-deck.txt <<EOF >/dev/null
 card1
 card2
@@ -29,4 +29,6 @@ card5
 
 ==> state/__SECRET__/policy-discard.txt <==
 EOF
+
+	set +x
 }
