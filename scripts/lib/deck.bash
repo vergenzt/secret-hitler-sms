@@ -15,8 +15,8 @@ ensure_drawable_policy_deck() {
 # remove $N cards from head of $FROM_DECK and send to stdout
 draw_cards() {
   N=$1; FROM_DECK=$2
-  cat "$FROM_DECK" | awk "NR <= $N { print \$0 }"
   cat "$FROM_DECK" | awk "NR >  $N { print \$0 }" | sponge "$FROM_DECK"
+  cat "$FROM_DECK" | awk "NR <= $N { print \$0 }"
 }
 
 # remove 1 card from position $I of $FROM_DECK and send to stdout
