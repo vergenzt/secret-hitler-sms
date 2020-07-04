@@ -8,11 +8,11 @@ cd $STATE || exit
 gshuf() { sort "$@"; }
 
 @test "ensure_drawable_policy_deck" {
-  cat > $SECRET/policy-deck <<EOF
+  cat >$SECRET/policy-deck <<EOF
 card1
 card2
 EOF
-  cat > $SECRET/policy-discard <<EOF
+  cat >$SECRET/policy-discard <<EOF
 card3
 card4
 card5
