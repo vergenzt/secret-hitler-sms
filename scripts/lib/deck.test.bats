@@ -15,6 +15,7 @@ card4
 card5
 EOF
 
+	echo `deck_length $SECRET/policy-discard.txt` >&3
 	ensure_drawable_policy_deck
 
 	diff -U3 - <(tail -n+1 $SECRET/policy-*.txt | sed "s:$BATS_TMPDIR\/::g") <<EOF
