@@ -17,10 +17,5 @@ EOF
 	ensure_drawable_policy_deck
 
 	diff -U0 <(tail -n+1 $SECRET/policy-*.txt) - <<EOF
-card1
-card2
-card3
-card4
-card5
 EOF
 }
