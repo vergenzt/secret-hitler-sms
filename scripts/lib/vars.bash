@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 
+export STATE=state
 export SECRET=state/__SECRET__
 export PUBLIC=state/public
 
