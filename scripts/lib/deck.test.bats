@@ -5,6 +5,8 @@ load deck
 cd $STATE || exit
 
 @test "ensure_drawable_policy_deck" {
+	set -x
+	
 	tee $SECRET/policy-deck.txt <<EOF >/dev/null
 card1
 card2
@@ -16,7 +18,7 @@ card5
 EOF
 
 	ensure_drawable_policy_deck
-	
+
 	diff -U3 - <(tail -n+1 $SECRET/policy-*.txt | sed "s:$BATS_TMPDIR\/::g") <<EOF
 ==> state/__SECRET__/policy-deck.txt <==
 card1
