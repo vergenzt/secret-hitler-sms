@@ -17,7 +17,6 @@ EOF
 
   ensure_drawable_policy_deck
 
-  sort $SECRET/policy-*
   diff -U3 - <(tail -n+1 $SECRET/policy-* | sed "s:$BATS_TMPDIR\/::g") <<EOF
 ==> state/__SECRET__/policy-deck <==
 card1
