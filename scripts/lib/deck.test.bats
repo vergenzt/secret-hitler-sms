@@ -17,5 +17,13 @@ EOF
 	ensure_drawable_policy_deck
 
 	diff -U0 <(tail -n+1 $SECRET/policy-*.txt) - <<EOF
+==> /var/folders/1x/9mj2rl4d74d1wq19gyqdjdhm0000gn/T/state/__SECRET__/policy-deck.txt <==
+card2
+card1
+
+==> /var/folders/1x/9mj2rl4d74d1wq19gyqdjdhm0000gn/T/state/__SECRET__/policy-discard.txt <==
+card3
+card4
+card5
 EOF
 }
