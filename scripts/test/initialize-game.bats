@@ -8,7 +8,7 @@ setup() {
 
 @test "initialize-game" {
 
-  ./initialize-game
+  ./scripts/initialize-game
 
 
 }
