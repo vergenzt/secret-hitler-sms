@@ -20,7 +20,7 @@ EOF
 
   ensure_drawable_policy_deck
 
-  diff -U3 - <(tail -n+1 $SECRET/policy-*) <<EOF
+  diff -U - <(tail -n+1 $SECRET/policy-*) <<EOF
 ==> $SECRET/policy-deck <==
 card1
 card2
