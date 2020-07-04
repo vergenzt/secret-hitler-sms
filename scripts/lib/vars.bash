@@ -4,8 +4,7 @@ export STATE=state
 
 # set up temporary test state directories
 if [ ! -z "$BATS_TMPDIR" ]; then
-  SECRET=$BATS_TMPDIR/$SECRET
-  PUBLIC=$BATS_TMPDIR/$PUBLIC
+  STATE=$BATS_TMPDIR/$STATE
 fi
 
 export SECRET=$STATE/__SECRET__
