@@ -30,5 +30,5 @@ EOF
 }
 
 teardown() {
-  rm -r $STATE/*
+  rm -r ${STATE:?}/*
 }
