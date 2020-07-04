@@ -14,9 +14,10 @@ while [[ -z "$CONFIRM" || "$CONFIRM" != "Yes" ]]; do
     read -p "Who is the suspect under investigation? ($PUBLIC_PLAYER_NAMES_PROMPT): " SUSPECT
     read -p "Type again to confirm: " SUSPECT_CONFIRM
   done
+  echo
 
+  read -p "Send $SUSPECT's party membership card to $INVESTIGATOR? (Type \"Yes\" to confirm)"
 done
-echo
 
 ensure_drawable_policy_deck
 
