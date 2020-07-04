@@ -9,6 +9,7 @@ setup() {
 @test "initialize-game" {
 
   ./scripts/initialize-game
+  diff -u <<EOF -
 
 
 }
