@@ -13,7 +13,7 @@ while [[ -z "$CONFIRM" || "$CONFIRM" != "Yes" ]]; do
   echo
 
   if [[ "$INVESTIGATOR" != "$INVESTIGATOR_CONFIRM" || "$SUSPECT" != "$SUSPECT_CONFIRM" ]]; then
-    echo "Invalid choices! Please try again."
+    echo "Choices do not match! Please try again."
   else
     read -p "Send $SUSPECT's party membership card to $INVESTIGATOR? (Type \"Yes\" to confirm) "
   fi
