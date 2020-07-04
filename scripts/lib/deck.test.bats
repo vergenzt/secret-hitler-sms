@@ -12,7 +12,7 @@ gshuf() { sort "$@"; }
 card1
 card2
 EOF
-  tee $SECRET/policy-discard <<EOF >/dev/null
+  cat > $SECRET/policy-discard <<EOF
 card3
 card4
 card5
