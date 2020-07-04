@@ -2,7 +2,7 @@
 
 setup() {
   export STATE=$BATS_TMPDIR/state
-  rm -f "${BATS_TMPDIR:?}/*"
+  rm -r "${BATS_TMPDIR:?}/*"
 }
 
 @test "initialize-game" {
