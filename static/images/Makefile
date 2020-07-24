@@ -92,7 +92,7 @@ policy-%.png:
 	$(split-page)
 
 # explanation: bash expands "abc-{1,2,3}.png" into "abc-1.png abc-2.png abc-3.png", so if
-# target is policies-fascist-liberal-liberal.png, then then statement below evaluates to:
+# target is policycombo-fascist-liberal-liberal.png, then then statement below evaluates to:
 #   $ convert policy-fascist.png policy-liberal.png +append policycombo-fascist-liberal-liberal.png
 policycombo-%.png:
 	convert $(shell eval "echo policy-{$$(echo "$*" | tr '-' ',')}.png") +append $@
