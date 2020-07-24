@@ -66,6 +66,8 @@ role-hitler.png:
 	$(split-page)
 role-liberal-%.png:
 	$(split-page-and-choose)
+role-back.png:
+	$(split-page)
 
 party-%.png: GRID=4x2@
 party-facsist.png: PAGE=2
