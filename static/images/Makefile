@@ -83,6 +83,8 @@ policy-fascist.png: PAGE=12
 policy-fascist.png: RANGE=0
 policy-liberal.png: PAGE=12
 policy-liberal.png: RANGE=12
+policy-back.png: PAGE=13
+policy-back.png: RANGE=0
 
 policy-%.png:
 	$(split-page)
