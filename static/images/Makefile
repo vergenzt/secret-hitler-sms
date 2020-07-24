@@ -57,6 +57,8 @@ role-hitler.png: PAGE=0
 role-hitler.png: RANGE=1
 role-liberal-%.png: PAGE=0,2
 role-liberal-%.png: RANGE=4-9
+role-back.png: PAGE=1
+role-back.png: RANGE=0
 
 role-fascist-%.png:
 	$(split-page-and-choose)
