@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 (return 0 2>/dev/null) || cd "$(dirname "$0")"/.. || exit 1
-source scripts/__lib.sh
+source scripts/__lib.bash
 
 if [[ -f $SECRET/player-roles.txt ]]; then
   echo "Error: $SECRET/player-roles.txt already exists."
@@ -15,8 +15,8 @@ echo "Done."
 
 echo -n "Initializing & shuffling decks... "
 touch $SECRET/policy-{deck,options,discard}.txt
-touch $PUBLIC/policies-enacted.txt
-ensure_drawable_policy_deck &>/dev/null
+touch $PUBLIC/policy-history.txt
+cat $STATIC/policies-available.txt | gshuf > $SECRET/policy-deck.txt
 echo "Done."
 
 echo -n "Distributing secret player roles via SMS... "

@@ -7,8 +7,9 @@ lookup() {
 function urldecode() { : "${*//+/ }"; echo -e "${_//%/\\x}"; }
 
 STATIC=static
-SECRET=state/__SECRET__
-PUBLIC=state/public
+STATE=${STATE:-state}
+SECRET=$STATE/__SECRET__
+PUBLIC=$STATE/public
 
 IMAGES_BASE_URL=https://raw.githubusercontent.com/vergenzt/secret-hitler-sms/master/$STATIC/images
 image_url() { echo "$IMAGES_BASE_URL/$1-$2.png"; }
@@ -54,9 +55,16 @@ policy_deck_length() {
 }
 
 ensure_drawable_policy_deck() {
+  echo
+  wc -l $STATE/*/policy-*.txt
+  echo
   if [[ `policy_deck_length` -lt 3 ]]; then
     echo "$(policy_deck_length) policies in deck; shuffling."
     cat "$SECRET/policy-discard.txt" "$SECRET/policy-deck.txt" | gshuf | sponge $SECRET/policy-deck.txt
+    cp /dev/null $SECRET/policy-discard.txt
+    echo
+    wc -l $STATE/*/policy-*.txt
+    echo
   fi
 }
 

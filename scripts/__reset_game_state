@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 (return 0 2>/dev/null) || cd "$(dirname "$0")"/.. || exit 1
-source scripts/__lib.sh
+source scripts/__lib.bash
 
 while [[ "$RESET" != "RESET" ]]; do
   read -p "To reset game state, please type RESET: " RESET
 done
 rm -f $SECRET/{policy-{deck,options,discard},player-roles}.txt
-rm -f $PUBLIC/policies-enacted.txt
+rm -f $PUBLIC/policy-history.txt

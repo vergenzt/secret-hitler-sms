@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 (return 0 2>/dev/null) || cd "$(dirname "$0")"/.. || exit 1
-source scripts/__lib.sh
+source scripts/__lib.bash
 trap "kill 0" EXIT
 
 start_sms_reply_tunnel() {
@@ -41,9 +41,6 @@ await_sms_reply_from() {
 
 legislate() {
   ensure_drawable_policy_deck
-  echo
-  (cd $SECRET && wc -l policy-*.txt)
-  echo
 
   # who's president?
   while sleep 1; do
@@ -124,7 +121,7 @@ legislate() {
   move_card "$CHANCELLOR_RESPONSE" "$SECRET/policy-options.txt" "$SECRET/policy-discard.txt"
   unset P1 P2
   PUBLIC_POLICY_PASSED=`pick_card 1 "$SECRET/policy-options.txt"`
-  move_card 1 "$SECRET/policy-options.txt" "$PUBLIC/policies-enacted.txt"
+  move_card 1 "$SECRET/policy-options.txt" "$PUBLIC/policy-history.txt"
 
   MSG="President $PUBLIC_PRESIDENT_NAME and Chancellor $PUBLIC_CHANCELLOR_NAME have passed a $PUBLIC_POLICY_PASSED policy." \
 
@@ -139,9 +136,6 @@ legislate() {
   echo $MSG
   echo
 
-  echo
-  wc -l $SECRET/policy-*.txt $PUBLIC/policies-enacted.txt
-  echo
   ensure_drawable_policy_deck
 }
 
