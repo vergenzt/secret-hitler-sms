@@ -10,7 +10,7 @@ if [[ -f $SECRET/player-roles.txt ]]; then
 fi
 
 echo -n "Assigning player roles... "
-SECRET_PLAYER_ROLES=`echo "$PUBLIC_ROLES_ACTIVE" | gshuf | tee $SECRET/player-roles.txt`
+SECRET_PLAYER_ROLES=$(echo "$PUBLIC_ROLES_ACTIVE" | shuf | tee $SECRET/player-roles.txt)
 echo "Done."
 
 echo -n "Initializing & shuffling decks... "
@@ -24,10 +24,10 @@ while read PUBLIC_NAME PUBLIC_PHONE SECRET_ROLE SECRET_PARTY; do
   send_sms \
     "$PUBLIC_PHONE" \
     "Hi $PUBLIC_NAME! Here's your SECRET (🤫) role and party membership cards for Secret Hitler. 🙂 Enjoy the game!" \
-    "`image_url party $SECRET_PARTY`" \
-    "`image_url role $SECRET_ROLE`"
+    "$(image_url party $SECRET_PARTY)" \
+    "$(image_url role $SECRET_ROLE)"
 done < <(\
-  gpaste \
+  paste \
   <(echo "$PUBLIC_PLAYER_NAMES") \
   <(echo "$PUBLIC_PLAYER_PHONES") \
   <(echo "$SECRET_PLAYER_ROLES" | tr ':' ' ') \
