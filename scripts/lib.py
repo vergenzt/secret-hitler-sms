@@ -3,9 +3,13 @@ from dataclasses import dataclass
 from itertools import starmap
 import os
 from pathlib import Path
+from random import shuffle
 from typing import TypeVar
 
-twilio = twilio.rest.Client(os.environ['TWILIO_ACCOUNT_SID'], os.environ['TWILIO_AUTH_TOKEN'])
+from twilio.rest import Client as TwilioClient
+from twilio.rest.api.v2010.account.message import MessageInstance as TwilioMessage
+
+twilio = TwilioClient(os.environ['TWILIO_ACCOUNT_SID'], os.environ['TWILIO_AUTH_TOKEN'])
 
 T = TypeVar('T')
 U = TypeVar('U')
@@ -17,7 +21,7 @@ STATIC = Path('static')
 SECRET = Path('state/__SECRET__')
 PUBLIC = Path('state/public')
 
-IMAGES_BASE_URL = f'https://raw.githubusercontent.com/vergenzt/secret-hitler-sms/master/$STATIC/images'
+IMAGES_BASE_URL = f'https://raw.githubusercontent.com/vergenzt/secret-hitler-sms/master/{STATIC}/images'
 
 def image_url(img_class: str, img_instance: str):
   return f'{IMAGES_BASE_URL}/{img_class}-{img_instance}.png'
@@ -46,30 +50,27 @@ F_SECRET_POLICY_DECK = SECRET / 'policy-deck.txt'
 F_SECRET_POLICY_OPTIONS = SECRET / 'policy-options.txt'
 F_SECRET_POLICY_DISCARD = SECRET / 'policy-discard.txt'
 
-# shellcheck disable = SC2206
-send_sms(to_phone: str, secret_message: str, *photos: Path) {
-  PUBLIC_PHONE = "$1"
-  SECRET_MESSAGE = $(echo -en "\n\n$2")
-  shift 2
-  SECRET_PHOTOS = ($@)
-  twilio api:core:messages:create \
-    --from "$PUBLIC_SOURCE_PHONE" \
-    --to "$PUBLIC_PHONE" \
-    --body "$SECRET_MESSAGE" \
-    "${SECRET_PHOTOS[@]/#/--media-url }" \
-    >/dev/null
-}
+def send_sms(to_phone: str, secret_message: str, *photo_urls: str) -> TwilioMessage:
+  return twilio.messages.create(
+    to=to_phone,
+    from_=PUBLIC_SOURCE_PHONE,
+    body='\n\n' + secret_message,
+    media_url=photo_urls,
+  )
 
-policy_deck_length() {
-  cat $SECRET/policy-deck.txt 2>/dev/null | wc -l
-}
+def policy_deck_length() -> int:
+  return len(F_SECRET_POLICY_DECK.read_text().splitlines())
 
-ensure_drawable_policy_deck() {
-  if [[ $(policy_deck_length) -lt 3 ]]; then
-    echo "$(policy_deck_length) policies in deck; shuffling."
+def ensure_drawable_policy_deck():
+  if policy_deck_length() < 3:
+    print(f'{policy_deck_length()} policies in deck; shuffling.')
+    deck = F_SECRET_POLICY_DECK.read_text().splitlines()
+    discard = F_SECRET_POLICY_DISCARD.read_text().splitlines()
+    new_deck = deck + discard
+    shuffle(new_deck)
+    F_SECRET
+
     cat "$SECRET/policy-discard.txt" "$SECRET/policy-deck.txt" | shuf | sponge $SECRET/policy-deck.txt
-  fi
-}
 
 # draw $N cards from head of $FROM_DECK and append to tail of $TO_DECK
 draw_cards() {
