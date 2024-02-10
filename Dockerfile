@@ -8,7 +8,4 @@ RUN apk --no-cache add \
   npm \
   `# end`
 
-RUN $apk npm
-ARG npm='npm install --global'
-
 RUN $npm twilio-cli
