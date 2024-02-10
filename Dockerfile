@@ -8,4 +8,4 @@ RUN apk --no-cache add \
   npm \
   `# end`
 
-RUN $npm twilio-cli
+RUN npm install -g twilio-cli
