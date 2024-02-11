@@ -1,11 +1,13 @@
 FROM alpine
 
-RUN apk --no-cache add \
-  bash \
-  coreutils \
-  moreutils \
-  grep \
-  npm \
-  `# end`
+ARG apk='apk --no-cache add'
 
-RUN npm install -g twilio-cli
+RUN $apk bash
+RUN $apk coreutils
+RUN $apk moreutils
+RUN $apk grep
+
+RUN $apk npm
+ARG npm='npm install --global'
+
+RUN $npm twilio-cli
