@@ -1,12 +1,21 @@
-#!/usr/bin/env bash
-(return 0 2>/dev/null) || cd "$(dirname "$0")"/.. || exit 1
-source scripts/__lib.sh
-trap "kill 0" EXIT
+import subprocess as sp
 
-start_sms_reply_tunnel() {
-  ngrok http --log=stdout --log-format=json 8080 > $F_SECRET_NGROK_LOG &
+from ..lib import SECRET, State, image_url, send_sms
+
+
+def start_sms_reply_tunnel():
+  ngrok_log = SECRET / "ngrok.json"
+  with sp.Popen(["ngrok", "http", "--log=stdout", "--log-format=json", "8080"], stdout=ngrok_log) as ngrok:
+    while True:
+      secret_ngrok_url = sp.check_output([
+        "jq", "-r", "--unbuffered", 'select(.msg == "started tunnel" and .name == "command_line") | .url', ngrok_log
+      ], text=True).strip()
+      if not secret_ngrok_url:
+        
+
+
   while true; do
-    SECRET_NGROK_URL=$(jq -r --unbuffered 'select(.msg == "started tunnel" and .name == "command_line") | .url' $F_SECRET_NGROK_LOG)
+    SECRET_NGROK_URL=$(jq -r --unbuffered '' $F_SECRET_NGROK_LOG)
     if [[ -z "$SECRET_NGROK_URL" ]]; then
       sleep 1
     else

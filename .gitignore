@@ -1,2 +1,3 @@
 .DS_Store
-gavel.js
+state/
+static/player-info.toml
