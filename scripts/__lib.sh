@@ -18,15 +18,15 @@ F_PUBLIC_PLAYER_INFO=$PUBLIC/player-info.txt
 F_PUBLIC_ROLES_AVAILABLE=$STATIC/roles-available.txt
 F_PUBLIC_POLICIES_AVAILABLE=$STATIC/policies-available.txt
 
-PUBLIC_SOURCE_PHONE=`cat $F_PUBLIC_SOURCE_PHONE 2>/dev/null`
-PUBLIC_PLAYER_INFO=`cat $F_PUBLIC_PLAYER_INFO | grep -v '^#'`
-PUBLIC_PLAYER_TITLES=`awk '{print $1}' <(echo "$PUBLIC_PLAYER_INFO")`
-PUBLIC_PLAYER_NAMES=`awk '{print $2}' <(echo "$PUBLIC_PLAYER_INFO")`
-PUBLIC_PLAYER_PHONES=`awk '{print $3}' <(echo "$PUBLIC_PLAYER_INFO")`
-PUBLIC_PLAYER_NAMES_PROMPT=`echo "$PUBLIC_PLAYER_NAMES" | tr '\n' '/'`
+PUBLIC_SOURCE_PHONE=$(cat $F_PUBLIC_SOURCE_PHONE 2>/dev/null)
+PUBLIC_PLAYER_INFO=$(cat $F_PUBLIC_PLAYER_INFO | grep -v '^#')
+PUBLIC_PLAYER_TITLES=$(awk '{print $1}' <(echo "$PUBLIC_PLAYER_INFO"))
+PUBLIC_PLAYER_NAMES=$(awk '{print $2}' <(echo "$PUBLIC_PLAYER_INFO"))
+PUBLIC_PLAYER_PHONES=$(awk '{print $3}' <(echo "$PUBLIC_PLAYER_INFO"))
+PUBLIC_PLAYER_NAMES_PROMPT=$(echo "$PUBLIC_PLAYER_NAMES" | tr '\n' '/')
 
-PUBLIC_NUM_PLAYERS=`echo "$PUBLIC_PLAYER_INFO" | wc -l`
-PUBLIC_ROLES_ACTIVE=`head -n $PUBLIC_NUM_PLAYERS $F_PUBLIC_ROLES_AVAILABLE`
+PUBLIC_NUM_PLAYERS=$(echo "$PUBLIC_PLAYER_INFO" | wc -l)
+PUBLIC_ROLES_ACTIVE=$(head -n "$PUBLIC_NUM_PLAYERS" "$F_PUBLIC_ROLES_AVAILABLE")
 
 F_SECRET_PLAYER_ROLES=$SECRET/player-roles.txt
 F_SECRET_POLICY_DECK=$SECRET/policy-deck.txt
@@ -41,11 +41,12 @@ send_sms() {
   SECRET_MESSAGE=$(echo -en "\n\n$2")
   shift 2
   SECRET_PHOTOS=($@)
+
   twilio api:core:messages:create \
     --from "$PUBLIC_SOURCE_PHONE" \
     --to "$PUBLIC_PHONE" \
     --body "$SECRET_MESSAGE" \
-    ${SECRET_PHOTOS[@]/#/--media-url } \
+    "${SECRET_PHOTOS[@]/#/--media-url=}" \
     >/dev/null
 }
 
@@ -54,7 +55,7 @@ policy_deck_length() {
 }
 
 ensure_drawable_policy_deck() {
-  if [[ `policy_deck_length` -lt 3 ]]; then
+  if [[ $(policy_deck_length) -lt 3 ]]; then
     echo "$(policy_deck_length) policies in deck; shuffling."
     cat "$SECRET/policy-discard.txt" "$SECRET/policy-deck.txt" | gshuf | sponge $SECRET/policy-deck.txt
   fi
@@ -78,5 +79,5 @@ move_card() {
 pick_card() {
   I=$1; FROM_DECK=$2
   awk "NR == $I { print \$0 }" "$FROM_DECK" \
-    | tr -d '[[:digit:]]' # get rid of unique policy identifiers
+    | tr -d '[:digit:]' # get rid of unique policy identifiers
 }
