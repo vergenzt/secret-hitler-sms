@@ -35,12 +35,11 @@ F_SECRET_POLICY_DISCARD=$SECRET/policy-discard.txt
 
 F_SECRET_NGROK_LOG=$SECRET/ngrok.json
 
-# shellcheck disable=SC2206
 send_sms() {
   PUBLIC_PHONE="$1"
   SECRET_MESSAGE=$(echo -en "\n\n$2")
   shift 2
-  SECRET_PHOTOS=($@)
+  SECRET_PHOTOS=("$@")
 
   twilio api:core:messages:create \
     --from "$PUBLIC_SOURCE_PHONE" \
