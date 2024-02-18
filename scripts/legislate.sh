@@ -10,7 +10,11 @@ start_sms_reply_tunnel() {
     if [[ -z "$SECRET_NGROK_URL" ]]; then
       sleep 1
     else
-      twilio phone-numbers:update "$PUBLIC_SOURCE_PHONE" --sms-url="$SECRET_NGROK_URL" >/dev/null
+      UPDATE_CURLARGS=(
+        --expand-url "{{BASE_URL}}/IncomingPhoneNumbers/$TWILIO_PHONE_SID"
+        --form "SmsUrl=$SECRET_NGROK_URL"
+      )
+      curl "${TWILIO_CURLARGS[@]}" "${UPDATE_CURLARGS[@]}"
       break
     fi
   done

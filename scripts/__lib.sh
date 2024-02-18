@@ -1,4 +1,6 @@
 #!/usr/bin/env bash
+set -eu -o pipefail
+
 lookup() {
   gpaste <(echo "$2") <(echo "$1") | awk "\$1 == \"$3\" { print \$2 }"
 }
@@ -13,12 +15,10 @@ PUBLIC=state/public
 IMAGES_BASE_URL=https://raw.githubusercontent.com/vergenzt/secret-hitler-sms/master/$STATIC/images
 image_url() { echo "$IMAGES_BASE_URL/$1-$2.png"; }
 
-F_PUBLIC_SOURCE_PHONE=$PUBLIC/source-phone.txt
 F_PUBLIC_PLAYER_INFO=$PUBLIC/player-info.txt
 F_PUBLIC_ROLES_AVAILABLE=$STATIC/roles-available.txt
 F_PUBLIC_POLICIES_AVAILABLE=$STATIC/policies-available.txt
 
-PUBLIC_SOURCE_PHONE=$(cat $F_PUBLIC_SOURCE_PHONE 2>/dev/null)
 PUBLIC_PLAYER_INFO=$(cat $F_PUBLIC_PLAYER_INFO | grep -v '^#')
 PUBLIC_PLAYER_TITLES=$(awk '{print $1}' <(echo "$PUBLIC_PLAYER_INFO"))
 PUBLIC_PLAYER_NAMES=$(awk '{print $2}' <(echo "$PUBLIC_PLAYER_INFO"))
@@ -35,18 +35,36 @@ F_SECRET_POLICY_DISCARD=$SECRET/policy-discard.txt
 
 F_SECRET_NGROK_LOG=$SECRET/ngrok.json
 
-send_sms() {
-  PUBLIC_PHONE="$1"
-  SECRET_MESSAGE=$(echo -en "\n\n$2")
-  shift 2
-  SECRET_PHOTOS=("$@")
+TWILIO_CURLARGS=(
+  --fail-with-body
+  --no-progress-meter
+  --variable %TWILIO_ACCOUNT_SID
+  --variable %TWILIO_AUTH_TOKEN
+  --expand-user "{{TWILIO_ACCOUNT_SID}}:{{TWILIO_AUTH_TOKEN}}"
+  --expand-variable "BASE_URL=https://api.twilio.com/2010-04-01/Accounts/{{TWILIO_ACCOUNT_SID}}"
+)
 
-  twilio api:core:messages:create \
-    --from "$PUBLIC_SOURCE_PHONE" \
-    --to "$PUBLIC_PHONE" \
-    --body "$SECRET_MESSAGE" \
-    "${SECRET_PHOTOS[@]/#/--media-url=}" \
-    >/dev/null
+TWILIO_PHONES_JSON=$(curl "${TWILIO_CURLARGS[@]}" --expand-url "{{BASE_URL}}/IncomingPhoneNumbers.json")
+TWILIO_PHONE_SID=$(echo "$TWILIO_PHONES_JSON" | jq .incoming_phone_numbers[0].sid)
+TWILIO_PHONE_NUMBER=$(echo "$TWILIO_PHONES_JSON" | jq .incoming_phone_numbers[0].phone_number)
+
+send_sms() {
+  TO="$1"
+  BODY=$(echo -en "\n\n$2")
+  shift 2
+
+  SMS_CURLARGS=(
+    --expand-url "{{BASE_URL}}/Messages.json"
+    --form "From=$TWILIO_PHONE_NUMBER"
+    --form "To=$TO"
+    --form "Body=$BODY"
+  )
+
+  for SECRET_PHOTO_URL in "$@"; do
+    SMS_CURLARGS+=( --form MediaUrl="$SECRET_PHOTO_URL" )
+  done
+
+  curl "${TWILIO_CURLARGS[@]}" "${SMS_CURLARGS[@]}" >&2
 }
 
 policy_deck_length() {
@@ -58,6 +76,7 @@ ensure_drawable_policy_deck() {
     echo "$(policy_deck_length) policies in deck; shuffling."
     cat "$SECRET/policy-discard.txt" "$SECRET/policy-deck.txt" | gshuf | sponge $SECRET/policy-deck.txt
   fi
+  true
 }
 
 # draw $N cards from head of $FROM_DECK and append to tail of $TO_DECK
