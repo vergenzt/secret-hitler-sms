@@ -1,0 +1,7 @@
+fail-with-body
+no-progress-meter
+
+url https://textbelt.com/text
+
+variable %TEXTBELT_API_KEY
+expand-data key={{TEXTBELT_API_KEY}}
