@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
 (return 0 2>/dev/null) || cd "$(dirname "$0")"/.. || exit 1
-source scripts/__lib.sh
 
 if [[ -f $SECRET/player-roles.txt ]]; then
   echo "Error: $SECRET/player-roles.txt already exists."
@@ -20,7 +19,7 @@ ensure_drawable_policy_deck
 echo "Done."
 
 echo -n "Distributing secret player roles via SMS... "
-while read -r PUBLIC_NAME PUBLIC_PHONE SECRET_ROLE SECRET_PARTY; do
+parallel \
   send_sms \
     "$PUBLIC_PHONE" \
     "Hi $PUBLIC_NAME! Here's your SECRET (🤫) role and party membership cards for Secret Hitler. 🙂 Enjoy the game!" \

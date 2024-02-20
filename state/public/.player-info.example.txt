@@ -1,8 +1,0 @@
-# comments are allowed
-# each non-comment line should be in the form:
-# <TITLE> <NAME> <PHONE>
-
-# e.g.:
-Mr Tim         +15551234567
-Madam Toussad  +15558273728
-Dr Philip      +15559829287

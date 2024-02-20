@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 set -eu -o pipefail
 
-lookup() {
-  gpaste <(echo "$2") <(echo "$1") | awk "\$1 == \"$3\" { print \$2 }"
-}
+# lookup() {
+#   gpaste <(echo "$2") <(echo "$1") | awk "\$1 == \"$3\" { print \$2 }"
+# }
 
 # https://stackoverflow.com/a/37840948
 function urldecode() { : "${*//+/ }"; echo -e "${_//%/\\x}"; }
@@ -15,11 +15,11 @@ PUBLIC=state/public
 IMAGES_BASE_URL=https://raw.githubusercontent.com/vergenzt/secret-hitler-sms/master/$STATIC/images
 image_url() { echo "$IMAGES_BASE_URL/$1-$2.png"; }
 
-F_PUBLIC_PLAYER_INFO=$PUBLIC/player-info.txt
+F_PUBLIC_PLAYER_INFO=$PUBLIC/player-info.toml
 F_PUBLIC_ROLES_AVAILABLE=$STATIC/roles-available.txt
 F_PUBLIC_POLICIES_AVAILABLE=$STATIC/policies-available.txt
 
-PUBLIC_PLAYER_INFO=$(cat $F_PUBLIC_PLAYER_INFO | grep -v '^#')
+PUBLIC_PLAYER_INFO=$(python -c 'import sys, tomllib, json; json.dump(tomllib.load(sys.stdin)["player"], sys.stdout)' < $F_PUBLIC_PLAYER_INFO)
 PUBLIC_PLAYER_TITLES=$(awk '{print $1}' <(echo "$PUBLIC_PLAYER_INFO"))
 PUBLIC_PLAYER_NAMES=$(awk '{print $2}' <(echo "$PUBLIC_PLAYER_INFO"))
 PUBLIC_PLAYER_PHONES=$(awk '{print $3}' <(echo "$PUBLIC_PLAYER_INFO"))
