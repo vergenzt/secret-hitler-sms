@@ -10,7 +10,7 @@ function game-init() {
   while [ -z "${GAME_ID:-}" ] || aws s3 ls "$S3_DATA/${GAME_ID:-}/$INITIALIZED"
   do
     GAME_ID=$(
-      for _ in $(seq "$CODE_LEN"); do
+      for _i in $(seq "$CODE_LEN"); do
         k=$(shuf -n1 -i 1-"${CODE_CHARS[#]}")
         echo -n "${CODE_CHARS[$k]}"
       done
