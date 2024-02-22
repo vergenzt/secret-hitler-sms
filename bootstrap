@@ -32,11 +32,13 @@ JSV_LATEST_SHA=4bd6d2b1d6292ab1f7ba63db83c182a603a790d431429cf71f05cb0fcc677def
 # [[[end]]] (checksum: f1f0e13ffb9dde3479409d6263721aaa)
 
 for bin in curl jq jsv; do
+  urlvar=${bin^^}_LATEST_URL
+  shavar=${bin^^}_LATEST_SHA
   if [ ! -f "$BIN/$bin" ]; then
-    "${curl[@]}" "${!${bin^^}_LATEST_URL}" -o $BIN/$bin
+    "${curl[@]}" "${!urlvar}" -o $BIN/$bin
     chmod +x $BIN/$bin
   fi
-  echo "${!${bin^^}_LATEST_SHA}  $BIN/$bin" | sha256sum --check -
+  echo "${!shavar}  $BIN/$bin" | sha256sum --check -
 done
 
 # Lambda "handler" must be script path relative to directory of `bootstrap`.
