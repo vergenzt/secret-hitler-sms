@@ -16,7 +16,7 @@ Resources:
   ApiDnsRecord:
     Type: AWS::Route53::RecordSet
     Properties:
-      HostedZoneName: ${param:domain}
+      HostedZoneName: ${param:domain}.
       Name: ${param:apiSubdomain}
       Type: A
       AliasTarget:
