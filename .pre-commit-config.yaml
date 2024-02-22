@@ -6,12 +6,44 @@ repos:
   - id: trailing-whitespace
   - id: end-of-file-fixer
   - id: check-yaml
-  - id: check-added-large-files
 
 - repo: local
   hooks:
-  - id: shellcheck
-    name: shellcheck
+
+  # - id: shellcheck
+  #   name: shellcheck
+  #   language: system
+  #   entry: shellcheck
+  #   types: [shell]
+
+  - id: gen-images
+    name: regenerate static/img/*.png
     language: system
-    entry: shellcheck
-    types: [shell]
+    files: ^static/img/
+    pass_filenames: false
+    entry: make -C static/img --jobs=32 rebuild
+
+  - id: sync-static-to-s3
+    name: sync static/ to s3
+    language: script
+    files: ^static/
+    pass_filenames: false
+    entry: scripts/sync-static-to-s3
+
+  - # https://github.com/nedbat/cog/issues/21#issuecomment-1919626992
+    id: cog
+    name: cog (regenerate files)
+    language: script
+    entry: scripts/cog
+    files: |
+      (?x)^(
+      # (run `pre-commit run -a cog` to auto-add files with cog snippets:)
+      #[[[cog
+      #  cog_files = sp.check_output(["git", "grep", "-lF", "[[[" + "cog"], text=True).splitlines()
+      #  print(" |\n".join(map(re.escape, cog_files)))
+      #]]]
+      \.pre\-commit\-config\.yaml |
+      bootstrap |
+      serverless\.yml
+      #[[[end]]] (checksum: 67704d3607dc1a21c2d0ddfda92c786a)
+      )$

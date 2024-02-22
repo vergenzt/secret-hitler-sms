@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+aws s3 sync \
+  --include=\*.jpg \
+  --include=\*.txt \
+  --include=\*Rules.pdf \
+  --delete \
+  "$(dirname "$0")"/../static/ s3://"$S3_STATIC"/

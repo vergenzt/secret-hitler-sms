@@ -1,0 +1,10 @@
+{
+  "name": "secret-hitler-sms",
+  "version": "0.0.1",
+  "description": "Play Secret Hitler using SMS!",
+  "author": "Tim Vergenz <vergenzt@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "serverless": "^3.38.0"
+  }
+}

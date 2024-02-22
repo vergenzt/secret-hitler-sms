@@ -27,7 +27,7 @@
   - "Legislate"
     - POST /game/{code}/legislate
       - only host can kick off legislative session
-      - choose 
+      - choose
 
 
 

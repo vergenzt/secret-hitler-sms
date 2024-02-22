@@ -1,2 +1,8 @@
 .DS_Store
-gavel.js
+node_modules
+
+.env*
+!.envrc
+.venv
+.serverless
+node_modules

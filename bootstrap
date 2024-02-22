@@ -1,0 +1,76 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+# AWS Lambda custom runtime bootstrap file
+# https://docs.aws.amazon.com/lambda/latest/dg/runtimes-walkthrough.html
+# https://docs.aws.amazon.com/lambda/latest/dg/configuration-envvars.html#configuration-envvars-runtime
+cd "$LAMBDA_TASK_ROOT"
+
+curl=(
+  curl
+  --silent
+  --show-error
+  --location
+  --variable "LAMBDA=http://${AWS_LAMBDA_RUNTIME_API}/2018-06-01/runtime/invocation"
+)
+
+# Lambda "handler" must be script path relative to directory of `bootstrap`.
+# Handler script must include function with name == basename of script file.
+SCRIPT_PATH=$_HANDLER
+SCRIPT_FN=$(basename "$SCRIPT_PATH" .sh)
+
+# download dependencies
+# (auto-update version number ⤵️)
+# [[[cog
+#   version = json.loads(sh(["curl", "-sS", "https://api.github.com/repos/neilpa/yajsv/releases/latest"]))
+#   print("YAJSV_VERSION={tag_name}".format_map(version))
+# ])]]]
+YAJSV_VERSION=v1.4.1
+# [[[end]]] (checksum: d0e78a1c6480c5bbd7a7e8714365ef8d)
+"${curl[@]}" https://github.com/neilpa/yajsv/releases/download/$YAJSV_VERSION/yajsv.linux.amd64 -o yajsv
+chmod +x yajsv
+
+# shellcheck disable=SC1090
+source "$(dirname "$0")/$SCRIPT_PATH"
+
+while true
+do
+  REQUEST_ID_FILE=$(mktemp)
+  EVENT_DATA=$(
+    "${curl[@]}" \
+      --write-out "%output{$REQUEST_ID_FILE}%header{Lambda-Runtime-Aws-Request-Id}" \
+      --expand-url "{{LAMBDA}}/next"
+  )
+  REQUEST_ID=$(cat "$REQUEST_ID_FILE")
+
+  STDOUT_AND_STDERR_LOG=$(mktemp)
+
+  # catch and log errors
+  trap 'bootstrap_catch $? $LINENO' ERR
+  bootstrap_catch() {
+    export retcode=$1
+    export lineno=$2
+    "${curl[@]}" \
+      --expand-url "{{LAMBDA}}/$REQUEST_ID/error" \
+      --variable "message@$STDOUT_AND_STDERR_LOG" \
+      --variable "script=$SCRIPT_PATH" \
+      --variable "%retcode" \
+      --variable "%lineno" \
+      --expand-variable "trace={{script}}:{{lineno}}" \
+      --expand-json '{"errorType":"return code {{retcode}}","errorMessage":{{message:json}},"stacktrace":[{{trace:json}}]}'
+  }
+
+  # Execute the handler function from the script
+  # https://stackoverflow.com/a/49299040
+  {
+    "$SCRIPT_FN" "$EVENT_DATA" \
+    | tee >(
+        # stream stdout (only) to /response
+        "${curl[@]}" \
+          --expand-url "{{LAMBDA}}/$REQUEST_ID/response" \
+          --request POST \
+          --data - \
+      );
+  } 2>&1 \
+  | tee "$STDOUT_AND_STDERR_LOG"
+done

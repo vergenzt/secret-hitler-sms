@@ -1,0 +1,48 @@
+service: secret-hitler-sms
+
+params:
+  default:
+    S3_DATA: ${env:S3_DATA}
+    S3_STATIC: ${env:S3_DATA}
+
+provider:
+  name: aws
+  runtime: provided
+  stage: prod
+  environment:
+    S3_DATA: ${param:S3_DATA}
+    S3_STATIC: ${param:S3_STATIC}
+  httpApi:
+    shouldStartNameWithService: true
+
+# https://www.serverless.com/framework/docs/providers/aws/guide/packaging
+package:
+  patterns:
+  - bootstrap
+  - src/**/*.sh
+
+functions:
+  #[[[cog exec(compile((path := pl.Path("serverless-config/functions.py")).read_text(), path, 'exec')) ]]]
+
+  # https://www.serverless.com/framework/docs/providers/aws/guide/functions
+  # https://www.serverless.com/framework/docs/providers/aws/events/http-api
+
+  game-init: {
+    "handler": "src/functions/game-init.sh",
+    "events": [
+      {
+        "httpApi": "POST /game"
+      }
+    ]
+  }
+
+  game-get: {
+    "handler": "src/functions/game-get.sh",
+    "events": [
+      {
+        "httpApi": "GET /game/{GAME_ID}"
+      }
+    ]
+  }
+
+  #[[[end]]] (checksum: 28a758a49af2f605fec6cbb373913096)
