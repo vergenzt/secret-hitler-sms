@@ -11,7 +11,7 @@ function game-init() {
   do
     GAME_ID=$(
       for _i in $(seq "$CODE_LEN"); do
-        k=$(shuf -n1 -i 1-"${CODE_CHARS[#]}")
+        k=$(shuf -n1 -i 1-"${#CODE_CHARS}")
         echo -n "${CODE_CHARS[$k]}"
       done
     )
