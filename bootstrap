@@ -5,8 +5,9 @@ set -euo pipefail
 # https://docs.aws.amazon.com/lambda/latest/dg/runtimes-walkthrough.html
 # https://docs.aws.amazon.com/lambda/latest/dg/configuration-envvars.html#configuration-envvars-runtime
 cd "$LAMBDA_TASK_ROOT"
-mkdir bin
-export PATH=$PWD/bin:$PATH
+BIN=/tmp/bin
+mkdir $BIN
+export PATH=$BIN:$PATH
 
 curl=(curl
   --silent
@@ -17,13 +18,13 @@ curl=(curl
 # [[[cog print('CURL_LATEST_URL=' + github_latest_url('stunnel/static-curl', 'curl-linux-x86_64-8.6.0.tar.xz'))]]]
 CURL_LATEST_URL=https://github.com/stunnel/static-curl/releases/download/8.6.0-1/curl-linux-x86_64-8.6.0.tar.xz
 # [[[end]]] (checksum: a694e108f548df5d13c8b3c19c698c26)
-"${curl[@]}" "$CURL_LATEST_URL" | tar -C bin xvfz -
+"${curl[@]}" "$CURL_LATEST_URL" | tar -C $BIN xvfz -
 
 # [[[cog print('YAJSV_URL=' + github_latest_url('neilpa/yajsv', 'yajsv.linux.amd64'))]]]
 YAJSV_URL=https://github.com/neilpa/yajsv/releases/download/v1.4.1/yajsv.linux.amd64
 # [[[end]]] (checksum: 2e540365a55197c0547c51598dfdd6c6)
-"${curl[@]}" "$YAJSV_URL" -o bin/validate-json-schema
-chmod +x bin/validate-json-schema
+"${curl[@]}" "$YAJSV_URL" -o $BIN/validate-json-schema
+chmod +x $BIN/validate-json-schema
 
 # Lambda "handler" must be script path relative to directory of `bootstrap`.
 # Handler script must include function with name == basename of script file.
