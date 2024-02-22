@@ -18,6 +18,7 @@ Resources:
     Properties:
       HostedZoneName: ${param:domain}
       Name: ${param:apiSubdomain}
-      Type: CNAME
-      ResourceRecords:
-      - Ref: HttpApi
+      Type: A
+      AliasTarget:
+      - DNSName: { 'Fn::GetAtt': [ HttpApi, ApiEndpoint ] }
+        HostedZoneId: "${param:hostedZoneId}"
