@@ -1,17 +1,12 @@
 service: secret-hitler-sms
 
-params:
-  default:
-    S3_DATA: ${env:S3_DATA}
-    S3_STATIC: ${env:S3_DATA}
-
 provider:
   name: aws
   runtime: provided.al2023
   stage: prod
   environment:
-    S3_DATA: ${param:S3_DATA}
-    S3_STATIC: ${param:S3_STATIC}
+    S3_DATA: ${env:S3_DATA}
+    S3_STATIC: ${env:S3_STATIC}
   httpApi:
     shouldStartNameWithService: true
 
