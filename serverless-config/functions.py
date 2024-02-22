@@ -4,9 +4,6 @@ from pathlib import Path
 import sys
 
 
-class HttpEventNotDefined(Exception):
-  pass
-
 print()
 print('# https://www.serverless.com/framework/docs/providers/aws/guide/functions')
 print('# https://www.serverless.com/framework/docs/providers/aws/events/http-api')
