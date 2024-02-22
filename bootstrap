@@ -53,6 +53,22 @@ curl+=(
 # shellcheck disable=SC1090
 source "$(dirname "$0")/$SCRIPT_PATH"
 
+# catch and log errors
+bootstrap_catch() {
+  export retcode=$1
+  export lineno=$2
+  "${curl[@]}" \
+    --expand-url "{{LAMBDA}}/$REQUEST_ID/error" \
+    --variable "message@$STDOUT_AND_STDERR_LOG" \
+    --variable "script=$SCRIPT_PATH" \
+    --variable "%retcode" \
+    --variable "%lineno" \
+    --expand-variable "trace={{script}}:{{lineno}}" \
+    --expand-json '{"errorType":"return code {{retcode}}","errorMessage":{{message:json}},"stacktrace":[{{trace:json}}]}'
+  exit "$retcode"
+}
+trap 'bootstrap_catch $? $LINENO' ERR
+
 while true
 do
   REQUEST_ID_FILE=$(mktemp)
@@ -64,23 +80,6 @@ do
   REQUEST_ID=$(cat "$REQUEST_ID_FILE")
 
   STDOUT_AND_STDERR_LOG=$(mktemp)
-
-  # catch and log errors
-  trap 'bootstrap_catch $? $LINENO' ERR
-  bootstrap_catch() {
-    export retcode=$1
-    export lineno=$2
-    "${curl[@]}" \
-      --expand-url "{{LAMBDA}}/$REQUEST_ID/error" \
-      --variable "message@$STDOUT_AND_STDERR_LOG" \
-      --variable "script=$SCRIPT_PATH" \
-      --variable "%retcode" \
-      --variable "%lineno" \
-      --expand-variable "trace={{script}}:{{lineno}}" \
-      --expand-json '{"errorType":"return code {{retcode}}","errorMessage":{{message:json}},"stacktrace":[{{trace:json}}]}'
-
-    exit "$retcode"
-  }
 
   # Execute the handler function from the script
   # https://stackoverflow.com/a/49299040
