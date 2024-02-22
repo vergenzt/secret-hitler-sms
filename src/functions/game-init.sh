@@ -3,9 +3,9 @@ source "$LAMBDA_TASK_ROOT"/src/lib.sh
 
 # httpApi: POST /game
 
-function game-init() {
+INITIALIZED=game-initialized
 
-  INITIALIZED=game-initialized
+function game-init() {
 
   while [ -z "${GAME_ID:-}" ] || aws s3 ls "$S3_DATA/${GAME_ID:-}/$INITIALIZED"
   do
@@ -19,4 +19,5 @@ function game-init() {
 
   aws s3 cp - "$S3_DATA/$GAME_ID/$INITIALIZED" </dev/null
 
+  echo '{"game_id":"$GAME_ID"}'
 }

@@ -24,6 +24,14 @@ if [ ! -f "$BIN/curl" ]; then
   chmod +x $BIN/curl
 fi
 
+if [ ! -f "$BIN/jq" ]; then
+  # [[[cog print('JQ_LATEST_URL=' + github_latest_url('jqlang/jq', 'jq-linux-amd64'))]]]
+  JQ_LATEST_URL=https://github.com/jqlang/jq/releases/download/jq-1.7.1/jq-linux-amd64
+  # [[[end]]] (checksum: a64c2ef90f4b48156557727f8b5e8417)
+  "${curl[@]}" "$JQ_LATEST_URL" -o $BIN/jq
+  chmod +x $BIN/jq
+fi
+
 if [ ! -f "$BIN/validate-json-schema" ]; then
   # [[[cog print('YAJSV_URL=' + github_latest_url('neilpa/yajsv', 'yajsv.linux.amd64'))]]]
   YAJSV_URL=https://github.com/neilpa/yajsv/releases/download/v1.4.1/yajsv.linux.amd64
