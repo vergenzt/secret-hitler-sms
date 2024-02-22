@@ -89,7 +89,7 @@ do
         "${curl[@]}" \
           --expand-url "{{LAMBDA}}/$REQUEST_ID/response" \
           --request POST \
-          --data - \
+          --data @- \
       );
   } 2>&1 \
   | tee "$STDOUT_AND_STDERR_LOG"
