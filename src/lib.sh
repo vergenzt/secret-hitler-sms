@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -eu -o pipefail
 
-if [ -n "$LIB_SOURCED" ]; then
+if [ -n "${LIB_SOURCED:-}" ]; then
   LIB_SOURCED=true
 
   # https://stackoverflow.com/a/58098360

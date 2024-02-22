@@ -19,17 +19,21 @@ curl=(curl
   --fail
 )
 
-# [[[cog print('CURL_LATEST_URL=' + github_latest_url('moparisthebest/static-curl', 'curl-amd64'))]]]
-CURL_LATEST_URL=https://github.com/moparisthebest/static-curl/releases/download/v8.5.0/curl-amd64
-# [[[end]]] (checksum: 84ca72ae3529e879c23ad08e2998fb64)
-"${curl[@]}" "$CURL_LATEST_URL" -o $BIN/curl
-chmod +x $BIN/curl
+if [ ! -f "$BIN/curl" ]; then
+  # [[[cog print('CURL_LATEST_URL=' + github_latest_url('moparisthebest/static-curl', 'curl-amd64'))]]]
+  CURL_LATEST_URL=https://github.com/moparisthebest/static-curl/releases/download/v8.5.0/curl-amd64
+  # [[[end]]] (checksum: e700ff11b1ac768dee8ebb3a7da8c12b)
+  "${curl[@]}" "$CURL_LATEST_URL" -o $BIN/curl
+  chmod +x $BIN/curl
+fi
 
-# [[[cog print('YAJSV_URL=' + github_latest_url('neilpa/yajsv', 'yajsv.linux.amd64'))]]]
-YAJSV_URL=https://github.com/neilpa/yajsv/releases/download/v1.4.1/yajsv.linux.amd64
-# [[[end]]] (checksum: 2e540365a55197c0547c51598dfdd6c6)
-"${curl[@]}" "$YAJSV_URL" -o $BIN/validate-json-schema
-chmod +x $BIN/validate-json-schema
+if [ ! -f "$BIN/validate-json-schema" ]; then
+  # [[[cog print('YAJSV_URL=' + github_latest_url('neilpa/yajsv', 'yajsv.linux.amd64'))]]]
+  YAJSV_URL=https://github.com/neilpa/yajsv/releases/download/v1.4.1/yajsv.linux.amd64
+  # [[[end]]] (checksum: 1dc39767b69592c13eba83c3d53645f5)
+  "${curl[@]}" "$YAJSV_URL" -o $BIN/validate-json-schema
+  chmod +x $BIN/validate-json-schema
+fi
 
 # Lambda "handler" must be script path relative to directory of `bootstrap`.
 # Handler script must include function with name == basename of script file.
