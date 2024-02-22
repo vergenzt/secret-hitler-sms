@@ -10,8 +10,6 @@ BIN=/tmp/usr/bin
 mkdir -p $BIN
 export PATH=$BIN:$PATH
 
-yum --installroot=/tmp -y tar
-
 curl=(curl
   --silent
   --show-error
@@ -19,10 +17,11 @@ curl=(curl
   --fail
 )
 
-# [[[cog print('CURL_LATEST_URL=' + github_latest_url('stunnel/static-curl', 'curl-linux-x86_64-8.6.0.tar.xz'))]]]
-CURL_LATEST_URL=https://github.com/stunnel/static-curl/releases/download/8.6.0-1/curl-linux-x86_64-8.6.0.tar.xz
-# [[[end]]] (checksum: a694e108f548df5d13c8b3c19c698c26)
-"${curl[@]}" "$CURL_LATEST_URL" | tar -C $BIN -xJ -f -
+# [[[cog print('CURL_LATEST_URL=' + github_latest_url('moparisthebest/static-curl', 'curl-amd64'))]]]
+CURL_LATEST_URL=https://github.com/moparisthebest/static-curl/releases/download/v8.5.0/curl-amd64
+# [[[end]]] (checksum: 84ca72ae3529e879c23ad08e2998fb64)
+"${curl[@]}" "$CURL_LATEST_URL" -o $BIN/curl
+chmod +x $BIN/curl
 
 # [[[cog print('YAJSV_URL=' + github_latest_url('neilpa/yajsv', 'yajsv.linux.amd64'))]]]
 YAJSV_URL=https://github.com/neilpa/yajsv/releases/download/v1.4.1/yajsv.linux.amd64
