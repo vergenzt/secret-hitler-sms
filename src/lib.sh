@@ -1,12 +1,12 @@
 #!/usr/bin/env bash
 set -eu -o pipefail
 
-if [ -n "${LIB_SOURCED:-}" ]; then
+if [ -z "${LIB_SOURCED:-}" ]; then
   LIB_SOURCED=true
 
   # https://stackoverflow.com/a/58098360
-  export CODE_CHARS=({C,D,E,F,H,J,K,M,N,P,R,T,V,W,X,Y,2,3,4,5,6,8,9})
-  export CODE_LEN=4
+  CODE_CHARS=({C,D,E,F,H,J,K,M,N,P,R,T,V,W,X,Y,2,3,4,5,6,8,9})
+  CODE_LEN=4
 
   # lookup() {
   #   gpaste <(echo "$2") <(echo "$1") | awk "\$1 == \"$3\" { print \$2 }"

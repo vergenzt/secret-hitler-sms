@@ -8,9 +8,7 @@ set -x
 cd "$LAMBDA_TASK_ROOT"
 BIN=/tmp/bin
 mkdir -p $BIN
-chmod +w $BIN
 export PATH=$BIN:$PATH
-ls -l $BIN
 
 curl=(curl
   --silent
