@@ -18,6 +18,7 @@ provider:
 # https://www.serverless.com/framework/docs/providers/aws/guide/packaging
 package:
   patterns:
+  - '!**/*'
   - bootstrap
   - src/**/*.sh
 
