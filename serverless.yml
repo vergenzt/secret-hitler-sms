@@ -2,7 +2,7 @@ service: secret-hitler-sms
 
 provider:
   name: aws
-  runtime: provided.al2023
+  runtime: provided.al2
   stage: prod
   environment:
     S3_DATA: ${env:S3_DATA}
