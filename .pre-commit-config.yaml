@@ -43,7 +43,7 @@ repos:
       #  print(" |\n".join(map(re.escape, cog_files)))
       #]]]
       \.pre\-commit\-config\.yaml |
-      bootstrap |
-      serverless\.yml
-      #[[[end]]] (checksum: 67704d3607dc1a21c2d0ddfda92c786a)
+      serverless\.yml |
+      src/deps\.sh
+      #[[[end]]] (checksum: 8615d67689608c96a9d512a02a1e690d)
       )$
