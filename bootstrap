@@ -18,7 +18,7 @@ curl=(curl
 # [[[cog print('CURL_LATEST_URL=' + github_latest_url('stunnel/static-curl', 'curl-linux-x86_64-8.6.0.tar.xz'))]]]
 CURL_LATEST_URL=https://github.com/stunnel/static-curl/releases/download/8.6.0-1/curl-linux-x86_64-8.6.0.tar.xz
 # [[[end]]] (checksum: a694e108f548df5d13c8b3c19c698c26)
-"${curl[@]}" "$CURL_LATEST_URL" | tar -C $BIN -xv -f -
+"${curl[@]}" "$CURL_LATEST_URL" | tar -C $BIN -xJ -f -
 
 # [[[cog print('YAJSV_URL=' + github_latest_url('neilpa/yajsv', 'yajsv.linux.amd64'))]]]
 YAJSV_URL=https://github.com/neilpa/yajsv/releases/download/v1.4.1/yajsv.linux.amd64
