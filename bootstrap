@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
 set -euo pipefail
-set -x
 
 # AWS Lambda custom runtime bootstrap file
 # https://docs.aws.amazon.com/lambda/latest/dg/runtimes-walkthrough.html
