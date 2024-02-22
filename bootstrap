@@ -14,7 +14,10 @@ curl=(curl
   --silent
   --show-error
   --location
+  --fail
 )
+
+ls -l /etc/ssl/certs/
 
 # [[[cog print('CURL_LATEST_URL=' + github_latest_url('stunnel/static-curl', 'curl-linux-x86_64-8.6.0.tar.xz'))]]]
 CURL_LATEST_URL=https://github.com/stunnel/static-curl/releases/download/8.6.0-1/curl-linux-x86_64-8.6.0.tar.xz
