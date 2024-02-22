@@ -78,6 +78,8 @@ do
       --variable "%lineno" \
       --expand-variable "trace={{script}}:{{lineno}}" \
       --expand-json '{"errorType":"return code {{retcode}}","errorMessage":{{message:json}},"stacktrace":[{{trace:json}}]}'
+
+    exit "$retcode"
   }
 
   # Execute the handler function from the script
