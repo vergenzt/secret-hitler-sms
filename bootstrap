@@ -38,7 +38,7 @@ for bin in curl jq jsv; do
     "${curl[@]}" "${!urlvar}" -o $BIN/$bin
     chmod +x $BIN/$bin
   fi
-  echo "${!shavar}  $BIN/$bin" | sha256sum --check -
+  echo "${!shavar}  $BIN/$bin" | sha256sum --check --quiet -
 done
 
 # Lambda "handler" must be script path relative to directory of `bootstrap`.
