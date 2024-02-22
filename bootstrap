@@ -86,13 +86,12 @@ do
   # https://stackoverflow.com/a/49299040
   {
     "$SCRIPT_FN" "$EVENT_DATA" \
-    | tee >(
-        # stream stdout (only) to /response
-        "${curl[@]}" \
-          --expand-url "{{LAMBDA}}/$REQUEST_ID/response" \
-          --request POST \
-          --data @- \
-      );
+    | tee /dev/stderr \
+    | "${curl[@]}" \
+        --expand-url "{{LAMBDA}}/$REQUEST_ID/response" \
+        --request POST \
+        --data @- \
+      ;
   } 2>&1 \
   | tee "$STDOUT_AND_STDERR_LOG"
 done
