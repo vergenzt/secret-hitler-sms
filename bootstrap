@@ -14,7 +14,7 @@ curl=(curl
   --silent
   --show-error
   --location
-  --fail
+  --fail-with-body
 )
 
 # [[[cog print(github_latest_url('CURL', 'moparisthebest/static-curl', 'curl-amd64'))]]]
