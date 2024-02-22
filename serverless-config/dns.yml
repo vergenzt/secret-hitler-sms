@@ -20,5 +20,5 @@ Resources:
       Name: ${param:apiSubdomain}
       Type: A
       AliasTarget:
-      - DNSName: { 'Fn::GetAtt': [ HttpApi, ApiEndpoint ] }
+        DNSName: { 'Fn::GetAtt': [ HttpApi, ApiEndpoint ] }
         HostedZoneId: "${param:hostedZoneId}"
