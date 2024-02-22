@@ -7,7 +7,7 @@ params:
 
 provider:
   name: aws
-  runtime: provided
+  runtime: provided.al2023
   stage: prod
   environment:
     S3_DATA: ${param:S3_DATA}
