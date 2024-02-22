@@ -2,7 +2,7 @@ service: secret-hitler-sms
 
 params:
   default:
-    domain: secret-h-sms.com
+    domain: secret-h-sms.com.
     apiDomain: ${param:apiSubdomain}.${param:domain}
     apiSubdomain: api-${sls:stage}
 
