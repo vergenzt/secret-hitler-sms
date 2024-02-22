@@ -9,6 +9,7 @@ pip-run cogapp -- \
   -p `# Prepend the generator source with PROLOGUE:` \
   "$(printf "%s\n" \
     "import subprocess as sp, re, os, sys, json, pathlib as pl" \
+    "from scripts.github_latest import *" \
     "sh = lambda *a,**k: sp.check_output(*a, text=True, **k)" \
   )" \
   "$@"

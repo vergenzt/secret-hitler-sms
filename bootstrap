@@ -5,30 +5,34 @@ set -euo pipefail
 # https://docs.aws.amazon.com/lambda/latest/dg/runtimes-walkthrough.html
 # https://docs.aws.amazon.com/lambda/latest/dg/configuration-envvars.html#configuration-envvars-runtime
 cd "$LAMBDA_TASK_ROOT"
+mkdir bin
+export PATH=$PWD/bin:$PATH
 
-curl=(
-  curl
+curl=(curl
   --silent
   --show-error
   --location
-  --variable "LAMBDA=http://${AWS_LAMBDA_RUNTIME_API}/2018-06-01/runtime/invocation"
 )
+
+# [[[cog print('CURL_LATEST_URL=' + github_latest_url('stunnel/static-curl', 'curl-linux-x86_64-8.6.0.tar.xz'))]]]
+CURL_LATEST_URL=https://github.com/stunnel/static-curl/releases/download/8.6.0-1/curl-linux-x86_64-8.6.0.tar.xz
+# [[[end]]] (checksum: a694e108f548df5d13c8b3c19c698c26)
+"${curl[@]}" "$CURL_LATEST_URL" | tar -C bin xvfz -
+
+# [[[cog print('YAJSV_URL=' + github_latest_url('neilpa/yajsv', 'yajsv.linux.amd64'))]]]
+YAJSV_URL=https://github.com/neilpa/yajsv/releases/download/v1.4.1/yajsv.linux.amd64
+# [[[end]]] (checksum: 2e540365a55197c0547c51598dfdd6c6)
+"${curl[@]}" "$YAJSV_URL" -o bin/validate-json-schema
+chmod +x bin/validate-json-schema
 
 # Lambda "handler" must be script path relative to directory of `bootstrap`.
 # Handler script must include function with name == basename of script file.
 SCRIPT_PATH=$_HANDLER
 SCRIPT_FN=$(basename "$SCRIPT_PATH" .sh)
 
-# download dependencies
-# (auto-update version number ⤵️)
-# [[[cog
-#   version = json.loads(sh(["curl", "-sS", "https://api.github.com/repos/neilpa/yajsv/releases/latest"]))
-#   print("YAJSV_VERSION={tag_name}".format_map(version))
-# ])]]]
-YAJSV_VERSION=v1.4.1
-# [[[end]]] (checksum: d0e78a1c6480c5bbd7a7e8714365ef8d)
-"${curl[@]}" https://github.com/neilpa/yajsv/releases/download/$YAJSV_VERSION/yajsv.linux.amd64 -o yajsv
-chmod +x yajsv
+curl+=(
+  --variable "LAMBDA=http://${AWS_LAMBDA_RUNTIME_API}/2018-06-01/runtime/invocation"
+)
 
 # shellcheck disable=SC1090
 source "$(dirname "$0")/$SCRIPT_PATH"
