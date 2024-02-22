@@ -8,7 +8,6 @@ params:
 provider:
   name: aws
   runtime: provided.al2023
-  runtimeManagement: onFunctionUpdate
   stage: prod
   environment:
     S3_DATA: ${param:S3_DATA}
