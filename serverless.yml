@@ -1,5 +1,14 @@
 service: secret-hitler-sms
 
+params:
+  default:
+    domain: secret-h-sms.com
+    apiDomain: ${param:apiSubdomain}.${param:domain}
+    apiSubdomain: api-${sls:stage}
+
+  prod:
+    apiSubdomain: api
+
 provider:
   name: aws
   runtime: provided.al2
@@ -16,6 +25,9 @@ package:
   - '!**/*'
   - bootstrap
   - src/**/*.sh
+
+resources:
+- ${file(./serverless-config/dns.yml)}
 
 functions:
   #[[[cog exec(compile((path := pl.Path("serverless-config/functions.py")).read_text(), path, 'exec')) ]]]

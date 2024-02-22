@@ -1,0 +1,23 @@
+Resources:
+
+  ApiCertificate:
+    Type: AWS::CertificateManager::Certificate
+    Properties:
+      DomainName: ${param:apiDomain}
+      ValidationMethod: DNS
+
+  ApiDomainName:
+    Type: AWS::ApiGatewayV2::DomainName
+    Properties:
+      DomainName: ${param:apiDomain}
+      DomainNameConfigurations:
+      - CertificateArn: { Ref: ApiCertificate }
+
+  ApiDnsRecord:
+    Type: AWS::Route53::RecordSet
+    Properties:
+      HostedZoneName: ${param:domain}
+      Name: ${param:apiSubdomain}
+      Type: CNAME
+      ResourceRecords:
+      - Ref: HttpApi
