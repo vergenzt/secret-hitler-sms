@@ -19,5 +19,5 @@ function game-init() {
 
   aws s3 cp - "$S3_DATA/$GAME_ID/$INITIALIZED" </dev/null
 
-  echo '{"game_id":"$GAME_ID"}'
+  jq -nc '{ $GAME_ID }' --var GAME_ID "$GAME_ID"
 }
