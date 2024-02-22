@@ -8,7 +8,6 @@ cd "$LAMBDA_TASK_ROOT"
 BIN=/tmp/bin
 mkdir -p $BIN
 export PATH=$BIN:$PATH
-{ IFS=:; ls -H $PATH; } | sort
 
 curl=(curl
   --silent
