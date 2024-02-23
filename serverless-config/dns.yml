@@ -14,3 +14,14 @@ Resources:
       DomainName: ${param:apiDomain}
       DomainNameConfigurations:
       - CertificateArn: { Ref: ApiCertificate }
+
+  ApiDnsRecord:
+    Type: AWS::Route53::RecordSet
+    DeletionPolicy: Retain
+    Properties:
+      HostedZoneName: ${param:domain}.
+      Name: ${param:apiSubdomain}
+      Type: A
+      AliasTarget:
+        DNSName: { 'Fn::GetAtt': [ HttpApi, ApiEndpoint ] }
+        HostedZoneId: { 'Fn::GetAtt': [ ApiDomainName, RegionalHostedZoneId ]}
