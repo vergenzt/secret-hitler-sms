@@ -35,7 +35,6 @@ repos:
     name: cog (regenerate files)
     language: script
     entry: scripts/cog
-    always_run: true
     files: |
       (?x)^(
       # (run `pre-commit run -a cog` to auto-add files with cog snippets:)
