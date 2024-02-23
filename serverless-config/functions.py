@@ -8,7 +8,7 @@ print()
 print('# https://www.serverless.com/framework/docs/providers/aws/guide/functions')
 print('# https://www.serverless.com/framework/docs/providers/aws/events/http-api')
 
-for path in Path('src/functions').glob('*.sh'):
+for path in sorted(Path('src/functions').glob('*.sh')):
   fn_name = path.stem
   fn_body = path.read_text()
 

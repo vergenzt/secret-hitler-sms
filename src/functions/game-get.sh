@@ -6,16 +6,14 @@ source src/lib.sh
 function game-init() {
   GAME_ID=$(echo "$1" | jq -e .pathParameters.GAME_ID)
 
-  while [ -z "${GAME_ID:-}" ] || aws s3 ls "$S3_DATA/${GAME_ID:-}/$INITIALIZED"
-  do
-    GAME_ID=$(
-      for _ in $(seq "$CODE_LEN"); do
-        k=$(shuf -n1 -i 1-"${CODE_CHARS[#]}")
-        echo -n "${CODE_CHARS[$k]}"
-      done
-    )
-  done
+  if ! aws s3 ls "$(printf "$GAME_INITIALIZED" "$GAME_ID")" >/dev/null; then
+    RESP_STATUS=404
+    echo "No game found with this ID."
+    return
+  fi
 
-  aws s3 cp - "$S3_DATA/$GAME_ID/$INITIALIZED" </dev/null
+  if ! aws s3 ls "$(printf "$GAME_STARTED" "$GAME_ID")" >/dev/null; then
+    echo "This game is waiting for players!"
+
 
 }

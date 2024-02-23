@@ -3,11 +3,9 @@ source src/lib.sh
 
 # httpApi: POST /game
 
-INITIALIZED=game-initialized
-
 function game-init() {
 
-  while [ -z "${GAME_ID:-}" ] || aws s3 ls "$S3_DATA/${GAME_ID:-}/$INITIALIZED"
+  while [ -z "${GAME_ID:-}" ] || aws s3 ls "$(printf "$GAME_INITIALIZED" "$GAME_ID")"
   do
     GAME_ID=$(
       for _i in $(seq "$CODE_LEN"); do
@@ -17,7 +15,12 @@ function game-init() {
     )
   done
 
-  aws s3 cp - "$S3_DATA/$GAME_ID/$INITIALIZED" </dev/null
+  aws s3 cp - "$(printf "$GAME_INITIALIZED" "$GAME_ID")" </dev/null
 
-  jq -nc '{ $GAME_ID }' --arg GAME_ID "$GAME_ID"
+  jq -nc '{
+    statusCode: 303,
+    headers: {
+      location: ("/" + $ENV.GAME_ID)
+    }
+  }'
 }

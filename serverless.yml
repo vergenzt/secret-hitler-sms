@@ -35,15 +35,6 @@ functions:
   # https://www.serverless.com/framework/docs/providers/aws/guide/functions
   # https://www.serverless.com/framework/docs/providers/aws/events/http-api
 
-  game-init: {
-    "handler": "src/functions/game-init.sh",
-    "events": [
-      {
-        "httpApi": "POST /game"
-      }
-    ]
-  }
-
   game-get: {
     "handler": "src/functions/game-get.sh",
     "events": [
@@ -53,4 +44,22 @@ functions:
     ]
   }
 
-  #[[[end]]] (checksum: 28a758a49af2f605fec6cbb373913096)
+  game-init: {
+    "handler": "src/functions/game-init.sh",
+    "events": [
+      {
+        "httpApi": "POST /game"
+      }
+    ]
+  }
+
+  util-get-bins: {
+    "handler": "src/functions/util-get-bins.sh",
+    "events": [
+      {
+        "httpApi": "GET /utils/list-aws-bins"
+      }
+    ]
+  }
+
+  #[[[end]]] (checksum: e317e9da19c3a327584e0bd321cae5d2)

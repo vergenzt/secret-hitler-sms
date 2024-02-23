@@ -27,12 +27,12 @@ JQ_LATEST_URL=https://github.com/jqlang/jq/releases/download/jq-1.7.1/jq-linux-a
 JQ_LATEST_SHA=5942c9b0934e510ee61eb3e30273f1b3fe2590df93933a93d7c58b81d19c8ff5
 # [[[end]]] (checksum: 002ebc5ee4e465e6c4c446b9e1dea722)
 
-# [[[cog print(github_latest_url('JSV', 'neilpa/yajsv', 'yajsv.linux.amd64'))]]]
-JSV_LATEST_URL=https://github.com/neilpa/yajsv/releases/download/v1.4.1/yajsv.linux.amd64
-JSV_LATEST_SHA=4bd6d2b1d6292ab1f7ba63db83c182a603a790d431429cf71f05cb0fcc677def
-# [[[end]]] (checksum: f1f0e13ffb9dde3479409d6263721aaa)
+# [[[cog print(github_latest_url('CHECKSCHEMA', 'neilpa/yajsv', 'yajsv.linux.amd64'))]]]
+CHECKSCHEMA_LATEST_URL=https://github.com/neilpa/yajsv/releases/download/v1.4.1/yajsv.linux.amd64
+CHECKSCHEMA_LATEST_SHA=4bd6d2b1d6292ab1f7ba63db83c182a603a790d431429cf71f05cb0fcc677def
+# [[[end]]] (checksum: 7d60906002b92f7c1e504f579de75267)
 
-for bin in curl jq jsv; do
+for bin in curl jq checkschema; do
   urlvar=${bin^^}_LATEST_URL
   shavar=${bin^^}_LATEST_SHA
   if [ ! -f "$BIN/$bin" ]; then
@@ -86,14 +86,25 @@ do
   # Execute the handler function from the script
   # https://stackoverflow.com/a/49299040
   {
-    "$SCRIPT_FN" "$EVENT_DATA" \
+    {
+      "$SCRIPT_FN" "$EVENT_DATA" || true
+    } \
     | tee /dev/stderr \
     > "$STDOUT_LOG"
   } 2>&1 \
   | tee "$STDOUT_AND_STDERR_LOG" \
-  \
-  && "${curl[@]}" \
+
+  if test "${RESP_STATUS:-0}" -lt 400; then
+    RESP_BODY=$STDOUT_LOG
+  else
+    RESP_BODY=$STDOUT_AND_STDERR_LOG
+  fi
+
+  "${curl[@]}" \
     --expand-url "{{LAMBDA}}/$REQUEST_ID/response" \
     --request POST \
-    --data @"$STDOUT_LOG"
+    --variable RESP_BODY@"$RESP_BODY" \
+    --variable %RESP_STATUS=200 \
+    --variable %RESP_HEADERS='{}' \
+    --expand-json '{"statusCode":{{RESP_STATUS}},"headers":{{RESP_HEADERS}},"body":{{RESP_BODY:json}}}'
 done
