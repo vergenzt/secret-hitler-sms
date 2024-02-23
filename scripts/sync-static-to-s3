@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
+op run -- \
 aws s3 sync \
   --include=\*.jpg \
   --include=\*.txt \
