@@ -2,7 +2,7 @@ service: secret-hitler-sms
 
 params:
   default:
-    hostedZoneId: ${env:AWS_HOSTED_ZONE_ID}
+    domainHostedZoneId: ${env:AWS_HOSTED_ZONE_ID}
     domain: secret-h-sms.com
     apiDomain: ${param:apiSubdomain}.${param:domain}
     apiSubdomain: api-${sls:stage}

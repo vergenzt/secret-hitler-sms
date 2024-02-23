@@ -21,4 +21,4 @@ Resources:
       Type: A
       AliasTarget:
         DNSName: { 'Fn::GetAtt': [ HttpApi, ApiEndpoint ] }
-        HostedZoneId: "${param:hostedZoneId}"
+        HostedZoneId: { 'Fn::GetAtt': [ ApiDomainName, RegionalHostedZoneId ]}
