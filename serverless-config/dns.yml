@@ -2,23 +2,15 @@ Resources:
 
   ApiCertificate:
     Type: AWS::CertificateManager::Certificate
+    DeletionPolicy: Retain
     Properties:
       DomainName: ${param:apiDomain}
       ValidationMethod: DNS
 
   ApiDomainName:
     Type: AWS::ApiGatewayV2::DomainName
+    DeletionPolicy: Retain
     Properties:
       DomainName: ${param:apiDomain}
       DomainNameConfigurations:
       - CertificateArn: { Ref: ApiCertificate }
-
-  ApiDnsRecord:
-    Type: AWS::Route53::RecordSet
-    Properties:
-      HostedZoneName: ${param:domain}.
-      Name: ${param:apiSubdomain}
-      Type: A
-      AliasTarget:
-        DNSName: { 'Fn::GetAtt': [ HttpApi, ApiEndpoint ] }
-        HostedZoneId: { 'Fn::GetAtt': [ ApiDomainName, RegionalHostedZoneId ]}

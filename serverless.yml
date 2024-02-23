@@ -27,6 +27,7 @@ package:
   - src/**/*.sh
 
 resources:
+- ${file(./serverless-config/s3.yml)}
 - ${file(./serverless-config/dns.yml)}
 
 functions:
@@ -35,7 +36,7 @@ functions:
   # https://www.serverless.com/framework/docs/providers/aws/guide/functions
   # https://www.serverless.com/framework/docs/providers/aws/events/http-api
 
-  game-get: {
+  GameGet: {
     "handler": "src/functions/game-get.sh",
     "events": [
       {
@@ -44,7 +45,7 @@ functions:
     ]
   }
 
-  game-init: {
+  GameInit: {
     "handler": "src/functions/game-init.sh",
     "events": [
       {
@@ -53,7 +54,7 @@ functions:
     ]
   }
 
-  util-get-bins: {
+  UtilGetBins: {
     "handler": "src/functions/util-get-bins.sh",
     "events": [
       {
@@ -62,4 +63,4 @@ functions:
     ]
   }
 
-  #[[[end]]] (checksum: e317e9da19c3a327584e0bd321cae5d2)
+  #[[[end]]] (checksum: e7b367b6c49e9d6258a93c8a3d463917)

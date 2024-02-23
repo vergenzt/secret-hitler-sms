@@ -9,7 +9,7 @@ print('# https://www.serverless.com/framework/docs/providers/aws/guide/functions
 print('# https://www.serverless.com/framework/docs/providers/aws/events/http-api')
 
 for path in sorted(Path('src/functions').glob('*.sh')):
-  fn_name = path.stem
+  fn_name = ''.join(map(str.capitalize, path.stem.split('-'))) # camel case
   fn_body = path.read_text()
 
   if not (http_events := re.findall((_re := r'^# httpApi:\s*(.*)$'), fn_body, re.M)):
