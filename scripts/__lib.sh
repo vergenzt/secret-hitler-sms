@@ -13,12 +13,10 @@ PUBLIC=state/public
 IMAGES_BASE_URL=https://raw.githubusercontent.com/vergenzt/secret-hitler-sms/master/$STATIC/images
 image_url() { echo "$IMAGES_BASE_URL/$1-$2.png"; }
 
-F_PUBLIC_SOURCE_PHONE=$PUBLIC/source-phone.txt
 F_PUBLIC_PLAYER_INFO=$PUBLIC/player-info.txt
 F_PUBLIC_ROLES_AVAILABLE=$STATIC/roles-available.txt
 F_PUBLIC_POLICIES_AVAILABLE=$STATIC/policies-available.txt
 
-PUBLIC_SOURCE_PHONE=$(cat $F_PUBLIC_SOURCE_PHONE 2>/dev/null)
 PUBLIC_PLAYER_INFO=$(cat $F_PUBLIC_PLAYER_INFO | grep -v '^#')
 PUBLIC_PLAYER_TITLES=$(awk '{print $1}' <(echo "$PUBLIC_PLAYER_INFO"))
 PUBLIC_PLAYER_NAMES=$(awk '{print $2}' <(echo "$PUBLIC_PLAYER_INFO"))
