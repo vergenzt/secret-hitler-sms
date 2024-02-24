@@ -11,7 +11,7 @@ SECRET=state/__SECRET__
 PUBLIC=state/public
 
 IMAGES_BASE_URL=https://secret-h-sms.com/img
-image_url() { echo "$IMAGES_BASE_URL/$1-$2.png"; }
+image_url() { echo "$IMAGES_BASE_URL/$1-$2.jpg"; }
 
 F_PUBLIC_PLAYER_INFO=$PUBLIC/player-info.txt
 F_PUBLIC_ROLES_AVAILABLE=$STATIC/roles-available.txt
