@@ -22,10 +22,17 @@ echo "Done."
 echo -n "Distributing secret player roles via SMS... "
 while read PUBLIC_NAME PUBLIC_PHONE SECRET_ROLE SECRET_PARTY; do
   send_sms \
-    "$PUBLIC_PHONE" \
-    "Hi $PUBLIC_NAME! Here's your SECRET (🤫) role and party membership cards for Secret Hitler. 🙂 Enjoy the game!" \
-    "$(image_url party $SECRET_PARTY)" \
-    "$(image_url role $SECRET_ROLE)"
+    -d phone="$PUBLIC_PHONE" \
+    -d message="$(printf "%s\n" \
+      "Hi $PUBLIC_NAME! Here's your SECRET (🤫) role and party membership cards for Secret Hitler. 🙂 Enjoy the game!" \
+      "" \
+      "PARTY: $SECRET_PARTY" \
+      "$(image_url party "$SECRET_PARTY")" \
+      "" \
+      "ROLE: $SECRET_ROLE" \
+      "$(image_url role "$SECRET_ROLE")" \
+    )"
+
 done < <(\
   gpaste \
   <(echo "$PUBLIC_PLAYER_NAMES") \

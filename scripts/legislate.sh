@@ -10,7 +10,7 @@ start_sms_reply_tunnel() {
     if [[ -z "$SECRET_NGROK_URL" ]]; then
       sleep 1
     else
-      twilio phone-numbers:update $PUBLIC_SOURCE_PHONE --sms-url=$SECRET_NGROK_URL >/dev/null
+      echo "$SECRET_NGROK_URL"
       break
     fi
   done
@@ -18,12 +18,13 @@ start_sms_reply_tunnel() {
 
 await_sms_reply_from() {
   SMS_FROM_EXPECTED="$1"
+  
   if [[ -z "$SMS_FROM_EXPECTED" ]]; then
     echo "Error: No phone number provided to expect an SMS from!" >/dev/stderr
     return 1
   fi
   while sleep 1; do
-    SMS_INFO=$(nc -l localhost 8080 < $STATIC/twilio-empty-response.xml | tail -n1 | tr '&=' '\n ')
+    SMS_INFO=$(nc -l localhost 8080 </dev/null | tail -n1 | tr '&=' '\n ')
     SMS_KEYS=$(awk '{print $1}' <(echo "$SMS_INFO"))
     SMS_VALS=$(awk '{print $2}' <(echo "$SMS_INFO"))
     SMS_FROM=$(urldecode "$(lookup "$SMS_VALS" "$SMS_KEYS" "From")")
@@ -77,17 +78,23 @@ legislate() {
   P3=$(pick_card 3 "$SECRET/policy-options.txt")
 
   echo -n "Sending policy options to President $PUBLIC_PRESIDENT_NAME... "
+  PRESIDENT_IMAGE=$(image_url policycombo "$P1-$P2-$P3")
   PRESIDENT_MSG=$(
     echo -en "Congratulations on your election, $PUBLIC_PRESIDENT_TITLE President! "
     echo -en "Here are your policy choices.\n\n"
+    echo -en "${P1^^} - ${P2^^} - ${P3^^}\n$PRESIDENT_IMAGE\n\n"
     echo -en "Reply 1 to discard the left $P1 policy and pass $P2-$P3 to Chancellor $PUBLIC_CHANCELLOR_NAME.\n\n"
     echo -en "Reply 2 to discard the middle $P2 policy and pass $P1-$P3 to Chancellor $PUBLIC_CHANCELLOR_NAME.\n\n"
     echo -en "Reply 3 to discard the right $P3 policy and pass $P1-$P2 to Chancellor $PUBLIC_CHANCELLOR_NAME."
   )
-  PRESIDENT_IMAGE=$(image_url policycombo "$P1-$P2-$P3")
-  send_sms "$PUBLIC_PRESIDENT_PHONE" "$PRESIDENT_MSG" "$PRESIDENT_IMAGE"
+
+  SECRET_NGROK_URL=$(start_sms_reply_tunnel)
+
+  send_sms \
+    -d phone="$PUBLIC_PRESIDENT_PHONE" \
+    -d message="$PRESIDENT_MSG" \
+    -d replyWebhookUrl="$SECRET_NGROK_URL"
   echo "Sent. Awaiting response."
-  start_sms_reply_tunnel
 
   while sleep 1; do
     PRESIDENT_RESPONSE=$(await_sms_reply_from "$PUBLIC_PRESIDENT_PHONE")
@@ -103,14 +110,18 @@ legislate() {
   P2=$(pick_card 2 "$SECRET/policy-options.txt")
 
   echo -n "Sending remaining policy options to Chancellor $PUBLIC_CHANCELLOR_NAME... "
+  CHANCELLOR_IMAGE=$(image_url policycombo "$P1-$P2")
   CHANCELLOR_MSG=$(
     echo -en "Congratulations on your election, $PUBLIC_CHANCELLOR_TITLE Chancellor. "
     echo -en "Here are your remaining policy choices.\n\n"
+    echo -en "${P1^^} - ${P2^^}\n$CHANCELLOR_IMAGE\n\n"
     echo -en "Reply 1 to discard the left $P1 policy and pass a $P2 policy.\n\n"
     echo -en "Reply 2 to discard the right $P2 policy and pass a $P1 policy."
   )
-  CHANCELLOR_IMAGE=$(image_url policycombo "$P1-$P2")
-  send_sms "$PUBLIC_CHANCELLOR_PHONE" "$CHANCELLOR_MSG" "$CHANCELLOR_IMAGE"
+  send_sms \
+    -d phone="$PUBLIC_CHANCELLOR_PHONE" \
+    -d message="$CHANCELLOR_MSG" \
+    -d replyWebhookUrl="$SECRET_NGROK_URL"
   echo "Sent. Awaiting response."
 
   while true; do
@@ -129,9 +140,13 @@ legislate() {
   MSG="President $PUBLIC_PRESIDENT_NAME and Chancellor $PUBLIC_CHANCELLOR_NAME have passed a $PUBLIC_POLICY_PASSED policy." \
 
   for PHONE in $PUBLIC_PLAYER_PHONES; do
-    send_sms "$PHONE" \
-      "President $PUBLIC_PRESIDENT_NAME and Chancellor $PUBLIC_CHANCELLOR_NAME have passed a $PUBLIC_POLICY_PASSED policy." \
-      "$(image_url policy "$PUBLIC_POLICY_PASSED")"
+    send_sms \
+      -d phone="$PHONE" \
+      -d message="$(printf "%s\n" \
+        "President $PUBLIC_PRESIDENT_NAME and Chancellor $PUBLIC_CHANCELLOR_NAME have passed a ${PUBLIC_POLICY_PASSED^^} policy." \
+        "" \
+        "$(image_url policy "$PUBLIC_POLICY_PASSED")" \
+      )"
   done
 
   sleep 3
