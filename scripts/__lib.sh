@@ -34,7 +34,7 @@ F_SECRET_POLICY_DISCARD=$SECRET/policy-discard.txt
 F_SECRET_NGROK_LOG=$SECRET/ngrok.json
 
 send_sms() {
-  curl -K .textbeltrc "$@" >/dev/null
+  curl -sS -K .textbeltrc "$@" || return 1
 }
 
 policy_deck_length() {
