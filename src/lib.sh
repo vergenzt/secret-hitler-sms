@@ -38,8 +38,9 @@ if [ -z "${LIB_SOURCED:-}" ]; then
 
   STATIC=https://secret-h-sms.com
 
-  GAME_INITIALIZED=$S3_DATA/game/%s/initialized
-  GAME_STARTED=$S3_DATA/game/%s/started
+  GAME_INITIALIZED=s3://$S3_DATA/game/%s/initialized
+  GAME_STARTED=s3://$S3_DATA/game/%s/started
+  GAME_PLAYERS=s3://$S3_DATA/game/%s/player/%s
 
   IMAGES_BASE_URL=$STATIC/img
   image_url() { echo "$IMAGES_BASE_URL/$1-$2.png"; }

@@ -6,11 +6,11 @@ source src/lib.sh
 function game-start() {
   GAME_ID=$(echo "$1" | jq -e .pathParameters.GAME_ID)
 
-  S3_PLAYERS=$S3_DATA/$GAME_ID/players/
-  NUM_PLAYERS=$(aws s3 ls )
+  PLAYERS=$(aws s3 ls "$(printf "$GAME_PLAYERS" "$GAME_ID" "")" | wc -l)
 
-  echo -n "Assigning player roles... "
-  aws s3 cp "$S3_STATIC/roles-available.txt" - |
+  ROLES_ACTIVE=($(aws s3 cp "$STATIC/roles-available.txt" - | head -n "$NUM_PLAYERS" | gshuf))
+
+  for role in "$ROLES_ACTIVE"
 
   SECRET_PLAYER_ROLES=$(echo "$PUBLIC_ROLES_ACTIVE" | gshuf | tee $SECRET/player-roles.txt)
   echo "Done."
