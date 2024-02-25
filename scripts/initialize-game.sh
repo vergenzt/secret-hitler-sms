@@ -14,7 +14,8 @@ SECRET_PLAYER_ROLES=$(echo "$PUBLIC_ROLES_ACTIVE" | gshuf | tee $SECRET/player-r
 echo "Done."
 
 echo -n "Initializing & shuffling decks... "
-touch $SECRET/policy-{deck,options,discard}.txt
+cat $F_PUBLIC_POLICIES_AVAILABLE | gshuf > $SECRET/policy-deck.txt
+touch $SECRET/policy-{options,discard}.txt
 touch $PUBLIC/policies-enacted.txt
 ensure_drawable_policy_deck &>/dev/null
 echo "Done."

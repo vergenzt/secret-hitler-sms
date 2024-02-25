@@ -24,11 +24,9 @@ await_sms_reply_from() {
     return 1
   fi
   while sleep 1; do
-    SMS_INFO=$(nc -l localhost 8080 </dev/null | tail -n1 | tr '&=' '\n ')
-    SMS_KEYS=$(awk '{print $1}' <(echo "$SMS_INFO"))
-    SMS_VALS=$(awk '{print $2}' <(echo "$SMS_INFO"))
-    SMS_FROM=$(urldecode "$(lookup "$SMS_VALS" "$SMS_KEYS" "From")")
-    SMS_BODY=$(urldecode "$(lookup "$SMS_VALS" "$SMS_KEYS" "Body")")
+    SMS_INFO=$(nc -l localhost 8080 </dev/null | tail -n1)
+    SMS_FROM=$(echo "$SMS_INFO" | jq -re .fromNumber)
+    SMS_BODY=$(echo "$SMS_INFO" | jq -re .text)
 
     case "$SMS_FROM" in
       "$SMS_FROM_EXPECTED")
@@ -43,7 +41,7 @@ await_sms_reply_from() {
 legislate() {
   ensure_drawable_policy_deck
   echo
-  (cd $SECRET && wc -l policy-*.txt)
+  wc -l $SECRET/policy-*.txt $PUBLIC/policies-enacted.txt
   echo
 
   # who's president?
@@ -83,9 +81,9 @@ legislate() {
     echo -en "Congratulations on your election, $PUBLIC_PRESIDENT_TITLE President! "
     echo -en "Here are your policy choices.\n\n"
     echo -en "${P1^^} - ${P2^^} - ${P3^^}\n$PRESIDENT_IMAGE\n\n"
-    echo -en "Reply 1 to discard the left $P1 policy and pass $P2-$P3 to Chancellor $PUBLIC_CHANCELLOR_NAME.\n\n"
-    echo -en "Reply 2 to discard the middle $P2 policy and pass $P1-$P3 to Chancellor $PUBLIC_CHANCELLOR_NAME.\n\n"
-    echo -en "Reply 3 to discard the right $P3 policy and pass $P1-$P2 to Chancellor $PUBLIC_CHANCELLOR_NAME."
+    echo -en "Reply 1 to discard the left ${P1^^} policy and pass ${P2^^}-${P3^^} to Chancellor $PUBLIC_CHANCELLOR_NAME.\n\n"
+    echo -en "Reply 2 to discard the middle ${P2^^} policy and pass ${P1^^}-${P3^^} to Chancellor $PUBLIC_CHANCELLOR_NAME.\n\n"
+    echo -en "Reply 3 to discard the right ${P3^^} policy and pass ${P1^^}-${P2^^} to Chancellor $PUBLIC_CHANCELLOR_NAME."
   )
 
   SECRET_NGROK_URL=$(start_sms_reply_tunnel)
@@ -115,8 +113,8 @@ legislate() {
     echo -en "Congratulations on your election, $PUBLIC_CHANCELLOR_TITLE Chancellor. "
     echo -en "Here are your remaining policy choices.\n\n"
     echo -en "${P1^^} - ${P2^^}\n$CHANCELLOR_IMAGE\n\n"
-    echo -en "Reply 1 to discard the left $P1 policy and pass a $P2 policy.\n\n"
-    echo -en "Reply 2 to discard the right $P2 policy and pass a $P1 policy."
+    echo -en "Reply 1 to discard the left ${P1^^} policy and pass a ${P2^^} policy.\n\n"
+    echo -en "Reply 2 to discard the right ${P2^^} policy and pass a ${P1^^} policy."
   )
   send_sms \
     -d phone="$PUBLIC_CHANCELLOR_PHONE" \
