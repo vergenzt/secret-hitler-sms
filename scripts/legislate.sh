@@ -156,6 +156,8 @@ legislate() {
   wc -l $SECRET/policy-*.txt $PUBLIC/policies-enacted.txt
   echo
   ensure_drawable_policy_deck
+
+  kill %1
 }
 
 legislate
